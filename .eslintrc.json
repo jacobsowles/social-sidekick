@@ -1,0 +1,12 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": ["airbnb", "plugin:security/recommended", "prettier"],
+  "plugins": ["prettier", "security"],
+  "rules": {
+    "arrow-body-style": 0,
+    "prettier/prettier": ["error"]
+  }
+}
