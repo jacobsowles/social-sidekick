@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import Auth from '../../api/src/Auth/Auth';
 
 class App extends Component {
   state = {
@@ -20,11 +21,14 @@ class App extends Component {
       loading: true
     });
 
-    const response = await fetch('/api/reverse/' + this.state.input);
-    const result = await response.json();
+    const auth = new Auth();
+    auth.login();
+
+    //const response = await fetch('/api/reverse/' + this.state.input);
+    //const result = await response.json();
 
     this.setState({
-      result: result,
+      //result: result,
       loading: false
     });
   };

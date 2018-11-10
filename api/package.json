@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "auth0-js": "^9.8.1",
     "express": "^4.15.2",
     "normalize-port": "^1.0.0"
   },
