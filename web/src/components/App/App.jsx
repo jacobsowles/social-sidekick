@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import AuthService from '@api/auth-service';
 import history from '@api/history';
-import Landing from '@components/Landing/Landing';
-import Home from '@components/Home/Home';
-import Callback from '@components/Callback/Callback';
-import MainNav from '@components/MainNav/MainNav';
+import Landing from '@components/Landing';
+import Home from '@components/Home';
+import Callback from '@components/Callback';
+import MainNav from '@components/MainNav';
 import './App.scss';
 
 class App extends Component {
