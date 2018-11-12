@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import Landing from '../Landing/Landing';
+import Home from '../Home/Home';
+import Callback from '../Callback/Callback';
+import Auth from '../../../../api/src/Auth/Auth';
 import './App.scss';
 
 class App extends Component {
-  goTo(route) {
-    this.props.history.replace(`/${route}`);
-  }
-
-  login() {
-    this.props.auth.login();
-  }
-
-  logout() {
-    this.props.auth.logout();
-  }
-
   render() {
-    const { isAuthenticated } = this.props.auth;
-
     return (
       <div>
         <Navbar fluid>
@@ -29,15 +21,63 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem onClick={this.goTo.bind(this, 'home')}>Home</NavItem>
-              {!isAuthenticated() && <NavItem onClick={this.login.bind(this)}>Log In</NavItem>}
-              {isAuthenticated() && <NavItem onClick={this.logout.bind(this)}>Log Out</NavItem>}
+              {!isAuthenticated() && <NavItem onClick={() => login()}>Log In</NavItem>}
+              {isAuthenticated() && (
+                <LinkContainer to="/home">
+                  <NavItem>Home</NavItem>
+                </LinkContainer>
+              )}
+              {isAuthenticated() && <NavItem onClick={() => logout()}>Log Out</NavItem>}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <main>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (isAuthenticated() ? <Redirect to="/home" /> : <Landing />)}
+            />
+            <PrivateRoute path="/home" component={Home} />
+            <Route path="/logout" render={() => <Redirect to="/" />} />
+            <Route
+              path="/callback"
+              render={props => {
+                handleAuthentication(props);
+                return <Callback {...props} />;
+              }}
+            />
+          </Switch>
+        </main>
       </div>
     );
   }
 }
 
-export default App;
+const auth = new Auth();
+const { isAuthenticated } = auth;
+
+function PrivateRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props => (isAuthenticated() ? <Component {...props} /> : auth.login())}
+    />
+  );
+}
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+};
+
+const login = () => {
+  auth.login();
+};
+
+const logout = () => {
+  auth.logout();
+};
+
+export default withRouter(App);

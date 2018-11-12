@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js';
 import history from './history';
 
-export default class Auth {
+class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       domain: 'social-sync.auth0.com',
@@ -50,8 +50,8 @@ export default class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
 
-    // navigate to the home route
-    history.replace('/home');
+    // navigate to the logout route
+    history.replace('/logout');
   }
 
   isAuthenticated() {
@@ -61,3 +61,5 @@ export default class Auth {
     return new Date().getTime() < expiresAt;
   }
 }
+
+export default Auth;
