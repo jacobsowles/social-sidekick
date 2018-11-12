@@ -39,7 +39,6 @@ class App extends Component {
               render={() => (isAuthenticated() ? <Redirect to="/home" /> : <Landing />)}
             />
             <PrivateRoute path="/home" component={Home} />
-            <Route path="/logout" render={() => <Redirect to="/" />} />
             <Route
               path="/callback"
               render={props => {

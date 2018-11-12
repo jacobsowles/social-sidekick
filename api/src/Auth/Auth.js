@@ -50,8 +50,8 @@ class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
 
-    // navigate to the logout route
-    history.replace('/logout');
+    // navigate to the default route
+    history.replace('/');
   }
 
   isAuthenticated() {
