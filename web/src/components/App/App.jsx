@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import './App.scss';
 
 class App extends Component {
@@ -23,22 +23,17 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#home">Social Sync</a>
+              <a href="/">Project Title</a>
             </Navbar.Brand>
-            <Button bsStyle="primary" className="btn-margin" onClick={this.goTo.bind(this, 'home')}>
-              Home
-            </Button>
-            {!isAuthenticated() && (
-              <Button bsStyle="primary" className="btn-margin" onClick={this.login.bind(this)}>
-                Log In
-              </Button>
-            )}
-            {isAuthenticated() && (
-              <Button bsStyle="primary" className="btn-margin" onClick={this.logout.bind(this)}>
-                Log Out
-              </Button>
-            )}
+            <Navbar.Toggle />
           </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <NavItem onClick={this.goTo.bind(this, 'home')}>Home</NavItem>
+              {!isAuthenticated() && <NavItem onClick={this.login.bind(this)}>Log In</NavItem>}
+              {isAuthenticated() && <NavItem onClick={this.logout.bind(this)}>Log Out</NavItem>}
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
       </div>
     );

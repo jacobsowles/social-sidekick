@@ -24,5 +24,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "react-bootstrap": "^0.32.4"
   }
 }

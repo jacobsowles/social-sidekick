@@ -1,8 +1,7 @@
 import ReactDOM from 'react-dom';
-import { makeMainRoutes } from './routes';
-import 'bootstrap/dist/css/bootstrap.css';
+import { makeRoutes } from './routes';
 import './index.scss';
 
-const routes = makeMainRoutes();
+const routes = makeRoutes();
 
 ReactDOM.render(routes, document.getElementById('root'));
