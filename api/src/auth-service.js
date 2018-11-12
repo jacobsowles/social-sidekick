@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js';
 import history from './history';
 
-class Auth {
+class AuthService {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       domain: 'social-sync.auth0.com',
@@ -62,4 +62,4 @@ class Auth {
   }
 }
 
-export default Auth;
+export default AuthService;
