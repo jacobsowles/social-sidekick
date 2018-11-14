@@ -6,6 +6,7 @@ import Landing from '@components/Landing';
 import Home from '@components/Home';
 import Callback from '@components/Callback';
 import MainNav from '@components/MainNav';
+import PrivateRoute from '@components/PrivateRoute';
 import './App.scss';
 
 class App extends Component {
@@ -13,15 +14,26 @@ class App extends Component {
     return (
       <Router history={history}>
         <div>
-          <MainNav />
+          <MainNav
+            isAuthenticated={authService.isAuthenticated()}
+            onLogin={authService.login}
+            onLogout={this.handleLogout}
+          />
           <main>
             <Switch>
               <Route
                 exact
                 path="/"
-                render={() => (isAuthenticated() ? <Redirect to="/home" /> : <Landing />)}
+                render={() =>
+                  authService.isAuthenticated() ? <Redirect to="/home" /> : <Landing />
+                }
               />
-              <PrivateRoute path="/home" component={Home} />
+              <PrivateRoute
+                path="/home"
+                component={Home}
+                isAuthenticated={authService.isAuthenticated()}
+                login={authService.login}
+              />
               <Route
                 path="/callback"
                 render={props => {
@@ -35,19 +47,14 @@ class App extends Component {
       </Router>
     );
   }
+
+  handleLogout = () => {
+    authService.logout();
+    this.forceUpdate();
+  };
 }
 
 const authService = new AuthService();
-const { isAuthenticated } = authService;
-
-function PrivateRoute({ component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props => (isAuthenticated() ? <Component {...props} /> : authService.login())}
-    />
-  );
-}
 
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {

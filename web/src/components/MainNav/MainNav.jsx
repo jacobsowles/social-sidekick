@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import AuthService from '@api/auth-service';
 import './MainNav.scss';
 
 class MainNav extends Component {
@@ -15,33 +13,25 @@ class MainNav extends Component {
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav pullRight>
-            {!isAuthenticated() && <NavItem onClick={() => login()}>Log In</NavItem>}
-            {isAuthenticated() && (
-              <LinkContainer to="/home">
-                <NavItem>Home</NavItem>
-              </LinkContainer>
-            )}
-            {isAuthenticated() && <NavItem onClick={() => logout()}>Log Out</NavItem>}
-          </Nav>
-        </Navbar.Collapse>
+        <Navbar.Collapse>{this.getNav()}</Navbar.Collapse>
       </Navbar>
+    );
+  }
+
+  getNav() {
+    return this.props.isAuthenticated ? (
+      <Nav pullRight>
+        <LinkContainer to="/home">
+          <NavItem>Home</NavItem>
+        </LinkContainer>
+        <NavItem onClick={this.props.onLogout}>Log Out</NavItem>
+      </Nav>
+    ) : (
+      <Nav pullRight>
+        <NavItem onClick={this.props.onLogin}>Log In</NavItem>
+      </Nav>
     );
   }
 }
 
-const authService = new AuthService();
-const { isAuthenticated } = authService;
-
-const login = () => {
-  authService.login();
-};
-
-const logout = () => {
-  authService.logout();
-};
-
-const MainNavWithRouter = withRouter(MainNav);
-
-export default MainNavWithRouter;
+export default MainNav;
