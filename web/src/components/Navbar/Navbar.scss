@@ -19,6 +19,21 @@
     }
   }
 
+  .navbar-collapse.collapsing,
+  .navbar-collapse.in {
+    .navbar-nav > li.active > a {
+      box-shadow: none;
+    }
+
+    ul:first-child {
+      margin-bottom: 0;
+    }
+
+    .navbar-right {
+      margin-top: 0;
+    }
+  }
+
   .navbar-nav {
     > li {
       &.active > a {
