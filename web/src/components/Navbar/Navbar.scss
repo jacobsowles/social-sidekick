@@ -1,0 +1,25 @@
+.navbar {
+  margin-bottom: 20px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-radius: 0;
+
+  .navbar-brand {
+    color: #252525;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  .navbar-nav {
+    > li > a {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: all 0.2s linear;
+      transition: color 0.4s cubic-bezier(0.24, 0.45, 0.46, 0.92);
+    }
+  }
+}

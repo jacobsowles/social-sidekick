@@ -1,0 +1,59 @@
+@import 'variables';
+
+html {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+a {
+  color: $navbar-default-link-color;
+  transition: all 0.1s cubic-bezier(0.24, 0.45, 0.46, 0.92);
+
+  &:hover {
+    color: $navbar-default-link-hover-color;
+    text-decoration: none;
+  }
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h6,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.24, 0.45, 0.46, 0.92);
+
+  &:hover {
+    color: #fff;
+    background-color: $gray-darker;
+  }
+}
+
+.btn-link {
+  &:hover {
+    color: $gray-darker;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}

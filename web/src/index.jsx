@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import App from '@components/App';
 import rootReducer from './reducers';
-import './index.scss';
+import './styles/index.scss';
 
 const composeEnhancers = composeWithDevTools({});
 const enhancer = composeEnhancers(applyMiddleware(thunk));
