@@ -10,10 +10,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.scss';
 
 const Navbar = ({ isAuthenticated, onLogin, onLogout }) => {
-  const navItemsRight = isAuthenticated ? (
-    <BootstrapNavItem onClick={onLogout}>Log Out</BootstrapNavItem>
+  const navbarRight = isAuthenticated ? (
+    <BootstrapNav pullRight>
+      <LinkContainer to="/home">
+        <BootstrapNavItem>Home</BootstrapNavItem>
+      </LinkContainer>
+      <BootstrapNavItem onClick={onLogout}>Log Out</BootstrapNavItem>
+    </BootstrapNav>
   ) : (
-    <BootstrapNavItem onClick={onLogin}>Log In</BootstrapNavItem>
+    <BootstrapNav pullRight>
+      <BootstrapNavItem onClick={onLogin}>Log In</BootstrapNavItem>
+    </BootstrapNav>
   );
 
   return (
@@ -33,7 +40,7 @@ const Navbar = ({ isAuthenticated, onLogin, onLogout }) => {
             <BootstrapNavItem>Contact</BootstrapNavItem>
           </LinkContainer>
         </BootstrapNav>
-        <BootstrapNav pullRight>{navItemsRight}</BootstrapNav>
+        {navbarRight}
       </BootstrapNavbar.Collapse>
     </BootstrapNavbar>
   );

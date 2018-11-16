@@ -12,6 +12,7 @@ import Footer from '@components/Footer';
 import PrivateRoute from '@components/PrivateRoute';
 import LandingPage from '@components/LandingPage';
 import HomePage from '@components/HomePage';
+import ContactPage from '@components/ContactPage';
 import CallbackPage from '@components/CallbackPage';
 import './App.scss';
 
@@ -48,6 +49,7 @@ class App extends Component {
                   isAuthenticated={authService.isAuthenticated()}
                   login={authService.login}
                 />
+                <Route path="/contact" component={ContactPage} />
                 <Route
                   path="/callback"
                   render={props => {

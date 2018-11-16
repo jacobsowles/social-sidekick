@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 @import 'variables';
 
 html {
@@ -7,6 +8,7 @@ html {
 
 body {
   background: #f9f9f9;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .float-left {
@@ -18,11 +20,12 @@ body {
 }
 
 a {
-  color: $navbar-default-link-color;
-  transition: all 0.1s cubic-bezier(0.24, 0.45, 0.46, 0.92);
+  color: $gray-darker;
+  transition: all 0.2s linear;
+  transition: color 0.2s cubic-bezier(0.24, 0.45, 0.46, 0.92);
 
   &:hover {
-    color: $navbar-default-link-hover-color;
+    color: $brand-primary;
     text-decoration: none;
   }
 }
@@ -36,6 +39,10 @@ h6,
 h6 {
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-weight: 300;
 }
 
 .btn {
