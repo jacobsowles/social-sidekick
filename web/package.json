@@ -20,6 +20,7 @@
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
+    "classnames": "^2.2.6",
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
@@ -72,6 +73,9 @@
   },
   "devDependencies": {
     "ajv": "^6.5.5",
+    "chai": "^4.2.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
     "jquery": "^3.3.1",
     "redux-devtools": "^3.4.1"
   },
@@ -88,6 +92,7 @@
     "not op_mini all"
   ],
   "jest": {
+    "verbose": false,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
@@ -113,7 +118,9 @@
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "@api/([^\\.]*)$": "<rootDir>/../api/src/$1",
+      "@components/([^\\.]*)$": "<rootDir>/src/components/$1"
     },
     "moduleFileExtensions": [
       "web.js",
