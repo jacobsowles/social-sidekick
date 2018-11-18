@@ -7,7 +7,7 @@ describe('ContentBox', () => {
   init();
   let props;
 
-  const contentBox = () => {
+  const component = () => {
     return mount(
       <ContentBox {...props}>
         <p>Test</p>
@@ -16,7 +16,7 @@ describe('ContentBox', () => {
   };
 
   const topLevelElement = () => {
-    return contentBox()
+    return component()
       .find('div')
       .first();
   };
@@ -35,7 +35,7 @@ describe('ContentBox', () => {
     it('should contain all rendered child components', () => {
       topLevelElement()
         .props()
-        .children.should.deep.equal(contentBox().props().children);
+        .children.should.deep.equal(component().props().children);
     });
   });
 
