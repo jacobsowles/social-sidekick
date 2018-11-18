@@ -1,11 +1,10 @@
 import React from 'react';
-import { configure, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import chai from 'chai';
+import { mount } from 'enzyme';
+import { init } from '@tests/test-base';
 import Footer from './Footer';
 
 describe('Footer', () => {
-  const should = chai.should();
+  init();
   let props;
 
   const component = () => {
@@ -25,8 +24,6 @@ describe('Footer', () => {
   const container = () => {
     return topLevelElement().props().children;
   };
-
-  configure({ adapter: new Adapter() });
 
   beforeEach(() => {
     props = {

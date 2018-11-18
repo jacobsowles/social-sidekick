@@ -152,8 +152,9 @@ module.exports = {
       '@api': path.resolve(__dirname, '../../api/src'),
       '@assets': path.resolve(__dirname, '../src/assets'),
       '@components': path.resolve(__dirname, '../src/components'),
+      '@reducers': path.resolve(__dirname, '../src/reducers'),
       '@styles': path.resolve(__dirname, '../src/styles'),
-      '@reducers': path.resolve(__dirname, '../src/reducers')
+      '@tests': path.resolve(__dirname, '../src/tests')
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding

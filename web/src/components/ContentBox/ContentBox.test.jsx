@@ -1,13 +1,10 @@
 import React from 'react';
-import { configure, mount } from 'enzyme';
-import chai from 'chai';
-import Adapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme';
+import { init } from '@tests/test-base';
 import ContentBox from './ContentBox';
 
 describe('ContentBox', () => {
-  configure({ adapter: new Adapter() });
-
-  const should = chai.should();
+  init();
   let props;
 
   const contentBox = () => {
