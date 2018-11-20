@@ -64,10 +64,10 @@ describe('Footer', () => {
       props.className = undefined;
     });
 
-    it('should only have the default class name', () => {
+    it('should only include the default class names', () => {
       topLevelElement()
         .props()
-        .className.should.equal('footer');
+        .className.should.equal('footer float-left');
     });
   });
 });

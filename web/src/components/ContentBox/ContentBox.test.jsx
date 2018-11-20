@@ -44,7 +44,7 @@ describe('ContentBox', () => {
       props.className = 'another-class';
     });
 
-    it('should add the class name to the wrapping div', () => {
+    it('should add the class name', () => {
       topLevelElement()
         .props()
         .className.should.equal('content-box another-class');
@@ -52,7 +52,7 @@ describe('ContentBox', () => {
   });
 
   describe('when `className` is undefined', () => {
-    it('should only have the default class name', () => {
+    it('should only include the default class names', () => {
       topLevelElement()
         .props()
         .className.should.equal('content-box');
