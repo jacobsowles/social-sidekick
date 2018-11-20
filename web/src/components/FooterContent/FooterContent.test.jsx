@@ -40,13 +40,19 @@ describe('Footer', () => {
       props.pullRight = true;
     });
 
-    it('should include the float-right class', () => {
+    it('should include the float-right class name', () => {
       topLevelElement()
         .props()
         .className.should.contain('float-right');
     });
 
-    it('should not include the float-left class', () => {
+    it('should include the footer-content class name', () => {
+      topLevelElement()
+        .props()
+        .className.should.contain('footer-content');
+    });
+
+    it('should not include the float-left class name', () => {
       topLevelElement()
         .props()
         .className.should.not.contain('float-left');
@@ -58,13 +64,19 @@ describe('Footer', () => {
       props.pullRight = false;
     });
 
-    it('should include the float-left class', () => {
+    it('should include the float-left class name', () => {
       topLevelElement()
         .props()
         .className.should.contain('float-left');
     });
 
-    it('should not include the float-right class', () => {
+    it('should include the footer-content class name', () => {
+      topLevelElement()
+        .props()
+        .className.should.contain('footer-content');
+    });
+
+    it('should not include the float-right class name', () => {
       topLevelElement()
         .props()
         .className.should.not.contain('float-right');
@@ -76,13 +88,19 @@ describe('Footer', () => {
       props.pullRight = undefined;
     });
 
-    it('should include the float-left class', () => {
+    it('should include the float-left class name', () => {
       topLevelElement()
         .props()
         .className.should.contain('float-left');
     });
 
-    it('should not include the float-right class', () => {
+    it('should include the footer-content class name', () => {
+      topLevelElement()
+        .props()
+        .className.should.contain('footer-content');
+    });
+
+    it('should not include the float-right class name', () => {
       topLevelElement()
         .props()
         .className.should.not.contain('float-right');
