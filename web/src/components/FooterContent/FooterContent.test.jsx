@@ -19,7 +19,8 @@ describe('Footer', () => {
 
   beforeEach(() => {
     props = {
-      className: undefined
+      className: undefined,
+      pullRight: undefined
     };
   });
 

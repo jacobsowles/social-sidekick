@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './PageHeader.scss';
 
 const PageHeader = ({ className, subtitle, title, ...rest }) => {
-  const subtitleElement = subtitle ? <p className="lead">{subtitle}</p> : null;
-
   return (
-    <div className={`page-header ${className}`} {...rest}>
+    <div className={classNames('page-header', className)} {...rest}>
       <h1>{title}</h1>
-      {subtitleElement}
+      {subtitle && <p className="lead">{subtitle}</p>}
       <hr />
     </div>
   );
@@ -21,8 +20,8 @@ PageHeader.propTypes = {
 };
 
 PageHeader.defaultProps = {
-  className: '',
-  subtitle: null
+  className: undefined,
+  subtitle: undefined
 };
 
 export default PageHeader;
