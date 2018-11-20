@@ -1,16 +1,11 @@
 import React from 'react';
-import { shallow as enzymeShallow } from 'enzyme';
-import { init } from '@tests/test-base';
+import { init, shallow } from '@tests/test-base';
 import ContactPage from './ContactPage';
 import Page from '../Page';
 
 describe('ContactPage', () => {
-  init();
+  init(() => <ContactPage {...props} />);
   let props;
-
-  const shallow = () => {
-    return enzymeShallow(<ContactPage {...props} />);
-  };
 
   const topLevelElement = () => {
     return shallow()

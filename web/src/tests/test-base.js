@@ -1,10 +1,31 @@
 import { should } from 'chai';
-import { configure } from 'enzyme';
+import {
+  configure,
+  mount as enzymeMount,
+  render as enzymeRender,
+  shallow as enzymeShallow
+} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-const init = () => {
+let _component;
+
+const init = component => {
   should();
   configure({ adapter: new Adapter() });
+
+  _component = component;
 };
 
-export { init };
+const mount = () => {
+  return enzymeMount(_component());
+};
+
+const render = () => {
+  return enzymeRender(_component());
+};
+
+const shallow = () => {
+  return enzymeShallow(_component());
+};
+
+export { init, mount, render, shallow };
