@@ -44,18 +44,24 @@ describe('ContentBox', () => {
       props.className = 'another-class';
     });
 
-    it('should add the class name', () => {
+    it('should include the specified class name', () => {
       topLevelElement()
         .props()
-        .className.should.equal('content-box another-class');
+        .className.should.contain('another-class');
+    });
+
+    it('should include the content-box class name', () => {
+      topLevelElement()
+        .props()
+        .className.should.contain('content-box');
     });
   });
 
   describe('when `className` is undefined', () => {
-    it('should only include the default class names', () => {
+    it('should include the footer-content class name', () => {
       topLevelElement()
         .props()
-        .className.should.equal('content-box');
+        .className.should.contain('content-box');
     });
   });
 });
