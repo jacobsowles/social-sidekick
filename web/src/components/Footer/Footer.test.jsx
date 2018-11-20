@@ -1,28 +1,26 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { init } from '@tests/test-base';
+import {
+  init,
+  mount,
+  mountTopLevelElement,
+  shallow,
+  shallowTopLevelElement
+} from '@tests/test-base';
 import Footer from './Footer';
 
 describe('Footer', () => {
-  init();
   let props;
-
-  const component = () => {
-    return mount(
+  init(
+    () => (
       <Footer {...props}>
         <p>Test</p>
       </Footer>
-    );
-  };
-
-  const topLevelElement = () => {
-    return component()
-      .find('footer')
-      .first();
-  };
+    ),
+    'footer'
+  );
 
   const container = () => {
-    return topLevelElement().props().children;
+    return mountTopLevelElement().props().children;
   };
 
   beforeEach(() => {
@@ -32,7 +30,9 @@ describe('Footer', () => {
   });
 
   it('should render a footer', () => {
-    topLevelElement().should.not.equal(undefined);
+    shallow()
+      .find('footer')
+      .should.have.lengthOf(1);
   });
 
   describe('the rendered footer', () => {
@@ -43,7 +43,7 @@ describe('Footer', () => {
 
   describe('the rendered container', () => {
     it('should contain all rendered child components', () => {
-      container().props.children.should.deep.equal(component().props().children);
+      container().props.children.should.deep.equal(mount().props().children);
     });
   });
 
@@ -53,7 +53,7 @@ describe('Footer', () => {
     });
 
     it('should add the class name to the footer', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.equal('footer another-class');
     });
@@ -65,7 +65,7 @@ describe('Footer', () => {
     });
 
     it('should only include the default class names', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.equal('footer');
     });
