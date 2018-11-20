@@ -1,17 +1,11 @@
 import React from 'react';
-import { init, shallow } from '@tests/test-base';
+import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import ContactPage from './ContactPage';
 import Page from '../Page';
 
 describe('ContactPage', () => {
-  init(() => <ContactPage {...props} />);
   let props;
-
-  const topLevelElement = () => {
-    return shallow()
-      .find(Page)
-      .first();
-  };
+  init(() => <ContactPage {...props} />, Page);
 
   beforeEach(() => {
     props = {
@@ -26,7 +20,7 @@ describe('ContactPage', () => {
   });
 
   it('should pass `title` to the Page component as a prop', () => {
-    topLevelElement()
+    shallowTopLevelElement()
       .props()
       .title.should.not.equal(undefined);
   });
@@ -37,13 +31,13 @@ describe('ContactPage', () => {
     });
 
     it('should include the specified class name', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.contain('another-class');
     });
 
     it('should include the contact-page class name', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.contain('contact-page');
     });
@@ -51,7 +45,7 @@ describe('ContactPage', () => {
 
   describe('when `className` is undefined', () => {
     it('should include the contact-page class name', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.contain('contact-page');
     });
