@@ -67,7 +67,7 @@ describe('Footer', () => {
     it('should only include the default class names', () => {
       topLevelElement()
         .props()
-        .className.should.equal('footer float-left');
+        .className.should.equal('footer');
     });
   });
 });
