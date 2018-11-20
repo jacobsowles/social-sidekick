@@ -120,6 +120,7 @@
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
       "@api/([^\\.]*)$": "<rootDir>/../api/src/$1",
+      "@assets/(.*)$": "<rootDir>/src/assets/$1",
       "@components/([^\\.]*)$": "<rootDir>/src/components/$1",
       "@tests/([^\\.]*)$": "<rootDir>/src/tests/$1"
     },
