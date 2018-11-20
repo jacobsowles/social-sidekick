@@ -27,11 +27,11 @@ describe('ContentBox', () => {
     };
   });
 
-  it('should render a div', () => {
+  it('should render a div element', () => {
     topLevelElement().should.not.equal(undefined);
   });
 
-  describe('the rendered div', () => {
+  describe('the rendered div element', () => {
     it('should contain all rendered child components', () => {
       topLevelElement()
         .props()
@@ -58,7 +58,7 @@ describe('ContentBox', () => {
   });
 
   describe('when `className` is undefined', () => {
-    it('should include the footer-content class name', () => {
+    it('should include the content-box class name', () => {
       topLevelElement()
         .props()
         .className.should.contain('content-box');
