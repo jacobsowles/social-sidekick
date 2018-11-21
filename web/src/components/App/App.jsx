@@ -16,7 +16,7 @@ library.add(faGithub, faCube);
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <Router />
       <Footer>
         <Footer.Content>&copy; Project Name 2018</Footer.Content>

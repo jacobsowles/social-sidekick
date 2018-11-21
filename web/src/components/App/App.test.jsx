@@ -1,8 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { init, render, shallow, shallowTopLevelElement } from '@tests/test-base';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+jest.mock('../Router', () => () => <span id="router" />);
+
+describe('App', () => {
+  init(() => <App />, 'div');
+
+  it('should always render a div element', () => {
+    shallow()
+      .find('div')
+      .should.have.lengthOf(1);
+  });
+
+  it('should always render a Router component', () => {
+    render()
+      .find('#router')
+      .should.have.lengthOf(1);
+  });
+
+  it('should always render a footer element', () => {
+    render()
+      .find('footer')
+      .should.have.lengthOf(1);
+  });
+
+  it('should always include the default class names', () => {
+    shallowTopLevelElement()
+      .props()
+      .className.should.equal('app');
+  });
 });

@@ -16,8 +16,8 @@ class Router extends React.Component {
       <ReactRouter history={history}>
         <div>
           <Navbar
-            isAuthenticated={authService.isAuthenticated()}
-            onLogin={authService.login}
+            isAuthenticated={this.authService.isAuthenticated()}
+            onLogin={this.authService.login}
             onLogout={this.handleLogout}
           />
           <div className="container">
@@ -26,20 +26,20 @@ class Router extends React.Component {
                 exact
                 path="/"
                 render={() =>
-                  authService.isAuthenticated() ? <Redirect to="/home" /> : <LandingPage />
+                  this.authService.isAuthenticated() ? <Redirect to="/home" /> : <LandingPage />
                 }
               />
               <PrivateRoute
                 path="/home"
                 component={HomePage}
-                isAuthenticated={authService.isAuthenticated()}
-                login={authService.login}
+                isAuthenticated={this.authService.isAuthenticated()}
+                login={this.authService.login}
               />
               <Route path="/contact" component={ContactPage} />
               <Route
                 path="/callback"
                 render={props => {
-                  handleAuthentication(props);
+                  this.handleAuthentication(props);
                   return <CallbackPage {...props} />;
                 }}
               />
@@ -50,18 +50,18 @@ class Router extends React.Component {
     );
   }
 
+  authService = new AuthService();
+
   handleLogout = () => {
-    authService.logout();
+    this.authService.logout();
     this.forceUpdate();
   };
+
+  handleAuthentication = (nextState, replace) => {
+    if (/access_token|id_token|error/.test(nextState.location.hash)) {
+      this.authService.handleAuthentication();
+    }
+  };
 }
-
-const authService = new AuthService();
-
-const handleAuthentication = (nextState, replace) => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    authService.handleAuthentication();
-  }
-};
 
 export default Router;
