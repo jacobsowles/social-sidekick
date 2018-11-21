@@ -1,33 +1,24 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { init } from '@tests/test-base';
+import { init, mount, shallow, shallowTopLevelElement } from '@tests/test-base';
 import PageHeader from './PageHeader';
 
 describe('PageHeader', () => {
-  init();
   let props;
-
-  const component = () => {
-    return mount(<PageHeader {...props} />);
-  };
-
-  const topLevelElement = () => {
-    return component()
-      .find('div')
-      .first();
-  };
+  init(() => <PageHeader {...props} />, 'div');
 
   beforeEach(() => {
     props = { className: undefined, subtitle: undefined, title: 'title' };
   });
 
   it('should render a div element', () => {
-    topLevelElement().should.not.equal(undefined);
+    shallow()
+      .find('div')
+      .should.have.lengthOf(1);
   });
 
   describe('the rendered div element', () => {
     it('should always contain an h1 component with the page title', () => {
-      component()
+      mount()
         .find('h1')
         .first()
         .props()
@@ -41,13 +32,13 @@ describe('PageHeader', () => {
     });
 
     it('should include the specified class name', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.contain('another-class');
     });
 
     it('should include the page-header class name', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.contain('page-header');
     });
@@ -55,7 +46,7 @@ describe('PageHeader', () => {
 
   describe('when `className` is undefined', () => {
     it('should include the page-header class name', () => {
-      topLevelElement()
+      shallowTopLevelElement()
         .props()
         .className.should.contain('page-header');
     });
@@ -67,7 +58,7 @@ describe('PageHeader', () => {
     });
 
     it('should render a p element with the page subtitle', () => {
-      component()
+      mount()
         .find('p')
         .first()
         .props()
@@ -81,7 +72,7 @@ describe('PageHeader', () => {
     });
 
     it('should not render a p element', () => {
-      component()
+      mount()
         .find('p')
         .should.have.lengthOf(0);
     });
