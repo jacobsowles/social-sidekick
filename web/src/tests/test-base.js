@@ -55,5 +55,6 @@ export {
   render,
   renderTopLevelElement,
   shallow,
-  shallowTopLevelElement
+  shallowTopLevelElement,
+  should
 };

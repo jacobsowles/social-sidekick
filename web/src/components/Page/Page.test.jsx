@@ -1,8 +1,113 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {
+  init,
+  mount,
+  mountTopLevelElement,
+  shallow,
+  shallowTopLevelElement,
+  should
+} from '@tests/test-base';
 import Page from './Page';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Page />, div);
+describe('Page', () => {
+  let props;
+  init(
+    () => (
+      <Page {...props}>
+        <p>Test</p>
+      </Page>
+    ),
+    'main'
+  );
+
+  beforeEach(() => {
+    props = {
+      className: undefined,
+      subtitle: undefined,
+      title: 'title'
+    };
+  });
+
+  it('should always render a main element', () => {
+    shallow()
+      .find('main')
+      .should.have.lengthOf(1);
+  });
+
+  it('should always render a ContentBox component', () => {
+    shallow()
+      .find(Page.ContentBox)
+      .should.have.lengthOf(1);
+  });
+
+  it('should always render a PageHeader component', () => {
+    shallow()
+      .find(Page.Header)
+      .should.have.lengthOf(1);
+  });
+
+  it('should always pass `title` to the PageHeader component', () => {
+    shallow()
+      .find(Page.Header)
+      .props()
+      .title.should.equal('title');
+  });
+
+  it('should always render all children inside the ContentBox component', () => {
+    mount()
+      .find(Page.ContentBox)
+      .first()
+      .props()
+      .children.should.deep.contain(mount().props().children);
+  });
+
+  describe('when `className` is defined', () => {
+    beforeEach(() => {
+      props.className = 'another-class';
+    });
+
+    it('should include the specified class name', () => {
+      shallowTopLevelElement()
+        .props()
+        .className.should.contain('another-class');
+    });
+
+    it('should include the page class name', () => {
+      shallowTopLevelElement()
+        .props()
+        .className.should.contain('page');
+    });
+  });
+
+  describe('when `className` is not defined', () => {
+    it('should only include the default class names', () => {
+      shallowTopLevelElement()
+        .props()
+        .className.should.equal('page');
+    });
+  });
+
+  describe('when `subtitle` is defined', () => {
+    beforeEach(() => {
+      props.subtitle = 'subtitle';
+    });
+
+    it('should pass `subtitle` to the PageHeader component', () => {
+      shallow()
+        .find(Page.Header)
+        .props()
+        .subtitle.should.equal('subtitle');
+    });
+  });
+
+  describe('when `subtitle` is undefined', () => {
+    it('should not pass `subtitle` to the PageHeader component', () => {
+      should().equal(
+        shallow()
+          .find(Page.Header)
+          .props().subtitle,
+        undefined
+      );
+    });
+  });
 });
