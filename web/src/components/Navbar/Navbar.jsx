@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {
   Nav as BootstrapNav,
   Navbar as BootstrapNavbar,
@@ -9,22 +10,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.scss';
 
-const Navbar = ({ isAuthenticated, onLogin, onLogout }) => {
-  const navbarRight = isAuthenticated ? (
-    <BootstrapNav pullRight>
-      <LinkContainer to="/home">
-        <BootstrapNavItem>Home</BootstrapNavItem>
-      </LinkContainer>
-      <BootstrapNavItem onClick={onLogout}>Log Out</BootstrapNavItem>
-    </BootstrapNav>
-  ) : (
-    <BootstrapNav pullRight>
-      <BootstrapNavItem onClick={onLogin}>Log In</BootstrapNavItem>
-    </BootstrapNav>
-  );
-
+const Navbar = ({ className, isAuthenticated, onLogin, onLogout, ...rest }) => {
   return (
-    <BootstrapNavbar>
+    <BootstrapNavbar className={classNames('navbar', className)} {...rest}>
       <BootstrapNavbar.Header>
         <BootstrapNavbar.Brand>
           <a href="/">
@@ -35,12 +23,23 @@ const Navbar = ({ isAuthenticated, onLogin, onLogout }) => {
         <BootstrapNavbar.Toggle />
       </BootstrapNavbar.Header>
       <BootstrapNavbar.Collapse>
-        <BootstrapNav>
+        <BootstrapNav pullLeft>
           <LinkContainer to="/contact">
             <BootstrapNavItem>Contact</BootstrapNavItem>
           </LinkContainer>
         </BootstrapNav>
-        {navbarRight}
+        <BootstrapNav pullRight>
+          {isAuthenticated ? (
+            <>
+              <LinkContainer to="/home">
+                <BootstrapNavItem>Home</BootstrapNavItem>
+              </LinkContainer>
+              <BootstrapNavItem onClick={onLogout}>Log Out</BootstrapNavItem>
+            </>
+          ) : (
+            <BootstrapNavItem onClick={onLogin}>Log In</BootstrapNavItem>
+          )}
+        </BootstrapNav>
       </BootstrapNavbar.Collapse>
     </BootstrapNavbar>
   );
