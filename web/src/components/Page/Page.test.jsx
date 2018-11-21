@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  init,
-  mount,
-  mountTopLevelElement,
-  shallow,
-  shallowTopLevelElement,
-  should
-} from '@tests/test-base';
+import { init, mount, shallow, shallowTopLevelElement, should } from '@tests/test-base';
 import Page from './Page';
 
 describe('Page', () => {
