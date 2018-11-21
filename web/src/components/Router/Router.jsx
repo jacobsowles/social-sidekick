@@ -1,0 +1,67 @@
+import React from 'react';
+import { Redirect, Route, Router as ReactRouter, Switch } from 'react-router-dom';
+import AuthService from '@api/auth-service';
+import history from '@api/history';
+import Navbar from '@components/Navbar';
+import PrivateRoute from '@components/PrivateRoute';
+import LandingPage from '@components/LandingPage';
+import HomePage from '@components/HomePage';
+import ContactPage from '@components/ContactPage';
+import CallbackPage from '@components/CallbackPage';
+import './Router.scss';
+
+class Router extends React.Component {
+  render() {
+    return (
+      <ReactRouter history={history}>
+        <div>
+          <Navbar
+            isAuthenticated={authService.isAuthenticated()}
+            onLogin={authService.login}
+            onLogout={this.handleLogout}
+          />
+          <div className="container">
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  authService.isAuthenticated() ? <Redirect to="/home" /> : <LandingPage />
+                }
+              />
+              <PrivateRoute
+                path="/home"
+                component={HomePage}
+                isAuthenticated={authService.isAuthenticated()}
+                login={authService.login}
+              />
+              <Route path="/contact" component={ContactPage} />
+              <Route
+                path="/callback"
+                render={props => {
+                  handleAuthentication(props);
+                  return <CallbackPage {...props} />;
+                }}
+              />
+            </Switch>
+          </div>
+        </div>
+      </ReactRouter>
+    );
+  }
+
+  handleLogout = () => {
+    authService.logout();
+    this.forceUpdate();
+  };
+}
+
+const authService = new AuthService();
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    authService.handleAuthentication();
+  }
+};
+
+export default Router;
