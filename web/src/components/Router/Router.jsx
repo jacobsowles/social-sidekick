@@ -14,7 +14,7 @@ class Router extends React.Component {
   render() {
     return (
       <ReactRouter history={history}>
-        <div>
+        <>
           <Navbar
             isAuthenticated={this.authService.isAuthenticated()}
             onLogin={this.authService.login}
@@ -45,7 +45,7 @@ class Router extends React.Component {
               />
             </Switch>
           </div>
-        </div>
+        </>
       </ReactRouter>
     );
   }
