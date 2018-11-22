@@ -80,7 +80,6 @@
   },
   "devDependencies": {
     "ajv": "^6.5.5",
-    "awesome-typescript-loader": "^5.2.1",
     "chai": "^4.2.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",

@@ -1,6 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "jsx": "react",
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@actions/*": ["actions/*"],
+      "@api/*": ["../../api/src/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@reducers/*": ["reducers/*"],
+      "@styles/*": ["styles/*"],
+      "@tests/*": ["tests/*"]
+    }
   }
 }
