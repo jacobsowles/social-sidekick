@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Redirect, Route, Router as ReactRouter, Switch } from 'react-router-dom';
 import AuthService from '@api/auth-service';
 import history from '@api/history';
@@ -10,7 +10,7 @@ import ContactPage from '@components/ContactPage';
 import CallbackPage from '@components/CallbackPage';
 import './Router.scss';
 
-class Router extends React.Component {
+class Router extends Component {
   render() {
     return (
       <ReactRouter history={history}>
@@ -57,7 +57,7 @@ class Router extends React.Component {
     this.forceUpdate();
   };
 
-  handleAuthentication = (nextState, replace) => {
+  handleAuthentication = nextState => {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.authService.handleAuthentication();
     }

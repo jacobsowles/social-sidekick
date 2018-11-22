@@ -1,10 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import Page from '@components/Page';
 import './LandingPage.scss';
 
-const LandingPage = ({ className, ...rest }) => {
+type LandingPageProps = {
+  className?: string;
+};
+
+const LandingPage: FunctionComponent<LandingPageProps> = ({ className, ...rest }) => {
   return (
     <Page
       className={classNames('landing-page', className)}
@@ -15,10 +18,6 @@ const LandingPage = ({ className, ...rest }) => {
       <p>Page content</p>
     </Page>
   );
-};
-
-LandingPage.propTypes = {
-  className: PropTypes.string
 };
 
 LandingPage.defaultProps = {

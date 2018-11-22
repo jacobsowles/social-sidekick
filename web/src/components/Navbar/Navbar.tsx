@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import {
   Nav as BootstrapNav,
@@ -10,7 +9,20 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.scss';
 
-const Navbar = ({ className, isAuthenticated, onLogin, onLogout, ...rest }) => {
+type NavbarProps = {
+  className?: string;
+  isAuthenticated: boolean;
+  onLogin: (...args: any[]) => any;
+  onLogout: (...args: any[]) => any;
+};
+
+const Navbar: FunctionComponent<NavbarProps> = ({
+  className,
+  isAuthenticated,
+  onLogin,
+  onLogout,
+  ...rest
+}) => {
   return (
     <BootstrapNavbar className={classNames('navbar', className)} {...rest}>
       <BootstrapNavbar.Header>
@@ -45,10 +57,8 @@ const Navbar = ({ className, isAuthenticated, onLogin, onLogout, ...rest }) => {
   );
 };
 
-Navbar.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired
+Navbar.defaultProps = {
+  className: undefined
 };
 
 export default Navbar;

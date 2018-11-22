@@ -1,20 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import FooterContent from '@components/FooterContent';
 import './Footer.scss';
 
-const Footer = ({ children, className, ...rest }) => {
+type FooterProps = {
+  className?: string;
+};
+
+const Footer: FunctionComponent<FooterProps> = ({ children, className, ...rest }) => {
   return (
     <footer className={classNames('footer', className)} {...rest}>
       <div className="container">{children}</div>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
-  className: PropTypes.string
 };
 
 Footer.defaultProps = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faCube } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 library.add(faGithub, faCube);
 
-const App = () => {
+const App: FunctionComponent = () => {
   return (
     <div className="app">
       <Router />

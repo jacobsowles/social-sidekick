@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import loading from '@assets/loading.svg';
 
-const CallbackPage = () => {
+const CallbackPage: FunctionComponent = () => {
   return (
     <div className="callback-page">
       <img src={loading} alt="loading" />

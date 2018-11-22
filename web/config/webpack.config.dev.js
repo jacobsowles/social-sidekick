@@ -260,6 +260,19 @@ module.exports = {
               sourceMaps: false
             }
           },
+          {
+            test: /\.(ts|tsx)$/,
+            include: paths.appSrc,
+            use: [
+              {
+                loader: require.resolve('awesome-typescript-loader'),
+                options: {
+                  // disable type checker - we will use it in fork plugin
+                  transpileOnly: true
+                }
+              }
+            ]
+          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.

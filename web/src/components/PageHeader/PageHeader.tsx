@@ -1,9 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import './PageHeader.scss';
 
-const PageHeader = ({ className, subtitle, title, ...rest }) => {
+type PageHeaderProps = {
+  className?: string;
+  subtitle?: string;
+  title: string;
+};
+
+const PageHeader: FunctionComponent<PageHeaderProps> = ({
+  className,
+  subtitle,
+  title,
+  ...rest
+}) => {
   return (
     <div className={classNames('page-header', className)} {...rest}>
       <h1>{title}</h1>
@@ -11,12 +21,6 @@ const PageHeader = ({ className, subtitle, title, ...rest }) => {
       <hr />
     </div>
   );
-};
-
-PageHeader.propTypes = {
-  className: PropTypes.string,
-  subtitle: PropTypes.string,
-  title: PropTypes.string.isRequired
 };
 
 PageHeader.defaultProps = {
