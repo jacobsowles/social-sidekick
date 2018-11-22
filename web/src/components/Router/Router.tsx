@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Redirect, Route, Router as ReactRouter, Switch } from 'react-router-dom';
+import {
+  Redirect,
+  Route,
+  Router as ReactRouter,
+  Switch,
+  RouteComponentProps
+} from 'react-router-dom';
 import AuthService from '@api/auth-service';
 import history from '@api/history';
 import Navbar from '@components/Navbar';
@@ -57,7 +63,7 @@ class Router extends React.Component {
     this.forceUpdate();
   };
 
-  handleAuthentication = nextState => {
+  handleAuthentication = (nextState: RouteComponentProps) => {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.authService.handleAuthentication();
     }
