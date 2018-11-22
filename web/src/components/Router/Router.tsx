@@ -58,12 +58,12 @@ class Router extends React.Component {
 
   authService = new AuthService();
 
-  handleLogout = () => {
+  handleLogout = (): void => {
     this.authService.logout();
     this.forceUpdate();
   };
 
-  handleAuthentication = (nextState: RouteComponentProps) => {
+  handleAuthentication = (nextState: RouteComponentProps): void => {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.authService.handleAuthentication();
     }

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "jsx": "react",
-    "strict": true,
     "paths": {
       "@actions/*": ["actions/*"],
       "@api/*": ["../../api/src/*"],
@@ -11,6 +11,7 @@
       "@reducers/*": ["reducers/*"],
       "@styles/*": ["styles/*"],
       "@tests/*": ["tests/*"]
-    }
+    },
+    "strict": true
   }
 }

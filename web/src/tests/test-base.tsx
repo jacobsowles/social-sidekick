@@ -7,13 +7,12 @@ import {
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-let _component;
-let _topLevelElementType;
+let _component: Function;
+let _topLevelElementType: any;
 
-const init = (component, topLevelElementType) => {
+const init = (component: Function, topLevelElementType: any) => {
   should();
   configure({ adapter: new Adapter() });
-
   _component = component;
   _topLevelElementType = topLevelElementType;
 };

@@ -5,16 +5,19 @@ type PrivateRouteProps = {
   component: React.Component | ((...args: any[]) => any);
   isAuthenticated: boolean;
   login: (...args: any[]) => any;
+  path: string;
 };
 
 const PrivateRoute: React.FunctionComponent<PrivateRouteProps> = ({
   component: Component,
   isAuthenticated,
   login,
+  path,
   ...rest
 }) => {
   return (
     <Route
+      path={path}
       {...rest}
       render={props => {
         if (isAuthenticated) {
