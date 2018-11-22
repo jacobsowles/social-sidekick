@@ -7,18 +7,20 @@ type FooterProps = {
   className?: string;
 };
 
-const Footer: React.FunctionComponent<FooterProps> = ({ children, className, ...rest }) => {
-  return (
-    <footer className={classNames('footer', className)} {...rest}>
-      <div className="container">{children}</div>
-    </footer>
-  );
-};
+class Footer extends React.Component<FooterProps> {
+  render() {
+    return (
+      <footer className={classNames('footer', this.props.className)} {...this.props}>
+        <div className="container">{this.props.children}</div>
+      </footer>
+    );
+  }
 
-Footer.defaultProps = {
-  className: undefined
-};
+  Content = FooterContent;
 
-Footer.Content = FooterContent;
+  static defaultProps = {
+    className: undefined
+  };
+}
 
 export default Footer;

@@ -10,29 +10,25 @@ type PageProps = {
   title: string;
 };
 
-const Page: React.FunctionComponent<PageProps> = ({
-  children,
-  className,
-  subtitle,
-  title,
-  ...rest
-}) => {
-  return (
-    <main className={classNames('page', className)} {...rest}>
-      <ContentBox>
-        <PageHeader subtitle={subtitle} title={title} />
-        {children}
-      </ContentBox>
-    </main>
-  );
-};
+class Page extends React.Component<PageProps> {
+  render() {
+    return (
+      <main className={classNames('page', this.props.className)} {...this.props}>
+        <ContentBox>
+          <PageHeader subtitle={this.props.subtitle} title={this.props.title} />
+          {this.props.children}
+        </ContentBox>
+      </main>
+    );
+  }
 
-Page.defaultProps = {
-  className: undefined,
-  subtitle: undefined
-};
+  ContentBox = ContentBox;
+  Header = PageHeader;
 
-Page.ContentBox = ContentBox;
-Page.Header = PageHeader;
+  static defaultProps = {
+    className: undefined,
+    subtitle: undefined
+  };
+}
 
 export default Page;
