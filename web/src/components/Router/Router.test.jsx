@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  init,
-  mount,
-  mountTopLevelElement,
-  render,
-  renderTopLevelElement,
-  shallow,
-  shallowTopLevelElement
-} from '@tests/test-base';
+import { init, shallow } from '@tests/test-base';
 import { Router as ReactRouter, Switch } from 'react-router-dom';
 import Navbar from '../Navbar';
 import Router from './Router';
