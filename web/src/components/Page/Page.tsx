@@ -22,8 +22,8 @@ class Page extends React.Component<PageProps> {
     );
   }
 
-  ContentBox = ContentBox;
-  Header = PageHeader;
+  static ContentBox = ContentBox;
+  static Header = PageHeader;
 
   static defaultProps = {
     className: undefined,

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Route } from 'react-router-dom';
 
 type PrivateRouteProps = {
-  component: JSX.Element | ((...args: any[]) => any);
+  component: React.Component | ((...args: any[]) => any);
   isAuthenticated: boolean;
   login: (...args: any[]) => any;
 };

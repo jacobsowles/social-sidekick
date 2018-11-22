@@ -16,7 +16,7 @@ class Footer extends React.Component<FooterProps> {
     );
   }
 
-  Content = FooterContent;
+  static Content = FooterContent;
 
   static defaultProps = {
     className: undefined
