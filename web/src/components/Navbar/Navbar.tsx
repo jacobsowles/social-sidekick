@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import {
   Nav as BootstrapNav,
@@ -16,7 +16,7 @@ type NavbarProps = {
   onLogout: (...args: any[]) => any;
 };
 
-const Navbar: FunctionComponent<NavbarProps> = ({
+const Navbar: React.FunctionComponent<NavbarProps> = ({
   className,
   isAuthenticated,
   onLogin,

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import './PageHeader.scss';
 
@@ -8,7 +8,7 @@ type PageHeaderProps = {
   title: string;
 };
 
-const PageHeader: FunctionComponent<PageHeaderProps> = ({
+const PageHeader: React.FunctionComponent<PageHeaderProps> = ({
   className,
   subtitle,
   title,

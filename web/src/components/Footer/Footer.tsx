@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import FooterContent from '@components/FooterContent';
 import './Footer.scss';
@@ -7,7 +7,7 @@ type FooterProps = {
   className?: string;
 };
 
-const Footer: FunctionComponent<FooterProps> = ({ children, className, ...rest }) => {
+const Footer: React.FunctionComponent<FooterProps> = ({ children, className, ...rest }) => {
   return (
     <footer className={classNames('footer', className)} {...rest}>
       <div className="container">{children}</div>

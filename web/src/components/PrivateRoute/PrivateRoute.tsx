@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
 import { Route } from 'react-router-dom';
 
 type PrivateRouteProps = {
@@ -7,7 +7,7 @@ type PrivateRouteProps = {
   login: (...args: any[]) => any;
 };
 
-const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({
+const PrivateRoute: React.FunctionComponent<PrivateRouteProps> = ({
   component: Component,
   isAuthenticated,
   login,

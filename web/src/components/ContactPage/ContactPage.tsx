@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import Page from '@components/Page';
 import './ContactPage.scss';
@@ -7,7 +7,7 @@ type ContactPageProps = {
   className?: string;
 };
 
-const ContactPage: FunctionComponent<ContactPageProps> = ({ className, ...rest }) => {
+const ContactPage: React.FunctionComponent<ContactPageProps> = ({ className, ...rest }) => {
   return (
     <Page className={classNames('contact-page', className)} title="Contact" {...rest}>
       <p>Page content</p>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Redirect, Route, Router as ReactRouter, Switch } from 'react-router-dom';
 import AuthService from '@api/auth-service';
 import history from '@api/history';
@@ -10,7 +10,7 @@ import ContactPage from '@components/ContactPage';
 import CallbackPage from '@components/CallbackPage';
 import './Router.scss';
 
-class Router extends Component {
+class Router extends React.Component {
   render() {
     return (
       <ReactRouter history={history}>

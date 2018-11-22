@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import './FooterContent.scss';
 
@@ -7,7 +7,7 @@ type FooterContentProps = {
   pullRight?: boolean;
 };
 
-const FooterContent: FunctionComponent<FooterContentProps> = ({
+const FooterContent: React.FunctionComponent<FooterContentProps> = ({
   children,
   className,
   pullRight,

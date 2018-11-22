@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import ContentBox from '@components/ContentBox';
 import PageHeader from '@components/PageHeader';
@@ -10,7 +10,13 @@ type PageProps = {
   title: string;
 };
 
-const Page: FunctionComponent<PageProps> = ({ children, className, subtitle, title, ...rest }) => {
+const Page: React.FunctionComponent<PageProps> = ({
+  children,
+  className,
+  subtitle,
+  title,
+  ...rest
+}) => {
   return (
     <main className={classNames('page', className)} {...rest}>
       <ContentBox>
