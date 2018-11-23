@@ -3,8 +3,13 @@ import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import LandingPage from './LandingPage';
 import Page from '../Page';
 
+interface LandingPageProps {
+  className?: string;
+}
+
 describe('LandingPage', () => {
-  let props;
+  let props: LandingPageProps;
+
   init(() => <LandingPage {...props} />, Page);
 
   beforeEach(() => {
@@ -21,8 +26,8 @@ describe('LandingPage', () => {
 
   it('should pass `title` to the Page component as a prop', () => {
     shallowTopLevelElement()
-      .props()
-      .title.should.not.equal(undefined);
+      .prop('title')
+      .should.not.equal(undefined);
   });
 
   describe('when `className` is defined', () => {
@@ -32,22 +37,22 @@ describe('LandingPage', () => {
 
     it('should include the specified class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('another-class');
+        .prop('className')
+        .should.contain('another-class');
     });
 
     it('should include the landing-page class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('landing-page');
+        .prop('className')
+        .should.contain('landing-page');
     });
   });
 
   describe('when `className` is undefined', () => {
     it('should include the landing-page class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('landing-page');
+        .prop('className')
+        .should.contain('landing-page');
     });
   });
 });

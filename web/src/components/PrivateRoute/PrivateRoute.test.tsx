@@ -4,8 +4,15 @@ import { MemoryRouter } from 'react-router';
 import { init, mount } from '@tests/test-base';
 import PrivateRoute from './PrivateRoute';
 
+interface PrivateRouteProps {
+  component: Function;
+  isAuthenticated: boolean;
+  login: Function;
+}
+
 describe('PrivateRoute', () => {
-  let props;
+  let props: PrivateRouteProps;
+
   init(
     () => (
       <MemoryRouter>

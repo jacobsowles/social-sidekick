@@ -2,8 +2,15 @@ import React from 'react';
 import { init, mount, shallow, shallowTopLevelElement } from '@tests/test-base';
 import PageHeader from './PageHeader';
 
+interface PageHeaderProps {
+  className?: string;
+  subtitle?: string;
+  title: string;
+}
+
 describe('PageHeader', () => {
-  let props;
+  let props: PageHeaderProps;
+
   init(() => <PageHeader {...props} />, 'div');
 
   beforeEach(() => {
@@ -21,8 +28,8 @@ describe('PageHeader', () => {
       mount()
         .find('h1')
         .first()
-        .props()
-        .children.should.equal('title');
+        .children()
+        .should.equal('title');
     });
   });
 
@@ -33,22 +40,22 @@ describe('PageHeader', () => {
 
     it('should include the specified class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('another-class');
+        .prop('className')
+        .should.contain('another-class');
     });
 
     it('should include the page-header class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('page-header');
+        .prop('className')
+        .should.contain('page-header');
     });
   });
 
   describe('when `className` is undefined', () => {
     it('should include the page-header class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('page-header');
+        .prop('className')
+        .should.contain('page-header');
     });
   });
 
@@ -61,8 +68,8 @@ describe('PageHeader', () => {
       mount()
         .find('p')
         .first()
-        .props()
-        .children.should.equal('subtitle');
+        .children()
+        .should.equal('subtitle');
     });
   });
 

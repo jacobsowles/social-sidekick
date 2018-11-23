@@ -8,8 +8,13 @@ import {
 } from '@tests/test-base';
 import Footer from './Footer';
 
+interface FooterProps {
+  className?: string;
+}
+
 describe('Footer', () => {
-  let props;
+  let props: FooterProps;
+
   init(
     () => (
       <Footer {...props}>
@@ -20,7 +25,7 @@ describe('Footer', () => {
   );
 
   const container = () => {
-    return mountTopLevelElement().props().children;
+    return mountTopLevelElement().children();
   };
 
   beforeEach(() => {
@@ -29,21 +34,25 @@ describe('Footer', () => {
     };
   });
 
-  it('should render a footer', () => {
+  it('should render a footer element', () => {
     shallow()
       .find('footer')
       .should.have.lengthOf(1);
   });
 
-  describe('the rendered footer', () => {
+  describe('the rendered footer element', () => {
     it('should render a bootstrap container', () => {
-      container().props.className.should.equal('container');
+      container()
+        .prop('className')
+        .should.equal('container');
     });
   });
 
   describe('the rendered container', () => {
     it('should contain all rendered child components', () => {
-      container().props.children.should.deep.equal(mount().props().children);
+      container()
+        .children()
+        .should.deep.equal(mount().children());
     });
   });
 
@@ -54,8 +63,8 @@ describe('Footer', () => {
 
     it('should add the class name to the footer', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.equal('footer another-class');
+        .prop('className')
+        .should.equal('footer another-class');
     });
   });
 
@@ -66,8 +75,8 @@ describe('Footer', () => {
 
     it('should only include the default class names', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.equal('footer');
+        .prop('className')
+        .should.equal('footer');
     });
   });
 });

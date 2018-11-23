@@ -3,8 +3,13 @@ import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import HomePage from './HomePage';
 import Page from '../Page';
 
+interface HomePageProps {
+  className?: string;
+}
+
 describe('HomePage', () => {
-  let props;
+  let props: HomePageProps;
+
   init(() => <HomePage {...props} />, Page);
 
   beforeEach(() => {
@@ -21,8 +26,8 @@ describe('HomePage', () => {
 
   it('should pass `title` to the Page component as a prop', () => {
     shallowTopLevelElement()
-      .props()
-      .title.should.not.equal(undefined);
+      .prop('title')
+      .should.not.equal(undefined);
   });
 
   describe('when `className` is defined', () => {
@@ -32,22 +37,22 @@ describe('HomePage', () => {
 
     it('should include the specified class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('another-class');
+        .prop('className')
+        .should.contain('another-class');
     });
 
     it('should include the home-page class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('home-page');
+        .prop('className')
+        .should.contain('home-page');
     });
   });
 
   describe('when `className` is undefined', () => {
     it('should include the home-page class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('home-page');
+        .prop('className')
+        .should.contain('home-page');
     });
   });
 });

@@ -1,25 +1,22 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { init } from '@tests/test-base';
+import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import ContentBox from './ContentBox';
 
-describe('ContentBox', () => {
-  init();
-  let props;
+interface ContentBoxProps {
+  className?: string;
+}
 
-  const component = () => {
-    return mount(
+describe('ContentBox', () => {
+  let props: ContentBoxProps;
+
+  init(
+    () => (
       <ContentBox {...props}>
         <p>Test</p>
       </ContentBox>
-    );
-  };
-
-  const topLevelElement = () => {
-    return component()
-      .find('div')
-      .first();
-  };
+    ),
+    'div'
+  );
 
   beforeEach(() => {
     props = {
@@ -28,14 +25,16 @@ describe('ContentBox', () => {
   });
 
   it('should render a div element', () => {
-    topLevelElement().should.not.equal(undefined);
+    shallow()
+      .find('div')
+      .should.have.lengthOf(1);
   });
 
   describe('the rendered div element', () => {
     it('should contain all rendered child components', () => {
-      topLevelElement()
-        .props()
-        .children.should.deep.equal(component().props().children);
+      shallowTopLevelElement()
+        .children()
+        .should.deep.equal(shallow().children());
     });
   });
 
@@ -45,23 +44,23 @@ describe('ContentBox', () => {
     });
 
     it('should include the specified class name', () => {
-      topLevelElement()
-        .props()
-        .className.should.contain('another-class');
+      shallowTopLevelElement()
+        .prop('className')
+        .should.contain('another-class');
     });
 
     it('should include the content-box class name', () => {
-      topLevelElement()
-        .props()
-        .className.should.contain('content-box');
+      shallowTopLevelElement()
+        .prop('className')
+        .should.contain('content-box');
     });
   });
 
   describe('when `className` is undefined', () => {
     it('should include the content-box class name', () => {
-      topLevelElement()
-        .props()
-        .className.should.contain('content-box');
+      shallowTopLevelElement()
+        .prop('className')
+        .should.contain('content-box');
     });
   });
 });

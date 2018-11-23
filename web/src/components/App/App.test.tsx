@@ -27,7 +27,7 @@ describe('App', () => {
 
   it('should always include the default class names', () => {
     shallowTopLevelElement()
-      .props()
-      .className.should.equal('app');
+      .prop('className')
+      .should.equal('app');
   });
 });

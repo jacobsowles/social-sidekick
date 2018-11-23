@@ -3,7 +3,7 @@ import { init, mount, shallow } from '@tests/test-base';
 import CallbackPage from './CallbackPage';
 
 describe('CallbackPage', () => {
-  init(() => <CallbackPage />);
+  init(() => <CallbackPage />, 'div');
 
   it('should render a div element', () => {
     shallow()

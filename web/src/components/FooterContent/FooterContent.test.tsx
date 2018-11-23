@@ -8,8 +8,14 @@ import {
 } from '@tests/test-base';
 import FooterContent from './FooterContent';
 
-describe('Footer', () => {
-  let props;
+interface FooterContentProps {
+  className?: string;
+  pullRight?: boolean;
+}
+
+describe('FooterContent', () => {
+  let props: FooterContentProps;
+
   init(() => <FooterContent {...props}>Test</FooterContent>, 'p');
 
   beforeEach(() => {
@@ -28,8 +34,8 @@ describe('Footer', () => {
   describe('the rendered paragraph element', () => {
     it('should contain all rendered child components', () => {
       mountTopLevelElement()
-        .props()
-        .children.should.equal(mount().props().children);
+        .children()
+        .should.equal(mount().props().children);
     });
   });
 
@@ -40,20 +46,20 @@ describe('Footer', () => {
 
     it('should include the float-right class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('float-right');
+        .prop('className')
+        .should.contain('float-right');
     });
 
     it('should include the footer-content class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('footer-content');
+        .prop('className')
+        .should.contain('footer-content');
     });
 
     it('should not include the float-left class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.not.contain('float-left');
+        .prop('className')
+        .should.not.contain('float-left');
     });
   });
 
@@ -64,20 +70,20 @@ describe('Footer', () => {
 
     it('should include the float-left class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('float-left');
+        .prop('className')
+        .should.contain('float-left');
     });
 
     it('should include the footer-content class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('footer-content');
+        .prop('className')
+        .should.contain('footer-content');
     });
 
     it('should not include the float-right class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.not.contain('float-right');
+        .prop('className')
+        .should.not.contain('float-right');
     });
   });
 
@@ -88,20 +94,20 @@ describe('Footer', () => {
 
     it('should include the float-left class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('float-left');
+        .prop('className')
+        .should.contain('float-left');
     });
 
     it('should include the footer-content class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('footer-content');
+        .prop('className')
+        .should.contain('footer-content');
     });
 
     it('should not include the float-right class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.not.contain('float-right');
+        .prop('className')
+        .should.not.contain('float-right');
     });
   });
 
@@ -112,20 +118,20 @@ describe('Footer', () => {
 
     it('should include the specified class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('another-class');
+        .prop('className')
+        .should.contain('another-class');
     });
 
     it('should include the footer-content class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('footer-content');
+        .prop('className')
+        .should.contain('footer-content');
     });
 
     it('should include the float-left class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('float-left');
+        .prop('className')
+        .should.contain('float-left');
     });
   });
 
@@ -136,14 +142,14 @@ describe('Footer', () => {
 
     it('should include the footer-content class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('footer-content');
+        .prop('className')
+        .should.contain('footer-content');
     });
 
     it('should include the float-left class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('float-left');
+        .prop('className')
+        .should.contain('float-left');
     });
   });
 });

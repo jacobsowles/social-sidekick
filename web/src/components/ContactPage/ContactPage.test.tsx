@@ -3,8 +3,13 @@ import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import ContactPage from './ContactPage';
 import Page from '../Page';
 
+interface ContactPageProps {
+  className?: string;
+}
+
 describe('ContactPage', () => {
-  let props;
+  let props: ContactPageProps;
+
   init(() => <ContactPage {...props} />, Page);
 
   beforeEach(() => {
@@ -21,8 +26,8 @@ describe('ContactPage', () => {
 
   it('should pass `title` to the Page component as a prop', () => {
     shallowTopLevelElement()
-      .props()
-      .title.should.not.equal(undefined);
+      .prop('title')
+      .should.not.equal(undefined);
   });
 
   describe('when `className` is defined', () => {
@@ -32,22 +37,22 @@ describe('ContactPage', () => {
 
     it('should include the specified class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('another-class');
+        .prop('className')
+        .should.contain('another-class');
     });
 
     it('should include the contact-page class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('contact-page');
+        .prop('className')
+        .should.contain('contact-page');
     });
   });
 
   describe('when `className` is undefined', () => {
     it('should include the contact-page class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('contact-page');
+        .prop('className')
+        .should.contain('contact-page');
     });
   });
 });

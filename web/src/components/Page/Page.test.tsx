@@ -2,8 +2,15 @@ import React from 'react';
 import { init, mount, shallow, shallowTopLevelElement, should } from '@tests/test-base';
 import Page from './Page';
 
+interface PageProps {
+  className?: string;
+  subtitle?: string;
+  title: string;
+}
+
 describe('Page', () => {
-  let props;
+  let props: PageProps;
+
   init(
     () => (
       <Page {...props}>
@@ -61,22 +68,22 @@ describe('Page', () => {
 
     it('should include the specified class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('another-class');
+        .prop('className')
+        .should.contain('another-class');
     });
 
     it('should include the page class name', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.contain('page');
+        .prop('className')
+        .should.contain('page');
     });
   });
 
   describe('when `className` is not defined', () => {
     it('should only include the default class names', () => {
       shallowTopLevelElement()
-        .props()
-        .className.should.equal('page');
+        .prop('className')
+        .should.equal('page');
     });
   });
 
