@@ -3,6 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "jsx": "react",
+    "module": "es6",
     "paths": {
       "@actions/*": ["actions/*"],
       "@api/*": ["../../api/src/*"],
@@ -12,6 +13,7 @@
       "@styles/*": ["styles/*"],
       "@tests/*": ["tests/*"]
     },
-    "strict": true
+    "strict": true,
+    "target": "es6"
   }
 }

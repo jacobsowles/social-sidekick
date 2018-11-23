@@ -12,11 +12,13 @@ type PageProps = {
 
 class Page extends React.Component<PageProps> {
   render() {
+    const { children, className, subtitle, title, ...rest } = this.props;
+
     return (
-      <main className={classNames('page', this.props.className)} {...this.props}>
+      <main className={classNames('page', className)} {...rest}>
         <ContentBox>
-          <PageHeader subtitle={this.props.subtitle} title={this.props.title} />
-          {this.props.children}
+          <PageHeader subtitle={subtitle} title={title} />
+          {children}
         </ContentBox>
       </main>
     );

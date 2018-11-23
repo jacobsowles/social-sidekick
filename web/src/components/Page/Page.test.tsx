@@ -79,7 +79,7 @@ describe('Page', () => {
     });
   });
 
-  describe('when `className` is not defined', () => {
+  describe('when `className` is undefined', () => {
     it('should only include the default class names', () => {
       shallowTopLevelElement()
         .prop('className')

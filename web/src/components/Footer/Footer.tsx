@@ -9,9 +9,11 @@ type FooterProps = {
 
 class Footer extends React.Component<FooterProps> {
   render() {
+    const { className, children, ...rest } = this.props;
+
     return (
-      <footer className={classNames('footer', this.props.className)} {...this.props}>
-        <div className="container">{this.props.children}</div>
+      <footer className={classNames('footer', className)} {...rest}>
+        <div className="container">{children}</div>
       </footer>
     );
   }

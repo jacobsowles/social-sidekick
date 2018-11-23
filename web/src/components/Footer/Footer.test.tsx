@@ -48,14 +48,6 @@ describe('Footer', () => {
     });
   });
 
-  describe('the rendered container', () => {
-    it('should contain all rendered child components', () => {
-      container()
-        .children()
-        .should.deep.equal(mount().children());
-    });
-  });
-
   describe('when `className` is defined', () => {
     beforeEach(() => {
       props.className = 'another-class';
