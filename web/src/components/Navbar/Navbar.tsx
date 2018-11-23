@@ -35,7 +35,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
         <BootstrapNavbar.Toggle />
       </BootstrapNavbar.Header>
       <BootstrapNavbar.Collapse>
-        <BootstrapNav>
+        <BootstrapNav className="nav-left">
           <LinkContainer to="/contact">
             <BootstrapNavItem>Contact</BootstrapNavItem>
           </LinkContainer>

@@ -5,10 +5,15 @@ import { init, mount } from '@tests/test-base';
 import PrivateRoute from './PrivateRoute';
 
 interface PrivateRouteProps {
-  component: Function;
+  component: React.Component | React.FunctionComponent;
   isAuthenticated: boolean;
-  login: Function;
+  login: (...args: any[]) => any;
+  path: string;
 }
+
+const TestComponent: React.FunctionComponent = () => {
+  return <div />;
+};
 
 describe('PrivateRoute', () => {
   let props: PrivateRouteProps;
@@ -24,9 +29,10 @@ describe('PrivateRoute', () => {
 
   beforeEach(() => {
     props = {
-      component: () => <div />,
+      component: TestComponent,
       isAuthenticated: true,
-      login: jest.fn()
+      login: jest.fn(),
+      path: '/'
     };
   });
 

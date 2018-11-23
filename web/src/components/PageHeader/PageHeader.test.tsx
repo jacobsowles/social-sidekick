@@ -27,8 +27,7 @@ describe('PageHeader', () => {
     it('should always contain an h1 component with the page title', () => {
       mount()
         .find('h1')
-        .first()
-        .children()
+        .text()
         .should.equal('title');
     });
   });
@@ -67,8 +66,7 @@ describe('PageHeader', () => {
     it('should render a p element with the page subtitle', () => {
       mount()
         .find('p')
-        .first()
-        .children()
+        .text()
         .should.equal('subtitle');
     });
   });

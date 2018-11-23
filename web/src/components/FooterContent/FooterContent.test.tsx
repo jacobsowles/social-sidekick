@@ -31,14 +31,6 @@ describe('FooterContent', () => {
       .should.have.lengthOf(1);
   });
 
-  describe('the rendered paragraph element', () => {
-    it('should contain all rendered child components', () => {
-      mountTopLevelElement()
-        .children()
-        .should.equal(mount().props().children);
-    });
-  });
-
   describe('when `pullRight` is defined', () => {
     beforeEach(() => {
       props.pullRight = true;
