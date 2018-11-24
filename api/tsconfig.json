@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "module": "es6",
+    "strict": true,
+    "target": "es6"
+  }
+}
