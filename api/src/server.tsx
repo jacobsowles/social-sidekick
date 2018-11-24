@@ -32,13 +32,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 app.use(expressStatusMonitor());
 app.use(logger('dev'));
-
 app.use(
   session({
     resave: true,
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
+    cookie: { maxAge: 1209600000 },
     store: new MongoStore({
       url: process.env.MONGODB_URI,
       autoReconnect: true
@@ -49,7 +48,7 @@ app.use(
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());
 } else {
-  app.use((err, req, res) => {
+  app.use((err: any, req: any, res: any) => {
     console.error(err);
     res.status(500).send('Server Error');
   });

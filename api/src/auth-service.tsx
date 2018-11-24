@@ -2,6 +2,8 @@ import auth0 from 'auth0-js';
 import history from './history';
 
 class AuthService {
+  auth0: auth0.WebAuth;
+
   constructor() {
     this.auth0 = new auth0.WebAuth({
       domain: 'social-sync.auth0.com',
@@ -18,7 +20,7 @@ class AuthService {
   }
 
   handleAuthentication() {
-    this.auth0.parseHash((err, authResult) => {
+    this.auth0.parseHash((err: any, authResult: any) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         history.replace('/home');
@@ -29,9 +31,10 @@ class AuthService {
     });
   }
 
-  setSession(authResult) {
+  setSession(authResult: any) {
     // Set the time that the Access Token will expire at
     let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
@@ -57,7 +60,9 @@ class AuthService {
   isAuthenticated() {
     // Check whether the current time is past the
     // Access Token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const expirationItem = localStorage.getItem('expires_at');
+    let expiresAt = JSON.parse(expirationItem ? expirationItem : '');
+
     return new Date().getTime() < expiresAt;
   }
 }
