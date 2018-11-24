@@ -2,22 +2,25 @@ import * as React from 'react';
 import {
   Redirect,
   Route,
+  RouteComponentProps,
   Router as ReactRouter,
-  Switch,
-  RouteComponentProps
+  Switch
 } from 'react-router-dom';
-import AuthService from '@api/auth-service';
-import history from '@api/history';
+import AuthService from '@api/AuthService';
+import history from '@api/History';
+import CallbackPage from '@components/CallbackPage';
+import ContactPage from '@components/ContactPage';
+import HomePage from '@components/HomePage';
+import LandingPage from '@components/LandingPage';
 import Navbar from '@components/Navbar';
 import PrivateRoute from '@components/PrivateRoute';
-import LandingPage from '@components/LandingPage';
-import HomePage from '@components/HomePage';
-import ContactPage from '@components/ContactPage';
-import CallbackPage from '@components/CallbackPage';
+
 import './Router.scss';
 
 class Router extends React.Component {
-  render() {
+  private authService = new AuthService();
+
+  public render() {
     return (
       <ReactRouter history={history}>
         <>
@@ -56,14 +59,12 @@ class Router extends React.Component {
     );
   }
 
-  authService = new AuthService();
-
-  handleLogout = (): void => {
+  private handleLogout = (): void => {
     this.authService.logout();
     this.forceUpdate();
   };
 
-  handleAuthentication = (nextState: RouteComponentProps): void => {
+  private handleAuthentication = (nextState: RouteComponentProps): void => {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.authService.handleAuthentication();
     }

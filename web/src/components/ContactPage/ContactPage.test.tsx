@@ -1,14 +1,11 @@
 import React from 'react';
 import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
+import IContactPage from './IContactPage';
 import ContactPage from './ContactPage';
 import Page from '../Page';
 
-interface ContactPageProps {
-  className?: string;
-}
-
 describe('ContactPage', () => {
-  let props: ContactPageProps;
+  let props: IContactPage;
 
   init(() => <ContactPage {...props} />, Page);
 

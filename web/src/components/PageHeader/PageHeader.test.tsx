@@ -1,15 +1,10 @@
 import React from 'react';
 import { init, mount, shallow, shallowTopLevelElement } from '@tests/test-base';
+import IPageHeader from './IPageHeader';
 import PageHeader from './PageHeader';
 
-interface PageHeaderProps {
-  className?: string;
-  subtitle?: string;
-  title: string;
-}
-
 describe('PageHeader', () => {
-  let props: PageHeaderProps;
+  let props: IPageHeader;
 
   init(() => <PageHeader {...props} />, 'div');
 

@@ -6,14 +6,11 @@ import {
   shallow,
   shallowTopLevelElement
 } from '@tests/test-base';
+import IFooter from './IFooter';
 import Footer from './Footer';
 
-interface FooterProps {
-  className?: string;
-}
-
 describe('Footer', () => {
-  let props: FooterProps;
+  let props: IFooter;
 
   init(
     () => (

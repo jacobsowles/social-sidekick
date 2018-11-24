@@ -2,13 +2,10 @@ import React from 'react';
 import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import LandingPage from './LandingPage';
 import Page from '../Page';
-
-interface LandingPageProps {
-  className?: string;
-}
+import ILandingPage from './ILandingPage';
 
 describe('LandingPage', () => {
-  let props: LandingPageProps;
+  let props: ILandingPage;
 
   init(() => <LandingPage {...props} />, Page);
 

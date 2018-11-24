@@ -2,17 +2,11 @@ import React from 'react';
 import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import { Nav as BootstrapNav, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import INavbar from './INavbar';
 import Navbar from './Navbar';
 
-interface NavbarProps {
-  className?: string;
-  isAuthenticated: boolean;
-  onLogin: (...args: any[]) => any;
-  onLogout: (...args: any[]) => any;
-}
-
 describe('Navbar', () => {
-  let props: NavbarProps;
+  let props: INavbar;
 
   init(() => <Navbar {...props} />, BootstrapNavbar);
 

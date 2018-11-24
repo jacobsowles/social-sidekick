@@ -1,13 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import IFooterContent from './IFooterContent';
 import './FooterContent.scss';
 
-type FooterContentProps = {
-  className?: string;
-  pullRight?: boolean;
-};
-
-const FooterContent: React.FunctionComponent<FooterContentProps> = ({
+const FooterContent: React.FunctionComponent<IFooterContent> = ({
   children,
   className,
   pullRight,

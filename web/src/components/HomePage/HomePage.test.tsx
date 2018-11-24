@@ -1,14 +1,11 @@
 import React from 'react';
 import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
+import IHomePage from './IHomePage';
 import HomePage from './HomePage';
 import Page from '../Page';
 
-interface HomePageProps {
-  className?: string;
-}
-
 describe('HomePage', () => {
-  let props: HomePageProps;
+  let props: IHomePage;
 
   init(() => <HomePage {...props} />, Page);
 

@@ -1,14 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import IPrivateRoute from './IPrivateRoute';
 
-type PrivateRouteProps = {
-  component: React.ReactType;
-  isAuthenticated: boolean;
-  login: (...args: any[]) => any;
-  path: string;
-};
-
-const PrivateRoute: React.FunctionComponent<PrivateRouteProps> = ({
+const PrivateRoute: React.FunctionComponent<IPrivateRoute> = ({
   component: Component,
   isAuthenticated,
   login,

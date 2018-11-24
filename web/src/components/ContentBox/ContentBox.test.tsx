@@ -1,13 +1,10 @@
 import React from 'react';
 import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
+import IContentBox from './IContentBox';
 import ContentBox from './ContentBox';
 
-interface ContentBoxProps {
-  className?: string;
-}
-
 describe('ContentBox', () => {
-  let props: ContentBoxProps;
+  let props: IContentBox;
 
   init(
     () => (

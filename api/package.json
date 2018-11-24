@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.1.6",
     "@types/auth0-js": "^8.11.7",
     "@types/compression": "0.0.36",
     "@types/connect-mongo": "0.0.39",
@@ -31,20 +32,33 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-typescript": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-cli": "^6.24.0",
     "babel-preset-env": "^1.2.1",
     "nodemon": "^1.11.0",
     "rimraf": "^2.6.2"
   },
   "scripts": {
-    "start": "nodemon src/server.js --exec babel-node",
+    "lint": "tslint '**/*.ts'",
+    "check-types": "tsc",
+    "start": "nodemon src/server.ts --exec babel-node --extensions '.ts'",
     "clean": "rimraf build",
     "prebuild": "npm run clean",
     "build": "babel src -d build"
   },
   "babel": {
+    "plugins": [
+      "@babel/proposal-class-properties",
+      "@babel/proposal-object-rest-spread"
+    ],
     "presets": [
       [
+        "@babel/typescript",
         "env",
         {
           "targets": {

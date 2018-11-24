@@ -2,16 +2,19 @@ import * as React from 'react';
 import classNames from 'classnames';
 import ContentBox from '@components/ContentBox';
 import PageHeader from '@components/PageHeader';
+import IPage from './IPage';
 import './Page.scss';
 
-type PageProps = {
-  className?: string;
-  subtitle?: string;
-  title: string;
-};
+class Page extends React.Component<IPage> {
+  public static ContentBox = ContentBox;
+  public static Header = PageHeader;
 
-class Page extends React.Component<PageProps> {
-  render() {
+  public static defaultProps = {
+    className: undefined,
+    subtitle: undefined
+  };
+
+  public render() {
     const { children, className, subtitle, title, ...rest } = this.props;
 
     return (
@@ -23,14 +26,6 @@ class Page extends React.Component<PageProps> {
       </main>
     );
   }
-
-  static ContentBox = ContentBox;
-  static Header = PageHeader;
-
-  static defaultProps = {
-    className: undefined,
-    subtitle: undefined
-  };
 }
 
 export default Page;

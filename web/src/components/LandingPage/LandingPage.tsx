@@ -1,13 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Page from '@components/Page';
+import ILandingPage from './ILandingPage';
 import './LandingPage.scss';
 
-type LandingPageProps = {
-  className?: string;
-};
-
-const LandingPage: React.FunctionComponent<LandingPageProps> = ({ className, ...rest }) => {
+const LandingPage: React.FunctionComponent<ILandingPage> = ({ className, ...rest }) => {
   return (
     <Page
       className={classNames('landing-page', className)}

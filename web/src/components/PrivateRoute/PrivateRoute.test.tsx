@@ -2,21 +2,15 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { MemoryRouter } from 'react-router';
 import { init, mount } from '@tests/test-base';
+import IPrivateRoute from './IPrivateRoute';
 import PrivateRoute from './PrivateRoute';
-
-interface PrivateRouteProps {
-  component: React.Component | React.FunctionComponent;
-  isAuthenticated: boolean;
-  login: (...args: any[]) => any;
-  path: string;
-}
 
 const TestComponent: React.FunctionComponent = () => {
   return <div />;
 };
 
 describe('PrivateRoute', () => {
-  let props: PrivateRouteProps;
+  let props: IPrivateRoute;
 
   init(
     () => (

@@ -7,16 +7,10 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import INavbar from './INavbar';
 import './Navbar.scss';
 
-type NavbarProps = {
-  className?: string;
-  isAuthenticated: boolean;
-  onLogin: (...args: any[]) => any;
-  onLogout: (...args: any[]) => any;
-};
-
-const Navbar: React.FunctionComponent<NavbarProps> = ({
+const Navbar: React.FunctionComponent<INavbar> = ({
   className,
   isAuthenticated,
   onLogin,

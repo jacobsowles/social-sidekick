@@ -1,12 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import IContentBox from './IContentBox';
 import './ContentBox.scss';
 
-type ContentBoxProps = {
-  className?: string;
-};
-
-const ContentBox: React.FunctionComponent<ContentBoxProps> = ({ children, className, ...rest }) => {
+const ContentBox: React.FunctionComponent<IContentBox> = ({ children, className, ...rest }) => {
   return (
     <div className={classNames('content-box', className)} {...rest}>
       {children}

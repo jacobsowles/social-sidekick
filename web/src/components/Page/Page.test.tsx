@@ -1,15 +1,10 @@
 import React from 'react';
 import { init, mount, shallow, shallowTopLevelElement, should } from '@tests/test-base';
+import IPage from './IPage';
 import Page from './Page';
 
-interface PageProps {
-  className?: string;
-  subtitle?: string;
-  title: string;
-}
-
 describe('Page', () => {
-  let props: PageProps;
+  let props: IPage;
 
   init(
     () => (

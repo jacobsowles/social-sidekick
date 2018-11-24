@@ -1,14 +1,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import FooterContent from '@components/FooterContent';
+import IFooter from './IFooter';
 import './Footer.scss';
 
-type FooterProps = {
-  className?: string;
-};
+class Footer extends React.Component<IFooter> {
+  public static Content = FooterContent;
 
-class Footer extends React.Component<FooterProps> {
-  render() {
+  public static defaultProps = {
+    className: undefined
+  };
+
+  public render() {
     const { className, children, ...rest } = this.props;
 
     return (
@@ -17,12 +20,6 @@ class Footer extends React.Component<FooterProps> {
       </footer>
     );
   }
-
-  static Content = FooterContent;
-
-  static defaultProps = {
-    className: undefined
-  };
 }
 
 export default Footer;

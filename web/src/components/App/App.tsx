@@ -8,7 +8,7 @@ import Router from '@components/Router';
 import './App.scss';
 
 if (process.env.NODE_ENV !== 'production') {
-  const { whyDidYouUpdate } = require('why-did-you-update');
+  const { whyDidYouUpdate } = import('why-did-you-update');
   whyDidYouUpdate(React);
 }
 

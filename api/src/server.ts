@@ -4,22 +4,20 @@ import compression from 'compression';
 import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
 import errorHandler from 'errorhandler';
-import expressStatusMonitor from 'express-status-monitor';
+import session from 'express-session';
 import expressValidator from 'express-validator';
 import http from 'http';
-import logger from 'morgan';
 import mongoose from 'mongoose';
-import normalizePort from 'normalize-port';
-import session from 'express-session';
+import logger from 'morgan';
 import app from './app';
 
 dotenv.config();
 
-const port = normalizePort(process.env.PORT || '8080');
+const port = process.env.PORT || '8080';
 const MongoStore = connectMongo(session);
 
 mongoose.set('useNewUrlParser', true);
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || '');
 mongoose.connection.on('error', err => {
   console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
@@ -30,17 +28,16 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-app.use(expressStatusMonitor());
 app.use(logger('dev'));
 app.use(
   session({
+    cookie: { maxAge: 1209600000 },
     resave: true,
     saveUninitialized: true,
-    secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 1209600000 },
+    secret: process.env.SESSION_SECRET || '',
     store: new MongoStore({
-      url: process.env.MONGODB_URI,
-      autoReconnect: true
+      autoReconnect: true,
+      url: process.env.MONGODB_URI || ''
     })
   })
 );
@@ -54,6 +51,6 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-app.server = http.createServer(app).listen(port, () => {
+http.createServer(app).listen(port, () => {
   console.log(`API started on port ${port}`);
 });

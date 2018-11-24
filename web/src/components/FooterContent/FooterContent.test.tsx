@@ -6,15 +6,11 @@ import {
   shallow,
   shallowTopLevelElement
 } from '@tests/test-base';
+import IFooterContent from './IFooterContent';
 import FooterContent from './FooterContent';
 
-interface FooterContentProps {
-  className?: string;
-  pullRight?: boolean;
-}
-
 describe('FooterContent', () => {
-  let props: FooterContentProps;
+  let props: IFooterContent;
 
   init(() => <FooterContent {...props}>Test</FooterContent>, 'p');
 

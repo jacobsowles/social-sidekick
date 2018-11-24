@@ -1,14 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import IPageHeader from './IPageHeader';
 import './PageHeader.scss';
 
-type PageHeaderProps = {
-  className?: string;
-  subtitle?: string;
-  title: string;
-};
-
-const PageHeader: React.FunctionComponent<PageHeaderProps> = ({
+const PageHeader: React.FunctionComponent<IPageHeader> = ({
   className,
   subtitle,
   title,
