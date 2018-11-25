@@ -20,6 +20,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -327,6 +328,10 @@ module.exports = {
               sourceMaps: false
             }
           },
+          {
+            test: /\.(ts|tsx)?$/,
+            loader: 'awesome-typescript-loader'
+          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // `MiniCSSExtractPlugin` extracts styles into CSS
@@ -481,6 +486,7 @@ module.exports = {
         new RegExp('/[^/]+\\.[^/]+$')
       ]
     }),
+    new CheckerPlugin(),
     // TypeScript type checking
     fs.existsSync(paths.appTsConfig) &&
       new ForkTsCheckerWebpackPlugin({
