@@ -22,6 +22,11 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-typescript": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-typescript": "^7.1.0",
     "npm-run-all": "^4.0.2",
     "opn-cli": "^3.1.0",
     "tslint": "^5.11.0",

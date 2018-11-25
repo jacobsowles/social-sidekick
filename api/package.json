@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
     "@types/auth0-js": "^8.11.7",
     "@types/compression": "0.0.36",
@@ -15,6 +16,8 @@
     "@types/morgan": "^1.7.35",
     "@types/node": "^10.12.10",
     "auth0-js": "^9.8.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "8.0.4",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "compression": "^1.7.3",
@@ -39,10 +42,9 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-typescript": "^7.1.0",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-cli": "^6.24.0",
-    "babel-preset-env": "^1.2.1",
     "nodemon": "^1.11.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "typescript": "^3.1.6"
   },
   "scripts": {
     "lint": "tslint '**/*.ts'",
@@ -54,11 +56,11 @@
   },
   "babel": {
     "plugins": [
-      "@babel/proposal-class-properties",
-      "@babel/proposal-object-rest-spread"
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
     ],
     "presets": [
-      "@babel/typescript",
+      "@babel/preset-typescript",
       "@babel/preset-env"
     ]
   }
