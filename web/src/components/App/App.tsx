@@ -7,11 +7,6 @@ import Footer from '@components/Footer';
 import Router from '@components/Router';
 import './App.scss';
 
-if (process.env.NODE_ENV !== 'production') {
-  const { whyDidYouUpdate } = import('why-did-you-update');
-  whyDidYouUpdate(React);
-}
-
 library.add(faGithub, faCube);
 
 const App: React.FunctionComponent = () => {

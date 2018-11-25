@@ -3,10 +3,11 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "esModuleInterop": true,
-    "module": "es6",
+    "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
     "target": "esnext"
-  }
+  },
+  "include": ["src"]
 }

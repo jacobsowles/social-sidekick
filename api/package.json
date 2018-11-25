@@ -36,6 +36,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-typescript": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
     "@babel/preset-typescript": "^7.1.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-cli": "^6.24.0",
@@ -57,15 +58,8 @@
       "@babel/proposal-object-rest-spread"
     ],
     "presets": [
-      [
-        "@babel/typescript",
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
+      "@babel/typescript",
+      "@babel/preset-env"
     ]
   }
 }

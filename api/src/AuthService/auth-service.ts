@@ -31,8 +31,15 @@ class AuthService {
   }
 
   public isAuthenticated() {
-    const expirationItem = localStorage.getItem('expires_at');
-    const expiresAt = JSON.parse(expirationItem ? expirationItem : '');
+    const expiresAtString = localStorage.getItem('expires_at');
+
+    if (!expiresAtString) {
+      return false;
+    }
+
+    const expiresAt = parseInt(JSON.parse(expiresAtString), 10);
+
+    new Date().getTime();
 
     return new Date().getTime() < expiresAt;
   }

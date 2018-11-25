@@ -1,2 +1,2 @@
-// import history from './history';
-// export default history;
+import history from './history';
+export default history;

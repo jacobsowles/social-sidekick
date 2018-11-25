@@ -14,7 +14,6 @@ import HomePage from '@components/HomePage';
 import LandingPage from '@components/LandingPage';
 import Navbar from '@components/Navbar';
 import PrivateRoute from '@components/PrivateRoute';
-
 import './Router.scss';
 
 class Router extends React.Component {
@@ -49,7 +48,7 @@ class Router extends React.Component {
                 path="/callback"
                 render={props => {
                   this.handleAuthentication(props);
-                  return <CallbackPage {...props} />;
+                  return <CallbackPage />;
                 }}
               />
             </Switch>

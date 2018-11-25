@@ -4,6 +4,7 @@
     "baseUrl": "./src",
     "jsx": "react",
     "module": "esnext",
+    "moduleResolution": "node",
     "paths": {
       "@actions/*": ["actions/*"],
       "@api/*": ["../../api/src/*"],
@@ -14,6 +15,6 @@
       "@tests/*": ["tests/*"]
     },
     "strict": true,
-    "target": "es6"
+    "target": "esnext"
   }
 }

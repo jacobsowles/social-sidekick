@@ -16,6 +16,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -260,6 +261,10 @@ module.exports = {
               sourceMaps: false
             }
           },
+          {
+            test: /\.(ts|tsx)?$/,
+            loader: 'awesome-typescript-loader'
+          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -369,6 +374,7 @@ module.exports = {
       fileName: 'asset-manifest.json',
       publicPath: publicPath
     }),
+    new CheckerPlugin(),
     // TypeScript type checking
     useTypeScript &&
       new ForkTsCheckerWebpackPlugin({

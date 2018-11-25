@@ -21,6 +21,7 @@
     "stop:docker": "docker-compose -f docker/docker-compose.yml down"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
     "npm-run-all": "^4.0.2",
     "opn-cli": "^3.1.0",
     "tslint": "^5.11.0",
