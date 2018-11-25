@@ -15,7 +15,7 @@ class Page extends React.Component<IPage> {
   };
 
   public render() {
-    const { children, className, subtitle, title, ...rest } = this.props;
+    const { children, className, subtitle, title } = this.props;
 
     return (
       <main className={classNames('page', className)}>
