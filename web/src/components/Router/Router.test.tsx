@@ -5,15 +5,15 @@ import Navbar from '../Navbar';
 import Router from './Router';
 
 jest.mock(
-  '@api/auth-service',
+  '@api/AuthService',
   () =>
     class MockAuthService {
-      isAuthenticated = () => true;
-      login = jest.fn();
+      public login = jest.fn();
+      public isAuthenticated = () => true;
     }
 );
 
-jest.mock('@api/history', () => new Object()); // using {} instead of new Object() will generate a warning when tests are run
+jest.mock('@api/History', () => new Object()); // using {} instead of new Object() will generate a warning when tests are run
 
 describe('Router', () => {
   init(() => <Router />, ReactRouter);
