@@ -16,7 +16,7 @@ const ConnectionsPage: React.FunctionComponent<IConnectionsPage> = ({ className,
           title="Connect Additional Services"
           subtitle="Log into the services below to connect them to your Social Sidekick account."
         />
-        <ServiceIcon icon={{ prefix: 'fab', iconName: 'github' }} label="GitHub" />
+        <ServiceIcon iconName="github" label="GitHub" />
       </Page.ContentBox>
     </main>
   );

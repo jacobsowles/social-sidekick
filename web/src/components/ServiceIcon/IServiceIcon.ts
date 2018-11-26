@@ -1,6 +1,6 @@
 export default interface IServiceIcon {
   className?: string;
-  icon: any;
+  iconName: 'github';
   label?: string;
   size?:
     | 'xs'

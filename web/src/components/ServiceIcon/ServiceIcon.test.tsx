@@ -11,7 +11,7 @@ describe('Icon', () => {
   beforeEach(() => {
     props = {
       className: undefined,
-      icon: undefined
+      iconName: 'github'
     };
   });
 

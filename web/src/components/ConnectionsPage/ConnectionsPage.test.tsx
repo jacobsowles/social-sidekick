@@ -2,12 +2,10 @@ import React from 'react';
 import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
 import IConnectionsPage from './IConnectionsPage';
 import ConnectionsPage from './ConnectionsPage';
-import Page from '../Page';
 
 describe('ConnectionsPage', () => {
   let props: IConnectionsPage;
-
-  init(() => <ConnectionsPage {...props} />, Page);
+  init(() => <ConnectionsPage {...props} />, 'main');
 
   beforeEach(() => {
     props = {
@@ -15,16 +13,10 @@ describe('ConnectionsPage', () => {
     };
   });
 
-  it('should render a Page component', () => {
+  it('should render a main element', () => {
     shallow()
-      .find(Page)
+      .find('main')
       .should.have.lengthOf(1);
-  });
-
-  it('should pass `title` to the Page component as a prop', () => {
-    shallowTopLevelElement()
-      .prop('title')
-      .should.not.equal(undefined);
   });
 
   describe('when `className` is defined', () => {
