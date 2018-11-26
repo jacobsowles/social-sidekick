@@ -47,4 +47,4 @@ You can stop the containers with `npm run stop:docker`.
 
 ## License
 
-MIT © [Hexacta](https://www.hexacta.com)
+MIT
