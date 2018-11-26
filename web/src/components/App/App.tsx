@@ -17,7 +17,7 @@ const App: React.FunctionComponent = () => {
       <Footer>
         <Footer.Content>&copy; Project Name 2018</Footer.Content>
         <Footer.Content pullRight>
-          <a href="http://github.com">
+          <a href="https://github.com/jacobsowles/social-sidekick">
             <FontAwesomeIcon icon={faGithub} title="This project on GitHub" />
             This project on GitHub
           </a>
