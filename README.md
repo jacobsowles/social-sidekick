@@ -1,12 +1,17 @@
-# Project Structure Sample
-
-This repostory complements a [medium post explaining a project structure focused on keeping back end and front end separated](https://medium.com/@pomber/do-not-mix-front-end-and-back-end-530d55b998a5).
-
 ## Getting Started
 
-First thing you need to do is install dependencies:
+First, install dependencies:
 ```
 $ npm install
+```
+
+Then you'll need to add a `.env` file in the api root directory. This file contains sensitive information like usernames, passwords, and API keys that should not be checked into the code repository. Add the following entries to this file:
+
+```
+BASE_URL=http://localhost:8080
+SESSION_SECRET=<your secret>
+MONGODB_URI=mongodb://<your mongodb uri>
+MLAB_API_KEY=<your key>
 ```
 
 Then you can run the SPA and the API in development mode (watching for changes) with:
@@ -42,4 +47,4 @@ You can stop the containers with `npm run stop:docker`.
 
 ## License
 
-MIT © [Hexacta](https://www.hexacta.com)
+MIT
