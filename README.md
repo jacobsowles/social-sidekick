@@ -10,7 +10,7 @@ Then you'll need to add a `.env` file in the api root directory. This file conta
 ```
 BASE_URL=http://localhost:8080
 SESSION_SECRET=<your secret>
-MONGODB_URI=mongodb://<username>:<password>@ds255403.mlab.com:55403/<project-name>
+MONGODB_URI=mongodb://<your mongodb uri>
 MLAB_API_KEY=<your key>
 ```
 
