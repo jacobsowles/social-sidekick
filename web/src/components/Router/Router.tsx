@@ -9,6 +9,7 @@ import {
 import AuthService from '@api/AuthService';
 import history from '@api/History';
 import CallbackPage from '@components/CallbackPage';
+import ConnectionsPage from '@components/ConnectionsPage';
 import ContactPage from '@components/ContactPage';
 import HomePage from '@components/HomePage';
 import LandingPage from '@components/LandingPage';
@@ -37,19 +38,25 @@ class Router extends React.Component {
                   this.authService.isAuthenticated() ? <Redirect to="/home" /> : <LandingPage />
                 }
               />
-              <PrivateRoute
-                path="/home"
-                component={HomePage}
-                isAuthenticated={this.authService.isAuthenticated()}
-                login={this.authService.login}
-              />
-              <Route path="/contact" component={ContactPage} />
               <Route
                 path="/callback"
                 render={props => {
                   this.handleAuthentication(props);
                   return <CallbackPage />;
                 }}
+              />
+              <Route path="/contact" component={ContactPage} />
+              <PrivateRoute
+                path="/connections"
+                component={ConnectionsPage}
+                isAuthenticated={this.authService.isAuthenticated()}
+                login={this.authService.login}
+              />
+              <PrivateRoute
+                path="/home"
+                component={HomePage}
+                isAuthenticated={this.authService.isAuthenticated()}
+                login={this.authService.login}
               />
             </Switch>
           </div>

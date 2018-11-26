@@ -40,6 +40,9 @@ const Navbar: React.FunctionComponent<INavbar> = ({
               <LinkContainer to="/home">
                 <BootstrapNavItem>Home</BootstrapNavItem>
               </LinkContainer>
+              <LinkContainer to="/connections">
+                <BootstrapNavItem>Connections</BootstrapNavItem>
+              </LinkContainer>
               <BootstrapNavItem onClick={onLogout}>Log Out</BootstrapNavItem>
             </>
           ) : (

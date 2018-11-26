@@ -90,6 +90,12 @@ describe('Navbar', () => {
         .should.have.lengthOf(1);
     });
 
+    it('should render a link to the connections page', () => {
+      shallow()
+        .findWhere(component => component.props().to === '/connections')
+        .should.have.lengthOf(1);
+    });
+
     it('should render a log out link', () => {
       logoutLink().should.have.lengthOf(1);
     });
