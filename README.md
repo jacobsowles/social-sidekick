@@ -1,6 +1,6 @@
 ## Getting Started
 
-First thing you need to do is install dependencies:
+First, install dependencies:
 ```
 $ npm install
 ```
