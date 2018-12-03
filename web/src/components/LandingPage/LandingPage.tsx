@@ -9,9 +9,9 @@ export interface LandingPageProps {
   className?: string;
 }
 
-const LandingPage: React.FunctionComponent<LandingPageProps> = ({ className, ...rest }) => {
+const LandingPage: React.FunctionComponent<LandingPageProps> = ({ className }) => {
   return (
-    <div className={classNames('landing-page', className)} {...rest}>
+    <div className={classNames('landing-page', className)}>
       <ContentBox>
         <PageHeader title="Landing Page" subtitle="Page subtitle" />
         <p>Page content</p>

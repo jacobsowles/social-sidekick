@@ -21,7 +21,6 @@ const initialState: AuthState = {
 };
 
 const userReducer = (state: AuthState = initialState, action: FetchUserAction) => {
-  debugger;
   switch (action.type) {
     case FETCH_USER_BEGIN:
       return { ...state, error: undefined, loading: true };

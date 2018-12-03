@@ -5,13 +5,9 @@ import ContentBox from '@components/ContentBox';
 import PageHeader from '@components/PageHeader';
 import './HomePage.scss';
 
-export interface HomePageProps {
-  className?: string;
-}
-
-const HomePage: React.FunctionComponent<HomePageProps> = ({ className, ...rest }) => {
+const HomePage: React.FunctionComponent<any> = ({ className }) => {
   return (
-    <div className={classNames('home-page', className)} {...rest}>
+    <div className={classNames('home-page', className)}>
       <ContentBox>
         <PageHeader title="Home" />
         <p>Page content</p>

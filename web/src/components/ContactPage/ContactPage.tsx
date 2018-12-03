@@ -9,9 +9,9 @@ export interface ContactPageProps {
   className?: string;
 }
 
-const ContactPage: React.FunctionComponent<ContactPageProps> = ({ className, ...rest }) => {
+const ContactPage: React.FunctionComponent<ContactPageProps> = ({ className }) => {
   return (
-    <div className={classNames('contact-page', className)} {...rest}>
+    <div className={classNames('contact-page', className)}>
       <ContentBox>
         <PageHeader title="Contact" />
         <p>Page content</p>
