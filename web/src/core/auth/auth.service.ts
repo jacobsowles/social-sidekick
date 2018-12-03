@@ -1,4 +1,4 @@
-import auth0, { Auth0DecodedHash, Auth0Error, Auth0UserProfile } from 'auth0-js';
+import auth0 from 'auth0-js';
 
 class AuthService {
   private auth0 = new auth0.WebAuth({
@@ -17,8 +17,6 @@ class AuthService {
   }
 
   public isAuthenticated() {
-    // Check whether the current time is past the
-    // Access Token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
@@ -26,8 +24,9 @@ class AuthService {
   public handleAuthentication(redirect: any) {
     debugger;
     this.auth0.parseHash((err, authResult) => {
+      debugger;
       if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult, redirect);
+        this.setSession(authResult);
         redirect('/home');
       } else if (err) {
         redirect('/home');
@@ -50,15 +49,13 @@ class AuthService {
     redirect('/');
   }
 
-  public setSession(authResult: any, redirect: any) {
+  public setSession(authResult: any) {
     debugger;
-    // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    // navigate to the home route
-    redirect('/home');
   }
 }
 
