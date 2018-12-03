@@ -18,7 +18,10 @@
     "prestart:docker": "npm run build",
     "start:docker": "docker-compose -f docker/docker-compose.yml up -d --build",
     "poststart:docker": "opn http://localhost:8000/",
-    "stop:docker": "docker-compose -f docker/docker-compose.yml down"
+    "stop:docker": "docker-compose -f docker/docker-compose.yml down",
+    "test:api": "cd api && npm run test && cd ..",
+    "test:web": "cd web && npm run test && cd ..",
+    "test": "npm run test:api && npm run test:web"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",

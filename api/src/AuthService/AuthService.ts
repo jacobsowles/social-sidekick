@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+import moment from 'moment';
 import history from '../History/history';
 
 class AuthService {
@@ -39,9 +40,7 @@ class AuthService {
 
     const expiresAt = parseInt(JSON.parse(expiresAtString), 10);
 
-    new Date().getTime();
-
-    return new Date().getTime() < expiresAt;
+    return moment().valueOf() < expiresAt;
   }
 
   public login() {

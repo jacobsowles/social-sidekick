@@ -5,6 +5,7 @@
   "rules": {
     "ordered-imports": false,
     "no-console": false,
+    "no-implicit-dependencies": [true, "dev"],
     "no-submodule-imports": false
   },
   "rulesDirectory": [],

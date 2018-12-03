@@ -1,2 +1,2 @@
-import authService from './auth-service';
-export default authService;
+import AuthService from './AuthService';
+export default AuthService;
