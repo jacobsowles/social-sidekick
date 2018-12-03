@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactType } from 'react';
 import { Route } from 'react-router-dom';
 
-import Login from '@components/Login';
 import AuthService from '@core/auth';
 
 export interface PrivateRouteProps {
@@ -21,7 +20,12 @@ const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({
       path={path}
       {...rest}
       render={props => {
-        return authService.isAuthenticated() ? <Component {...props} /> : <Login />;
+        if (authService.isAuthenticated()) {
+          return <Component {...props} />;
+        } else {
+          authService.login();
+          return null;
+        }
       }}
     />
   );

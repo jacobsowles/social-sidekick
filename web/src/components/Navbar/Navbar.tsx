@@ -12,14 +12,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 import AuthService from '@core/auth';
 import './Navbar.scss';
 
-export interface NavbarProps {
-  className?: string;
-}
-
-const Navbar: React.FunctionComponent<NavbarProps> = ({ className, ...rest }) => {
+const Navbar: React.FunctionComponent<any> = ({ className, ...rest }) => {
   const authService = new AuthService();
 
-  debugger;
   return (
     <BootstrapNavbar className={classNames('navbar', className)} {...rest}>
       <BootstrapNavbar.Header>
@@ -33,7 +28,9 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ className, ...rest }) =>
       </BootstrapNavbar.Header>
       <BootstrapNavbar.Collapse>
         <BootstrapNav className="nav-left">
-          <Link to="/contact">Contact</Link>
+          <LinkContainer to="/contact">
+            <BootstrapNavItem>Contact</BootstrapNavItem>
+          </LinkContainer>
         </BootstrapNav>
         <BootstrapNav pullRight>
           {authService.isAuthenticated() ? (

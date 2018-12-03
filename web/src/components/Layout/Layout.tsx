@@ -6,15 +6,11 @@ import Navbar from '@components/Navbar';
 import Routes from '@components/Routes';
 import './Layout.scss';
 
-interface LayoutProps {
-  handleAuthCallback: (...args: any[]) => any;
-}
-
-const Layout: FunctionComponent<LayoutProps> = ({ handleAuthCallback }) => {
+const Layout: FunctionComponent<any> = ({ handleAuthCallback }) => {
   return (
     <div className="layout">
       <Navbar />
-      <Routes handleAuthCallback={handleAuthCallback} />
+      <Routes />
       <Footer>
         <Footer.Content>&copy; Project Name 2018</Footer.Content>
         <Footer.Content pullRight>
