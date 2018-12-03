@@ -1,12 +1,10 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
-import LandingPage from './LandingPage';
+import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import LandingPage, { LandingPageProps } from './LandingPage';
 import Page from '../Page';
-import ILandingPage from './ILandingPage';
 
 describe('LandingPage', () => {
-  let props: ILandingPage;
-
+  let props: LandingPageProps;
   init(() => <LandingPage {...props} />, Page);
 
   beforeEach(() => {

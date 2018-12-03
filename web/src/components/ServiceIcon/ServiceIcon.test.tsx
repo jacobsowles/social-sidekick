@@ -1,11 +1,9 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
-import IServiceIcon from './IServiceIcon';
-import ServiceIcon from './ServiceIcon';
+import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import ServiceIcon, { ServiceIconProps } from './ServiceIcon';
 
 describe('Icon', () => {
-  let props: IServiceIcon;
-
+  let props: ServiceIconProps;
   init(() => <ServiceIcon {...props} />, 'div');
 
   beforeEach(() => {

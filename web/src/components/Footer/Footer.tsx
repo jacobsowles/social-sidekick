@@ -1,14 +1,18 @@
-import * as React from 'react';
 import classNames from 'classnames';
-import FooterContent from '@components/FooterContent';
-import IFooter from './IFooter';
+import React, { PureComponent } from 'react';
+
+import FooterContent from './FooterContent';
 import './Footer.scss';
 
-class Footer extends React.Component<IFooter> {
+export interface FooterProps {
+  className?: string;
+}
+
+class Footer extends PureComponent<FooterProps> {
   public static Content = FooterContent;
 
   public static defaultProps = {
-    className: undefined
+    className: ''
   };
 
   public render() {

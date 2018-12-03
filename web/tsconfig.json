@@ -2,19 +2,23 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
+    "isolatedModules": true,
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "@actions/*": ["actions/*"],
-      "@api/*": ["../../api/src/*"],
+      "@actions/*": ["store/actions/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
-      "@reducers/*": ["reducers/*"],
+      "@core/*": ["core/*"],
+      "@reducers/*": ["store/reducers/*"],
+      "@store/*": ["store/*"],
       "@styles/*": ["styles/*"],
-      "@tests/*": ["tests/*"]
+      "@tests/*": ["tests/*"],
+      "@utils/*": ["utils/*"]
     },
     "strict": true,
+    "strictNullChecks": false,
     "target": "esnext"
   }
 }

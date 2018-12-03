@@ -1,10 +1,9 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
-import IConnectionsPage from './IConnectionsPage';
-import ConnectionsPage from './ConnectionsPage';
+import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import ConnectionsPage, { ConnectionsPageProps } from './ConnectionsPage';
 
 describe('ConnectionsPage', () => {
-  let props: IConnectionsPage;
+  let props: ConnectionsPageProps;
   init(() => <ConnectionsPage {...props} />, 'main');
 
   beforeEach(() => {

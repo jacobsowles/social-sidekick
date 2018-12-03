@@ -1,12 +1,8 @@
-import * as React from 'react';
-const loading = require('@assets/loading.svg'); // using require because importing svg doesn't seem to work with typescript
+import React, { FunctionComponent } from 'react';
 
-const CallbackPage: React.FunctionComponent = () => {
-  return (
-    <div className="callback-page">
-      <img src={loading} alt="loading" />
-    </div>
-  );
+const CallbackPage: FunctionComponent = () => {
+  debugger;
+  return <div className="callback-page" />;
 };
 
 export default CallbackPage;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { init, render, shallow, shallowTopLevelElement } from '@tests/test-base';
+import { init, render, shallow, shallowTopLevelElement } from '@tests/component-test-base';
 import App from './App';
 
 jest.mock('../Router', () => () => <span id="router" />);

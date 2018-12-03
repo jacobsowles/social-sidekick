@@ -1,13 +1,11 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
+import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
 import { Nav as BootstrapNav, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import INavbar from './INavbar';
-import Navbar from './Navbar';
+import Navbar, { NavbarProps } from './Navbar';
 
 describe('Navbar', () => {
-  let props: INavbar;
-
+  let props: NavbarProps;
   init(() => <Navbar {...props} />, BootstrapNavbar);
 
   const loginLink = () => shallow().findWhere(component => component.props().children === 'Log In');

@@ -1,10 +1,31 @@
-import React from 'react';
-import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import IServiceIcon from './IServiceIcon';
+import classNames from 'classnames';
+import React from 'react';
+
 import './ServiceIcon.scss';
 
-const ServiceIcon: React.FunctionComponent<IServiceIcon> = ({
+export interface ServiceIconProps {
+  className?: string;
+  iconName: 'github';
+  label?: string;
+  size?:
+    | 'xs'
+    | 'sm'
+    | 'lg'
+    | '1x'
+    | '2x'
+    | '3x'
+    | '4x'
+    | '5x'
+    | '6x'
+    | '7x'
+    | '8x'
+    | '9x'
+    | '10x'
+    | undefined;
+}
+
+const ServiceIcon: React.FunctionComponent<ServiceIconProps> = ({
   children,
   className,
   iconName,

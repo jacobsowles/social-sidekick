@@ -1,5 +1,5 @@
 import React from 'react';
-import { init, mount, shallow } from '@tests/test-base';
+import { init, mount, shallow } from '@tests/component-test-base';
 import CallbackPage from './CallbackPage';
 
 describe('CallbackPage', () => {
@@ -9,13 +9,5 @@ describe('CallbackPage', () => {
     shallow()
       .find('div')
       .should.have.lengthOf(1);
-  });
-
-  describe('the rendered div element', () => {
-    it('should always render an image element', () => {
-      mount()
-        .find('img')
-        .should.have.lengthOf(1);
-    });
   });
 });

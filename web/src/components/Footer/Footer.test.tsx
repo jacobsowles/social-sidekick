@@ -5,12 +5,11 @@ import {
   mountTopLevelElement,
   shallow,
   shallowTopLevelElement
-} from '@tests/test-base';
-import IFooter from './IFooter';
-import Footer from './Footer';
+} from '@tests/component-test-base';
+import Footer, { FooterProps } from './Footer';
 
 describe('Footer', () => {
-  let props: IFooter;
+  let props: FooterProps;
 
   init(
     () => (

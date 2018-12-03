@@ -1,11 +1,15 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
+
 import ServiceIcon from '@components/ServiceIcon';
 import Page from '@components/Page';
-import IConnectionsPage from './IConnectionsPage';
 import './ConnectionsPage.scss';
 
-const ConnectionsPage: React.FunctionComponent<IConnectionsPage> = ({ className, ...rest }) => {
+export interface ConnectionsPageProps {
+  className?: string;
+}
+
+const ConnectionsPage: React.FunctionComponent<ConnectionsPageProps> = ({ className }) => {
   return (
     <main className={classNames('connections-page', className)}>
       <Page.ContentBox>
@@ -23,7 +27,7 @@ const ConnectionsPage: React.FunctionComponent<IConnectionsPage> = ({ className,
 };
 
 ConnectionsPage.defaultProps = {
-  className: undefined
+  className: ''
 };
 
 export default ConnectionsPage;

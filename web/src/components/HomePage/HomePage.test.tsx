@@ -1,12 +1,10 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
-import IHomePage from './IHomePage';
-import HomePage from './HomePage';
+import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import HomePage, { HomePageProps } from './HomePage';
 import Page from '../Page';
 
 describe('HomePage', () => {
-  let props: IHomePage;
-
+  let props: HomePageProps;
   init(() => <HomePage {...props} />, Page);
 
   beforeEach(() => {
