@@ -1,10 +1,10 @@
 import React from 'react';
-import { init, mount, shallow, shallowTopLevelElement, should } from '@tests/test-base';
-import IPage from './IPage';
-import Page from './Page';
+
+import { init, mount, shallow, shallowTopLevelElement, should } from '@tests/component-test-base';
+import Page, { PageProps } from './Page';
 
 describe('Page', () => {
-  let props: IPage;
+  let props: PageProps;
 
   init(
     () => (
@@ -96,12 +96,12 @@ describe('Page', () => {
   });
 
   describe('when `subtitle` is undefined', () => {
-    it('should not pass `subtitle` to the PageHeader component', () => {
+    it('should pass `subtitle` as empty string to the PageHeader component', () => {
       should().equal(
         shallow()
           .find(Page.Header)
           .props().subtitle,
-        undefined
+        ''
       );
     });
   });

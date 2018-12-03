@@ -1,22 +1,25 @@
-import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import classNames from 'classnames';
 import {
   Nav as BootstrapNav,
   Navbar as BootstrapNavbar,
   NavItem as BootstrapNavItem
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import INavbar from './INavbar';
+
+import AuthService from '@core/auth';
 import './Navbar.scss';
 
-const Navbar: React.FunctionComponent<INavbar> = ({
-  className,
-  isAuthenticated,
-  onLogin,
-  onLogout,
-  ...rest
-}) => {
+export interface NavbarProps {
+  className?: string;
+}
+
+const Navbar: React.FunctionComponent<NavbarProps> = ({ className, ...rest }) => {
+  const authService = new AuthService();
+
+  debugger;
   return (
     <BootstrapNavbar className={classNames('navbar', className)} {...rest}>
       <BootstrapNavbar.Header>
@@ -30,20 +33,25 @@ const Navbar: React.FunctionComponent<INavbar> = ({
       </BootstrapNavbar.Header>
       <BootstrapNavbar.Collapse>
         <BootstrapNav className="nav-left">
-          <LinkContainer to="/contact">
-            <BootstrapNavItem>Contact</BootstrapNavItem>
-          </LinkContainer>
+          <Link to="/contact">Contact</Link>
         </BootstrapNav>
         <BootstrapNav pullRight>
-          {isAuthenticated ? (
+          {authService.isAuthenticated() ? (
             <>
               <LinkContainer to="/home">
                 <BootstrapNavItem>Home</BootstrapNavItem>
               </LinkContainer>
-              <BootstrapNavItem onClick={onLogout}>Log Out</BootstrapNavItem>
+              <LinkContainer to="/connections">
+                <BootstrapNavItem>Connections</BootstrapNavItem>
+              </LinkContainer>
+              <LinkContainer to="/logout">
+                <BootstrapNavItem>Log Out</BootstrapNavItem>
+              </LinkContainer>
             </>
           ) : (
-            <BootstrapNavItem onClick={onLogin}>Log In</BootstrapNavItem>
+            <LinkContainer to="/login">
+              <BootstrapNavItem>Log In</BootstrapNavItem>
+            </LinkContainer>
           )}
         </BootstrapNav>
       </BootstrapNavbar.Collapse>

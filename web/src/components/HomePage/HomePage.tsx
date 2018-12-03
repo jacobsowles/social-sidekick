@@ -1,10 +1,14 @@
-import * as React from 'react';
 import classNames from 'classnames';
+import React from 'react';
+
 import Page from '@components/Page';
-import IHomePage from './IHomePage';
 import './HomePage.scss';
 
-const HomePage: React.FunctionComponent<IHomePage> = ({ className, ...rest }) => {
+export interface HomePageProps {
+  className?: string;
+}
+
+const HomePage: React.FunctionComponent<HomePageProps> = ({ className, ...rest }) => {
   return (
     <Page className={classNames('home-page', className)} title="Home" {...rest}>
       <p>Page content</p>
@@ -13,7 +17,7 @@ const HomePage: React.FunctionComponent<IHomePage> = ({ className, ...rest }) =>
 };
 
 HomePage.defaultProps = {
-  className: undefined
+  className: ''
 };
 
 export default HomePage;

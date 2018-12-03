@@ -1,17 +1,23 @@
-import * as React from 'react';
 import classNames from 'classnames';
-import ContentBox from '@components/ContentBox';
-import PageHeader from '@components/PageHeader';
-import IPage from './IPage';
+import React, { PureComponent } from 'react';
+
+import ContentBox from './ContentBox';
+import PageHeader from './PageHeader';
 import './Page.scss';
 
-class Page extends React.Component<IPage> {
+export interface PageProps {
+  className?: string;
+  subtitle?: string;
+  title: string;
+}
+
+class Page extends PureComponent<PageProps> {
   public static ContentBox = ContentBox;
   public static Header = PageHeader;
 
   public static defaultProps = {
-    className: undefined,
-    subtitle: undefined
+    className: '',
+    subtitle: ''
   };
 
   public render() {

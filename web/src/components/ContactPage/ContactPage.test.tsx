@@ -1,12 +1,11 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/test-base';
-import IContactPage from './IContactPage';
-import ContactPage from './ContactPage';
+
+import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import ContactPage, { ContactPageProps } from './ContactPage';
 import Page from '../Page';
 
 describe('ContactPage', () => {
-  let props: IContactPage;
-
+  let props: ContactPageProps;
   init(() => <ContactPage {...props} />, Page);
 
   beforeEach(() => {

@@ -1,10 +1,15 @@
-import * as React from 'react';
 import classNames from 'classnames';
+import React from 'react';
+
 import Page from '@components/Page';
-import ILandingPage from './ILandingPage';
 import './LandingPage.scss';
 
-const LandingPage: React.FunctionComponent<ILandingPage> = ({ className, ...rest }) => {
+export interface LandingPageProps {
+  className?: string;
+}
+
+const LandingPage: React.FunctionComponent<LandingPageProps> = ({ className, ...rest }) => {
+  debugger;
   return (
     <Page
       className={classNames('landing-page', className)}
@@ -18,7 +23,7 @@ const LandingPage: React.FunctionComponent<ILandingPage> = ({ className, ...rest
 };
 
 LandingPage.defaultProps = {
-  className: undefined
+  className: ''
 };
 
 export default LandingPage;

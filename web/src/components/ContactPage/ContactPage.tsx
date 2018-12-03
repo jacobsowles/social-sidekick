@@ -1,10 +1,14 @@
-import * as React from 'react';
 import classNames from 'classnames';
+import React from 'react';
+
 import Page from '@components/Page';
-import IContactPage from './IContactPage';
 import './ContactPage.scss';
 
-const ContactPage: React.FunctionComponent<IContactPage> = ({ className, ...rest }) => {
+export interface ContactPageProps {
+  className?: string;
+}
+
+const ContactPage: React.FunctionComponent<ContactPageProps> = ({ className, ...rest }) => {
   return (
     <Page className={classNames('contact-page', className)} title="Contact" {...rest}>
       <p>Page content</p>
@@ -13,7 +17,7 @@ const ContactPage: React.FunctionComponent<IContactPage> = ({ className, ...rest
 };
 
 ContactPage.defaultProps = {
-  className: undefined
+  className: ''
 };
 
 export default ContactPage;
