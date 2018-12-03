@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 
-import Page from '@components/Page';
+import ContentBox from '@components/ContentBox';
+import PageHeader from '@components/PageHeader';
 import './LandingPage.scss';
 
 export interface LandingPageProps {
@@ -9,16 +10,13 @@ export interface LandingPageProps {
 }
 
 const LandingPage: React.FunctionComponent<LandingPageProps> = ({ className, ...rest }) => {
-  debugger;
   return (
-    <Page
-      className={classNames('landing-page', className)}
-      title="Landing Page"
-      subtitle="Page subtitle"
-      {...rest}
-    >
-      <p>Page content</p>
-    </Page>
+    <div className={classNames('landing-page', className)} {...rest}>
+      <ContentBox>
+        <PageHeader title="Landing Page" subtitle="Page subtitle" />
+        <p>Page content</p>
+      </ContentBox>
+    </div>
   );
 };
 

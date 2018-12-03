@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 
-import Page from '@components/Page';
+import ContentBox from '@components/ContentBox';
+import PageHeader from '@components/PageHeader';
 import './ContactPage.scss';
 
 export interface ContactPageProps {
@@ -10,9 +11,12 @@ export interface ContactPageProps {
 
 const ContactPage: React.FunctionComponent<ContactPageProps> = ({ className, ...rest }) => {
   return (
-    <Page className={classNames('contact-page', className)} title="Contact" {...rest}>
-      <p>Page content</p>
-    </Page>
+    <div className={classNames('contact-page', className)} {...rest}>
+      <ContentBox>
+        <PageHeader title="Contact" />
+        <p>Page content</p>
+      </ContentBox>
+    </div>
   );
 };
 
