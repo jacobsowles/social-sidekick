@@ -67,7 +67,7 @@ class Navbar extends Component<NavbarProps> {
                   <MenuItem header>Logged in as {this.props.username}</MenuItem>
                   <MenuItem divider />
                   <MenuItem eventKey={1.1} onClick={this.logout}>
-                    <FontAwesomeIcon icon={['fas', 'sign-out-alt']} /> Logout
+                    <FontAwesomeIcon icon={['fas', 'sign-out-alt']} /> Log Out
                   </MenuItem>
                 </NavDropdown>
               </>
