@@ -21,7 +21,7 @@ const LandingPage: React.FunctionComponent<LandingPageProps> = ({ className }) =
 };
 
 LandingPage.defaultProps = {
-  className: ''
+  className: undefined
 };
 
 export default LandingPage;

@@ -5,7 +5,11 @@ import ContentBox from '@components/ContentBox';
 import PageHeader from '@components/PageHeader';
 import './HomePage.scss';
 
-const HomePage: React.FunctionComponent<any> = ({ className }) => {
+interface HomePageProps {
+  className?: string;
+}
+
+const HomePage: React.FunctionComponent<HomePageProps> = ({ className }) => {
   return (
     <div className={classNames('home-page', className)}>
       <ContentBox>
@@ -17,7 +21,7 @@ const HomePage: React.FunctionComponent<any> = ({ className }) => {
 };
 
 HomePage.defaultProps = {
-  className: ''
+  className: undefined
 };
 
 export default HomePage;
