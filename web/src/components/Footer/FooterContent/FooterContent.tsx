@@ -11,19 +11,14 @@ export interface FooterContentProps {
 const FooterContent: FunctionComponent<FooterContentProps> = ({
   children,
   className,
-  pullRight,
-  ...rest
+  pullRight
 }) => {
   const classes = classNames('footer-content', pullRight ? 'float-right' : 'float-left', className);
-  return (
-    <p className={classes} {...rest}>
-      {children}
-    </p>
-  );
+  return <p className={classes}>{children}</p>;
 };
 
 FooterContent.defaultProps = {
-  className: '',
+  className: undefined,
   pullRight: false
 };
 
