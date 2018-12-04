@@ -7,12 +7,8 @@ export interface ContentBoxProps {
   className?: string;
 }
 
-const ContentBox: FunctionComponent<ContentBoxProps> = ({ children, className, ...rest }) => {
-  return (
-    <div className={classNames('content-box', className)} {...rest}>
-      {children}
-    </div>
-  );
+const ContentBox: FunctionComponent<ContentBoxProps> = ({ children, className }) => {
+  return <div className={classNames('content-box', className)}>{children}</div>;
 };
 
 ContentBox.defaultProps = {

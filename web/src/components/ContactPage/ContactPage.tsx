@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
 import ContentBox from '@components/ContentBox';
 import PageHeader from '@components/PageHeader';
@@ -9,7 +9,7 @@ export interface ContactPageProps {
   className?: string;
 }
 
-const ContactPage: React.FunctionComponent<ContactPageProps> = ({ className }) => {
+const ContactPage: FunctionComponent<ContactPageProps> = ({ className }) => {
   return (
     <div className={classNames('contact-page', className)}>
       <ContentBox>
@@ -21,7 +21,7 @@ const ContactPage: React.FunctionComponent<ContactPageProps> = ({ className }) =
 };
 
 ContactPage.defaultProps = {
-  className: ''
+  className: undefined
 };
 
 export default ContactPage;
