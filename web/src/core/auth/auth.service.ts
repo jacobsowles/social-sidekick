@@ -1,4 +1,4 @@
-import auth0, { Auth0DecodedHash } from 'auth0-js';
+import auth0, { Auth0DecodedHash, Auth0Error, Auth0UserProfile } from 'auth0-js';
 
 class AuthService {
   private auth0 = new auth0.WebAuth({
@@ -21,7 +21,7 @@ class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
-  public fetchUser(callback: (...args: any[]) => any): void {
+  public fetchUser(callback: ((error: Auth0Error, user: Auth0UserProfile) => void)): void {
     const accessToken = localStorage.getItem('access_token');
 
     if (!accessToken) {
