@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Auth0UserProfile } from 'auth0-js';
 import React, { FunctionComponent } from 'react';
 
 import Footer from '@components/Footer';
@@ -6,10 +7,14 @@ import Navbar from '@components/Navbar';
 import Routes from '@components/Routes';
 import './Layout.scss';
 
-const Layout: FunctionComponent<any> = () => {
+interface LayoutProps {
+  user?: Auth0UserProfile;
+}
+
+const Layout: FunctionComponent<LayoutProps> = ({ user }) => {
   return (
     <div className="layout">
-      <Navbar />
+      <Navbar email={user ? user.email : undefined} picture={user ? user.picture : undefined} />
       <Routes />
       <Footer>
         <Footer.Content>&copy; Project Name 2018</Footer.Content>

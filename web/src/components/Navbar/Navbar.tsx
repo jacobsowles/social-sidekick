@@ -1,20 +1,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import classNames from 'classnames';
 import { MenuItem, Nav, Navbar as BootstrapNavbar, NavDropdown, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import AuthService from '@core/auth';
 import './Navbar.scss';
 
-class Navbar extends Component<any> {
+interface NavbarProps {
+  className?: string;
+  email?: string;
+  picture?: string;
+}
+
+class Navbar extends Component<NavbarProps> {
   public static contextTypes = {
     router: PropTypes.object
   };
 
   public static defaultProps = {
-    className: ''
+    className: '',
+    email: '',
+    picture: ''
   };
 
   private authService = new AuthService();
@@ -25,7 +33,7 @@ class Navbar extends Component<any> {
 
   public render() {
     return (
-      <BootstrapNavbar className={classNames('navbar', this.props.className)} {...this.props.rest}>
+      <BootstrapNavbar className={classNames('navbar', this.props.className)}>
         <BootstrapNavbar.Header>
           <BootstrapNavbar.Brand>
             <a href="/">
@@ -52,7 +60,7 @@ class Navbar extends Component<any> {
                   id="user-dropdown"
                   title={
                     <span className="profile-thumbnail">
-                      <img src="http://honesttopaws.com/wp-content/uploads/sites/5/2017/05/banana-cat-1.png" />
+                      <img src={this.props.picture} alt="thumbnail" />
                     </span>
                   }
                 >

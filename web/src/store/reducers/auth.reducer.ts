@@ -1,5 +1,4 @@
 import { Auth0UserProfile } from 'auth0-js';
-import { combineReducers } from 'redux';
 
 import {
   FetchUserAction,
@@ -36,4 +35,4 @@ const userReducer = (state: AuthState = initialState, action: FetchUserAction) =
   }
 };
 
-export default combineReducers({ user: userReducer });
+export default userReducer;

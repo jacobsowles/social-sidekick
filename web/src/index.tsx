@@ -7,7 +7,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import App from '@components/App';
-import AuthService from '@core/auth';
 import rootReducer from '@reducers/index';
 import './styles/index.scss';
 
@@ -19,7 +18,7 @@ const browserSupportsHistory = 'pushState' in window.history;
 render(
   <Provider store={store}>
     <BrowserRouter forceRefresh={!browserSupportsHistory}>
-      <App authService={new AuthService()} />
+      <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
