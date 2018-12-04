@@ -2,11 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import {
-  Nav as BootstrapNav,
-  Navbar as BootstrapNavbar,
-  NavItem as BootstrapNavItem
-} from 'react-bootstrap';
+import { MenuItem, Nav, Navbar as BootstrapNavbar, NavDropdown, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import AuthService from '@core/auth';
@@ -40,23 +36,35 @@ class Navbar extends Component<any> {
           <BootstrapNavbar.Toggle />
         </BootstrapNavbar.Header>
         <BootstrapNavbar.Collapse>
-          <BootstrapNav className="nav-left">
+          <Nav className="nav-left">
             <LinkContainer to="/contact">
-              <BootstrapNavItem>Contact</BootstrapNavItem>
+              <NavItem>Contact</NavItem>
             </LinkContainer>
-          </BootstrapNav>
-          <BootstrapNav pullRight>
+          </Nav>
+          <Nav pullRight>
             {this.authService.isAuthenticated() ? (
               <>
                 <LinkContainer to="/home">
-                  <BootstrapNavItem>Home</BootstrapNavItem>
+                  <NavItem>Home</NavItem>
                 </LinkContainer>
-                <BootstrapNavItem onClick={this.logout}>Log Out</BootstrapNavItem>
+                <NavDropdown
+                  eventKey={1}
+                  id="user-dropdown"
+                  title={
+                    <span className="profile-thumbnail">
+                      <img src="http://honesttopaws.com/wp-content/uploads/sites/5/2017/05/banana-cat-1.png" />
+                    </span>
+                  }
+                >
+                  <MenuItem eventKey={1.1} onClick={this.logout}>
+                    <FontAwesomeIcon icon={['fas', 'sign-out-alt']} /> Logout
+                  </MenuItem>
+                </NavDropdown>
               </>
             ) : (
-              <BootstrapNavItem onClick={this.authService.login}>Log In</BootstrapNavItem>
+              <NavItem onClick={this.authService.login}>Log In</NavItem>
             )}
-          </BootstrapNav>
+          </Nav>
         </BootstrapNavbar.Collapse>
       </BootstrapNavbar>
     );

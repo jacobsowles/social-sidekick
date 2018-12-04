@@ -58,4 +58,23 @@
       }
     }
   }
+
+  .profile-thumbnail {
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+    }
+  }
+
+  .dropdown {
+    ul li a {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    #user-dropdown {
+      padding: 10px;
+    }
+  }
 }

@@ -6,7 +6,7 @@ import Navbar from '@components/Navbar';
 import Routes from '@components/Routes';
 import './Layout.scss';
 
-const Layout: FunctionComponent<any> = ({ handleAuthCallback }) => {
+const Layout: FunctionComponent<any> = () => {
   return (
     <div className="layout">
       <Navbar />
@@ -14,7 +14,7 @@ const Layout: FunctionComponent<any> = ({ handleAuthCallback }) => {
       <Footer>
         <Footer.Content>&copy; Project Name 2018</Footer.Content>
         <Footer.Content pullRight>
-          <a href="https://github.com/jacobsowles/social-sidekick">
+          <a href="https://github.com/jacobsowles/fullstack-boilerplate">
             <FontAwesomeIcon icon={['fab', 'github']} title="This project on GitHub" />
             This project on GitHub
           </a>
