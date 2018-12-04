@@ -1,4 +1,6 @@
-export default (app: any) => {
-  const connections = require('./Connection/Connection.routes');
-  app.post('/connections', connections.add);
+import { Express } from 'express';
+
+export default (app: Express) => {
+  // const someModel = require('./SomeModel/SomeModel.routes');
+  // app.post('/someModel', someModel.add);
 };

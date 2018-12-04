@@ -4,6 +4,7 @@ import compression from 'compression';
 import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
 import errorHandler from 'errorhandler';
+import { Errback, Request, Response } from 'express';
 import session from 'express-session';
 import expressValidator from 'express-validator';
 import http from 'http';
@@ -45,9 +46,9 @@ app.use(
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());
 } else {
-  app.use((err: any, req: any, res: any) => {
-    console.error(err);
-    res.status(500).send('Server Error');
+  app.use((error: Errback, request: Request, response: Response) => {
+    console.error(error);
+    response.status(500).send('Server Error');
   });
 }
 

@@ -1,7 +1,7 @@
-import express from 'express';
+import express, { Express } from 'express';
 import routes from './routes';
 
-const app = express();
+const app: Express = express();
 routes(app);
 
 export default app;
