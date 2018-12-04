@@ -1,4 +1,4 @@
-import auth0 from 'auth0-js';
+import auth0, { Auth0DecodedHash } from 'auth0-js';
 
 class AuthService {
   private auth0 = new auth0.WebAuth({
@@ -21,7 +21,7 @@ class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
-  public fetchUser(callback: any): void {
+  public fetchUser(callback: (...args: any[]) => any): void {
     const accessToken = localStorage.getItem('access_token');
 
     if (!accessToken) {
@@ -31,7 +31,7 @@ class AuthService {
     this.auth0.client.userInfo(accessToken, callback);
   }
 
-  public handleAuthentication(redirect: any) {
+  public handleAuthentication(redirect: (location: string) => void) {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
@@ -47,7 +47,7 @@ class AuthService {
     this.auth0.authorize();
   }
 
-  public logout(redirect: any) {
+  public logout(redirect: (location: string) => void) {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
@@ -55,7 +55,7 @@ class AuthService {
     redirect('/');
   }
 
-  public setSession(authResult: any) {
+  public setSession(authResult: Auth0DecodedHash) {
     const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
 
     localStorage.setItem('access_token', authResult.accessToken);

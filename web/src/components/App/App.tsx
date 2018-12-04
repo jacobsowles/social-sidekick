@@ -2,33 +2,32 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faCube, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { Auth0UserProfile } from 'auth0-js';
-import React, { Component } from 'react';
+import { Auth0Error, Auth0UserProfile } from 'auth0-js';
+import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { fetchUserBegin, fetchUserSuccess, fetchUserFailure } from '@actions/auth.actions';
+import {
+  FetchUserAction,
+  fetchUserBegin,
+  fetchUserSuccess,
+  fetchUserFailure
+} from '@actions/auth.actions';
 import Layout from '@components/Layout';
 import AuthService from '@core/auth';
 import { AppState } from '@core/types';
 
 library.add(faCube, faGithub, faQuestionCircle, faSignOutAlt);
 
-interface AppOwnProps {
-  history: any;
-  location: any;
-  match: any;
-}
-
 interface AppDispatchProps {
-  fetchUser: (...args: any[]) => any;
+  fetchUser: () => void;
 }
 
 interface AppStateProps {
   user?: Auth0UserProfile;
 }
 
-type AppProps = AppOwnProps & AppDispatchProps & AppStateProps;
+type AppProps = RouteComponentProps & AppDispatchProps & AppStateProps;
 
 class App extends Component<AppProps, AppState> {
   public componentDidMount() {
@@ -43,17 +42,17 @@ class App extends Component<AppProps, AppState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: any): AppDispatchProps => {
+const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>): AppDispatchProps => {
   return {
     fetchUser: () => {
       const authService = new AuthService();
       dispatch(fetchUserBegin());
 
-      authService.fetchUser((error: any, user: any) => {
+      authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
           dispatch(fetchUserSuccess(user));
         } else {
-          dispatch(fetchUserFailure(error));
+          dispatch(fetchUserFailure(error.error));
         }
       });
     }
