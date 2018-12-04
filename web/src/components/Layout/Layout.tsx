@@ -29,4 +29,8 @@ const Layout: FunctionComponent<LayoutProps> = ({ user }) => {
   );
 };
 
+Layout.defaultProps = {
+  user: undefined
+};
+
 export default Layout;

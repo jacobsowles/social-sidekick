@@ -9,14 +9,9 @@ export interface PageHeaderProps {
   title: string;
 }
 
-const PageHeader: FunctionComponent<PageHeaderProps> = ({
-  className,
-  subtitle,
-  title,
-  ...rest
-}) => {
+const PageHeader: FunctionComponent<PageHeaderProps> = ({ className, subtitle, title }) => {
   return (
-    <div className={classNames('page-header', className)} {...rest}>
+    <div className={classNames('page-header', className)}>
       <h1>{title}</h1>
       {subtitle && <p className="lead">{subtitle}</p>}
       <hr />
