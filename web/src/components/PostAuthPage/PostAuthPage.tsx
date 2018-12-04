@@ -1,17 +1,23 @@
-import React, { Component } from 'react';
+import { Auth0Error, Auth0UserProfile } from 'auth0-js';
+import React, { PureComponent, Dispatch } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchUserBegin, fetchUserSuccess, fetchUserFailure } from '@actions/auth.actions';
+import {
+  FetchUserAction,
+  fetchUserBegin,
+  fetchUserSuccess,
+  fetchUserFailure
+} from '@actions/auth.actions';
 import AuthService from '@core/auth';
 
 interface PostAuthPageDispatchProps {
-  fetchUser: (...args: any[]) => any;
+  fetchUser: () => void;
 }
 
 type PostAuthPageProps = PostAuthPageDispatchProps;
 
-class PostAuthPage extends Component<PostAuthPageProps> {
+class PostAuthPage extends PureComponent<PostAuthPageProps> {
   public componentDidMount() {
     this.props.fetchUser();
   }
@@ -21,17 +27,17 @@ class PostAuthPage extends Component<PostAuthPageProps> {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>) => {
   return {
     fetchUser: () => {
       const authService = new AuthService();
       dispatch(fetchUserBegin());
 
-      authService.fetchUser((error: any, user: any) => {
+      authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
           dispatch(fetchUserSuccess(user));
         } else {
-          dispatch(fetchUserFailure(error));
+          dispatch(fetchUserFailure(error.error));
         }
       });
     }
