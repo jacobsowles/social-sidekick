@@ -6,6 +6,7 @@ import CallbackPage from '@components/CallbackPage';
 import ContactPage from '@components/ContactPage';
 import HomePage from '@components/HomePage';
 import LandingPage from '@components/LandingPage';
+import PostAuthPage from '@components/PostAuthPage';
 import AuthService from '@core/auth';
 import PrivateRoute from './PrivateRoute';
 import './Routes.scss';
@@ -45,6 +46,7 @@ class Routes extends Component<any> {
           />
           <Route path="/contact" component={ContactPage} />
           <PrivateRoute path="/home" component={HomePage} />
+          <Route path="/postauth" component={PostAuthPage} />
         </Switch>
       </div>
     );

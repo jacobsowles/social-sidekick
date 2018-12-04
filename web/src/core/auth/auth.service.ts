@@ -6,7 +6,7 @@ class AuthService {
     domain: 'social-sync.auth0.com',
     redirectUri: 'http://localhost:3000/callback',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor() {
@@ -21,13 +21,21 @@ class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
+  public fetchUser(callback: any): void {
+    const accessToken = localStorage.getItem('access_token');
+
+    if (!accessToken) {
+      console.log('Access Token must exist to fetch user');
+    }
+
+    this.auth0.client.userInfo(accessToken, callback);
+  }
+
   public handleAuthentication(redirect: any) {
-    debugger;
     this.auth0.parseHash((err, authResult) => {
-      debugger;
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        redirect('/home');
+        redirect('/postauth');
       } else if (err) {
         redirect('/home');
         console.log(err);
@@ -36,21 +44,18 @@ class AuthService {
   }
 
   public login() {
-    debugger;
     this.auth0.authorize();
   }
 
   public logout(redirect: any) {
-    // Clear Access Token and ID Token from local storage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    // navigate to the home route
+
     redirect('/');
   }
 
   public setSession(authResult: any) {
-    debugger;
     const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
 
     localStorage.setItem('access_token', authResult.accessToken);
