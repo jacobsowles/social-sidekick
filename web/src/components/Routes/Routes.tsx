@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, ComponentState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import CallbackPage from '@components/CallbackPage';
@@ -11,14 +11,14 @@ import AuthService from '@core/auth';
 import PrivateRoute from './PrivateRoute';
 import './Routes.scss';
 
-class Routes extends Component<any> {
+class Routes extends Component {
   public static contextTypes = {
     router: PropTypes.object
   };
 
   private authService = new AuthService();
 
-  public handleAuthentication = (nextState: any) => {
+  public handleAuthentication = (nextState: ComponentState) => {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       this.authService.handleAuthentication((location: string) =>
         this.context.router.history.replace(location)
