@@ -14,7 +14,7 @@ interface LayoutProps {
 const Layout: FunctionComponent<LayoutProps> = ({ user }) => {
   return (
     <div className="layout">
-      <Navbar email={user ? user.email : undefined} picture={user ? user.picture : undefined} />
+      <Navbar username={user ? user.name : undefined} picture={user ? user.picture : undefined} />
       <Routes />
       <Footer>
         <Footer.Content>&copy; Project Name 2018</Footer.Content>

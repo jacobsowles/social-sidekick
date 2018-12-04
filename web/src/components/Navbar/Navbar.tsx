@@ -10,7 +10,7 @@ import './Navbar.scss';
 
 interface NavbarProps {
   className?: string;
-  email?: string;
+  username?: string;
   picture?: string;
 }
 
@@ -21,8 +21,8 @@ class Navbar extends Component<NavbarProps> {
 
   public static defaultProps = {
     className: '',
-    email: '',
-    picture: ''
+    picture: '',
+    username: ''
   };
 
   private authService = new AuthService();
@@ -64,6 +64,8 @@ class Navbar extends Component<NavbarProps> {
                     </span>
                   }
                 >
+                  <MenuItem header>Logged in as {this.props.username}</MenuItem>
+                  <MenuItem divider />
                   <MenuItem eventKey={1.1} onClick={this.logout}>
                     <FontAwesomeIcon icon={['fas', 'sign-out-alt']} /> Logout
                   </MenuItem>
