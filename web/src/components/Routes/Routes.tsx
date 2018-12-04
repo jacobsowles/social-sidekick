@@ -41,7 +41,7 @@ class Routes extends Component<any> {
             path="/callback"
             render={props => {
               this.handleAuthentication(props);
-              return <CallbackPage {...props} />;
+              return <CallbackPage />;
             }}
           />
           <Route path="/contact" component={ContactPage} />

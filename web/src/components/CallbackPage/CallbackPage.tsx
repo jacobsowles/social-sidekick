@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 
-class CallbackPage extends Component {
-  public render() {
-    return <div className="callback-page" />;
-  }
-}
+const CallbackPage: FunctionComponent = () => {
+  return <div className="callback-page" />;
+};
 
 export default CallbackPage;
