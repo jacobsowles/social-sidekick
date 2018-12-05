@@ -6,6 +6,7 @@ import {
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+import { init as initIcons } from '@core/icons';
 import { LocalStorageMock, should } from './test-base';
 import { Global } from './types';
 
@@ -13,6 +14,7 @@ let componentUnderTest: () => any;
 let topLevelElementTypeUnderTest: any;
 
 const init = (component: () => any, topLevelElementType: any) => {
+  initIcons();
   should();
   configure({ adapter: new Adapter() });
   componentUnderTest = component;
