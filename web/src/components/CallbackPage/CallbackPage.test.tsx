@@ -12,7 +12,7 @@ describe('CallbackPage', () => {
       .should.have.lengthOf(1);
   });
 
-  it('should always include the default class names', () => {
+  it('should only include the default class names', () => {
     shallowTopLevelElement()
       .prop('className')
       .should.equal('callback-page');

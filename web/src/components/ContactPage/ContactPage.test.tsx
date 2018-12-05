@@ -12,7 +12,7 @@ describe('ContactPage', () => {
       .should.have.lengthOf(1);
   });
 
-  it('should only have the default class name', () => {
+  it('should only include the default class name', () => {
     shallowTopLevelElement()
       .prop('className')
       .should.equal('contact-page');
