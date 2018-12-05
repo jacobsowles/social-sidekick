@@ -1,6 +1,14 @@
 import auth0, { Auth0DecodedHash, Auth0Error, Auth0UserProfile } from 'auth0-js';
 
-class AuthService {
+interface IAuthService {
+  isAuthenticated: () => boolean;
+  fetchUser: (callback: ((error: Auth0Error | null, user: Auth0UserProfile) => void)) => void;
+  handleAuthentication: (redirect: (location: string) => void) => void;
+  login: () => void;
+  logout: (redirect: (location: string) => void) => void;
+}
+
+class AuthService implements IAuthService {
   private auth0 = new auth0.WebAuth({
     clientID: '0LtBj1dwfWa6rULZVRTeJsBoWzifuwAR',
     domain: 'social-sync.auth0.com',
@@ -17,18 +25,18 @@ class AuthService {
   }
 
   public isAuthenticated() {
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '');
     return new Date().getTime() < expiresAt;
   }
 
-  public fetchUser(callback: ((error: Auth0Error, user: Auth0UserProfile) => void)): void {
+  public fetchUser(callback: ((error: Auth0Error | null, user: Auth0UserProfile) => void)): void {
     const accessToken = localStorage.getItem('access_token');
 
     if (!accessToken) {
       console.log('Access Token must exist to fetch user');
     }
 
-    this.auth0.client.userInfo(accessToken, callback);
+    this.auth0.client.userInfo(accessToken as string, callback);
   }
 
   public handleAuthentication(redirect: (location: string) => void) {
@@ -55,12 +63,14 @@ class AuthService {
     redirect('/');
   }
 
-  public setSession(authResult: Auth0DecodedHash) {
-    const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+  private setSession(authResult: Auth0DecodedHash) {
+    if (authResult.expiresIn && authResult.accessToken && authResult.idToken) {
+      const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
 
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
+      localStorage.setItem('access_token', authResult.accessToken);
+      localStorage.setItem('id_token', authResult.idToken);
+      localStorage.setItem('expires_at', expiresAt);
+    }
   }
 }
 

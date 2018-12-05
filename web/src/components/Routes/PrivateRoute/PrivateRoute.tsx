@@ -4,16 +4,18 @@ import { Route } from 'react-router-dom';
 import AuthService from '@core/auth';
 
 export interface PrivateRouteProps {
+  auth?: AuthService;
   component: ReactType;
   path: string;
 }
 
 const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({
+  auth,
   component: Component,
   path,
   ...rest
 }) => {
-  const authService: AuthService = new AuthService();
+  const authService: AuthService = auth || new AuthService();
 
   return (
     <Route
