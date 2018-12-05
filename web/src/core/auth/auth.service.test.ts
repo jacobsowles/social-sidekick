@@ -3,12 +3,6 @@ import moment from 'moment';
 import { init, objectUnderTest } from '@tests/test-base';
 import AuthService from './auth.service';
 
-jest.mock('../history', () => {
-  return {
-    replace: jest.fn()
-  };
-});
-
 describe('AuthService', () => {
   init(AuthService);
 
@@ -64,7 +58,7 @@ describe('AuthService', () => {
       localStorage.setItem('id_token', 'ID Token');
       localStorage.setItem('expires_at', 'Expires At');
 
-      objectUnderTest.logout();
+      objectUnderTest.logout(jest.fn());
     });
 
     it('should remove `access_token` from local storage', () => {
