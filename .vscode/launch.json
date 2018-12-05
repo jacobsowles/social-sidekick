@@ -2,17 +2,28 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Jest Tests",
       "type": "node",
       "request": "launch",
-      "runtimeArgs": [
-        "--inspect-brk",
-        "${workspaceRoot}/web/node_modules/.bin/jest",
-        "--runInBand"
-      ],
+      "name": "Jest All",
+      "program": "${workspaceFolder}/web/node_modules/.bin/jest",
+      "args": ["--runInBand"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "port": 9229
+      "windows": {
+        "program": "${workspaceFolder}/web/node_modules/jest/bin/jest"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/web/node_modules/.bin/jest",
+      "args": ["${relativeFile}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "windows": {
+        "program": "${workspaceFolder}/web/node_modules/jest/bin/jest"
+      }
     }
   ]
 }
