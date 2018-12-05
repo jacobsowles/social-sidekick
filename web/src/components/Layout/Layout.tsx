@@ -7,7 +7,7 @@ import Navbar from '@components/Navbar';
 import Routes from '@components/Routes';
 import './Layout.scss';
 
-interface LayoutProps {
+export interface LayoutProps {
   user?: Auth0UserProfile;
 }
 

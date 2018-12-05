@@ -7,11 +7,11 @@ import {
   ShallowWrapper
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { ReactElement } from 'react';
 
 import { init as initIcons } from '@core/icons';
 import { LocalStorageMock, should } from './test-base';
 import { Global } from './types';
-import { ReactElement } from 'react';
 
 let componentUnderTest: () => ReactElement<{}>;
 let topLevelElementTypeUnderTest: Cheerio | ReactElement<{}> | string;
