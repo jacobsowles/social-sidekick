@@ -25,7 +25,7 @@ class AuthService implements IAuthService {
   }
 
   public isAuthenticated() {
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '');
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at') as string);
     return new Date().getTime() < expiresAt;
   }
 

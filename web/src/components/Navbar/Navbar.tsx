@@ -8,7 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import AuthService from '@core/auth';
 import './Navbar.scss';
 
-interface NavbarProps {
+export interface NavbarProps {
   className?: string;
   username?: string;
   picture?: string;
