@@ -1,19 +1,25 @@
 import {
   configure,
   mount as enzymeMount,
+  ReactWrapper,
   render as enzymeRender,
-  shallow as enzymeShallow
+  shallow as enzymeShallow,
+  ShallowWrapper
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import { init as initIcons } from '@core/icons';
 import { LocalStorageMock, should } from './test-base';
 import { Global } from './types';
+import { ReactElement } from 'react';
 
-let componentUnderTest: () => any;
-let topLevelElementTypeUnderTest: any;
+let componentUnderTest: () => ReactElement<{}>;
+let topLevelElementTypeUnderTest: Cheerio | ReactElement<{}> | string;
 
-const init = (component: () => any, topLevelElementType: any) => {
+const init = (
+  component: () => ReactElement<{}>,
+  topLevelElementType: Cheerio | ReactElement<{}> | string
+) => {
   initIcons();
   should();
   configure({ adapter: new Adapter() });
@@ -21,33 +27,33 @@ const init = (component: () => any, topLevelElementType: any) => {
   topLevelElementTypeUnderTest = topLevelElementType;
 };
 
-const mount = () => {
+const mount = (): ReactWrapper => {
   return enzymeMount(componentUnderTest());
 };
 
-const mountTopLevelElement = () => {
+const mountTopLevelElement = (): ReactWrapper => {
   return mount()
-    .find(topLevelElementTypeUnderTest)
+    .find(topLevelElementTypeUnderTest as string)
     .first();
 };
 
-const render = () => {
+const render = (): Cheerio => {
   return enzymeRender(componentUnderTest());
 };
 
-const renderTopLevelElement = () => {
+const renderTopLevelElement = (): Cheerio => {
   return render()
-    .find(topLevelElementTypeUnderTest)
+    .find(topLevelElementTypeUnderTest as Cheerio)
     .first();
 };
 
-const shallow = () => {
+const shallow = (): ShallowWrapper => {
   return enzymeShallow(componentUnderTest());
 };
 
-const shallowTopLevelElement = () => {
+const shallowTopLevelElement = (): ShallowWrapper => {
   return shallow()
-    .find(topLevelElementTypeUnderTest)
+    .find(topLevelElementTypeUnderTest as string)
     .first();
 };
 
