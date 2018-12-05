@@ -1,5 +1,5 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import { init, shallow } from '@tests/component-test-base';
 import { Nav as BootstrapNav, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navbar, { NavbarProps } from './Navbar';
