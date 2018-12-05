@@ -14,11 +14,11 @@ import { LocalStorageMock, should } from './test-base';
 import { Global } from './types';
 
 let componentUnderTest: () => ReactElement<{}>;
-let topLevelElementTypeUnderTest: Cheerio | ReactElement<{}> | string;
+let topLevelElementTypeUnderTest: Cheerio | ReactElement<{}> | string | undefined;
 
 const init = (
   component: () => ReactElement<{}>,
-  topLevelElementType: Cheerio | ReactElement<{}> | string
+  topLevelElementType?: Cheerio | ReactElement<{}> | string
 ) => {
   initIcons();
   should();
