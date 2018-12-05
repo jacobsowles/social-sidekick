@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { init, render, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import Footer from '@components/Footer';
+import Routes from '@components/Routes';
+import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
 import Layout, { LayoutProps } from './Layout';
-
-jest.mock('../Routes', () => () => <span id="routes" />);
 
 describe('Layout', () => {
   let props: LayoutProps;
@@ -22,14 +22,14 @@ describe('Layout', () => {
   });
 
   it('should always render a Router component', () => {
-    render()
-      .find('#routes')
+    shallow()
+      .find(Routes)
       .should.have.lengthOf(1);
   });
 
   it('should always render a footer element', () => {
-    render()
-      .find('footer')
+    shallow()
+      .find(Footer)
       .should.have.lengthOf(1);
   });
 
