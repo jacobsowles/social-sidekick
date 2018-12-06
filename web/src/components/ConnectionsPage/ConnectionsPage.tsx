@@ -16,11 +16,8 @@ const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ allServices,
   return (
     <main className={classNames('connections-page', className)}>
       <ContentBox>
-        <PageHeader title="Connected Services" />
-      </ContentBox>
-      <ContentBox>
         <PageHeader
-          title="Connect Additional Services"
+          title="Connect Services"
           subtitle="Log into the services below to connect them to your Social Sidekick account."
         />
         {allServices.map((service: Service, key: number) => (
