@@ -48,7 +48,7 @@ const mapDispatchToProps = (
     fetchServices: async (): Promise<Service[]> => {
       dispatch(fetchServicesBegin());
       try {
-        const response: AxiosResponse = await axios.get('/ap/services');
+        const response: AxiosResponse = await axios.get('/api/services');
         dispatch(fetchServicesSuccess(response.data));
         return response.data;
       } catch (error) {
