@@ -1,5 +1,6 @@
 import { Auth0Error, Auth0UserProfile } from 'auth0-js';
 import React, { PureComponent, Dispatch } from 'react';
+import { withAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -7,11 +8,15 @@ import { setError } from '@actions/error.actions';
 import { FetchUserAction, fetchUserSuccess } from '@actions/user.actions';
 import AuthService from '@core/auth';
 
+interface PostAuthPageOwnProps {
+  alert: any;
+}
+
 interface PostAuthPageDispatchProps {
   fetchUser: () => void;
 }
 
-type PostAuthPageProps = PostAuthPageDispatchProps;
+type PostAuthPageProps = PostAuthPageOwnProps & PostAuthPageDispatchProps;
 
 class PostAuthPage extends PureComponent<PostAuthPageProps> {
   public componentDidMount() {
@@ -23,7 +28,10 @@ class PostAuthPage extends PureComponent<PostAuthPageProps> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>) => {
+const mapDispatchToProps = (
+  dispatch: Dispatch<FetchUserAction>,
+  ownProps: PostAuthPageOwnProps
+) => {
   return {
     fetchUser: () => {
       const authService = new AuthService();
@@ -31,6 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>) => {
         if (user) {
           dispatch(fetchUserSuccess(user));
         } else {
+          ownProps.alert.error(error.error);
           dispatch(setError(error.error));
         }
       });
@@ -38,7 +47,9 @@ const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>) => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(PostAuthPage);
+export default withAlert(
+  connect(
+    null,
+    mapDispatchToProps
+  )(PostAuthPage)
+);

@@ -18,6 +18,7 @@ interface AppDispatchProps {
 }
 
 interface AppStateProps {
+  error?: string;
   user?: Auth0UserProfile;
 }
 
@@ -53,6 +54,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>): AppDispatchProps => {
 
 const mapStateToProps = (state: AppState): AppStateProps => {
   return {
+    error: state.error,
     user: state.user
   };
 };

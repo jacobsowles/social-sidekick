@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { Component, Dispatch } from 'react';
+import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 
 import { setError } from '@actions/error.actions';
@@ -11,6 +12,10 @@ import {
 import ConnectionsPage from '@components/ConnectionsPage';
 import { AppState, Service } from '@core/types';
 
+interface ConnectionsPageContainerOwnProps {
+  alert: any;
+}
+
 interface ConnectionsPageContainerDispatchProps {
   fetchServices: () => void;
 }
@@ -20,7 +25,8 @@ interface ConnectionsPageContainerStateProps {
   userId: string;
 }
 
-type ConnectionsPageContainerProps = ConnectionsPageContainerDispatchProps &
+type ConnectionsPageContainerProps = ConnectionsPageContainerOwnProps &
+  ConnectionsPageContainerDispatchProps &
   ConnectionsPageContainerStateProps;
 
 class ConnectionsPageContainer extends Component<ConnectionsPageContainerProps> {
@@ -35,16 +41,18 @@ class ConnectionsPageContainer extends Component<ConnectionsPageContainerProps> 
 }
 
 const mapDispatchToProps = (
-  dispatch: Dispatch<FetchServicesAction>
+  dispatch: Dispatch<FetchServicesAction>,
+  ownProps: ConnectionsPageContainerOwnProps
 ): ConnectionsPageContainerDispatchProps => {
   return {
     fetchServices: async (): Promise<Service[]> => {
       dispatch(fetchServicesBegin());
       try {
-        const response: AxiosResponse = await axios.get('/api/services');
+        const response: AxiosResponse = await axios.get('/ap/services');
         dispatch(fetchServicesSuccess(response.data));
         return response.data;
       } catch (error) {
+        ownProps.alert.error(error.message);
         dispatch(setError(error.message));
       }
     }
@@ -58,7 +66,9 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ConnectionsPageContainer);
+export default withAlert(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ConnectionsPageContainer)
+);
