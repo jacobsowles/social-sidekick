@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Auth0UserProfile } from 'auth0-js';
+import moment from 'moment';
 import React, { FunctionComponent } from 'react';
 
 import Footer from '@components/Footer';
@@ -17,9 +18,9 @@ const Layout: FunctionComponent<LayoutProps> = ({ user }) => {
       <Navbar username={user ? user.name : undefined} picture={user ? user.picture : undefined} />
       <Routes />
       <Footer>
-        <Footer.Content>&copy; Project Name 2018</Footer.Content>
+        <Footer.Content>&copy; Social Sidekick {moment().year()}</Footer.Content>
         <Footer.Content pullRight>
-          <a href="https://github.com/jacobsowles/fullstack-boilerplate">
+          <a href="https://github.com/jacobsowles/social-sidekick">
             <FontAwesomeIcon icon={['fab', 'github']} title="This project on GitHub" />
             This project on GitHub
           </a>
