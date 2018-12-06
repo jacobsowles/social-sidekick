@@ -62,7 +62,7 @@ const mapDispatchToProps = (
 const mapStateToProps = (state: AppState) => {
   return {
     allServices: state.services.data,
-    userId: state.user.user_id
+    userId: state.user ? state.user.user_id : undefined
   };
 };
 
