@@ -20,9 +20,9 @@ class Navbar extends Component<NavbarProps> {
   };
 
   public static defaultProps = {
-    className: '',
-    picture: '',
-    username: ''
+    className: undefined as string,
+    picture: undefined as string,
+    username: undefined as string
   };
 
   private authService = new AuthService();
@@ -54,6 +54,9 @@ class Navbar extends Component<NavbarProps> {
               <>
                 <LinkContainer to="/home">
                   <NavItem>Home</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/connections">
+                  <NavItem>Connections</NavItem>
                 </LinkContainer>
                 <NavDropdown
                   eventKey={1}

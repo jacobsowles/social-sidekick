@@ -3,6 +3,7 @@ import React, { Component, ComponentState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import CallbackPage from '@components/CallbackPage';
+import ConnectionsPage from '@components/ConnectionsPage';
 import ContactPage from '@components/ContactPage';
 import HomePage from '@components/HomePage';
 import LandingPage from '@components/LandingPage';
@@ -44,6 +45,7 @@ class Routes extends Component {
               return <CallbackPage />;
             }}
           />
+          <PrivateRoute path="/connections" component={ConnectionsPage} />
           <Route path="/contact" component={ContactPage} />
           <PrivateRoute path="/home" component={HomePage} />
           <Route path="/postauth" component={PostAuthPage} />
