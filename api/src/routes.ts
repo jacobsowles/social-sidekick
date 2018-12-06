@@ -1,6 +1,7 @@
 import { Express } from 'express';
 
+import * as services from './Service/Service.routes';
+
 export default (app: Express) => {
-  // const someModel = require('./SomeModel/SomeModel.routes');
-  // app.post('/someModel', someModel.add);
+  app.get('/api/services', services.getAll);
 };

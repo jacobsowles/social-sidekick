@@ -6,7 +6,7 @@ import './ServiceIcon.scss';
 
 export interface ServiceIconProps {
   className?: string;
-  iconName: 'github';
+  iconName: string;
   label?: string;
   size?:
     | 'xs'
