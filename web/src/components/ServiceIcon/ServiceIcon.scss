@@ -1,7 +1,23 @@
+@import '@styles/_variables.scss';
+
 .service-icon {
+  border: 2px dashed rgba(0, 0, 0, 0.1);
   display: inline-block;
+  margin-right: 20px;
+  padding: 5px;
+
+  &:hover {
+    border-color: $brand-primary;
+    cursor: pointer;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   p {
+    font-size: 0.8em;
+    font-weight: bold;
     margin-top: 5px;
     text-align: center;
   }
