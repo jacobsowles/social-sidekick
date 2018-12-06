@@ -38,7 +38,7 @@ class Navbar extends Component<NavbarProps> {
           <BootstrapNavbar.Brand>
             <a href="/">
               <FontAwesomeIcon icon="cube" />
-              Project Name
+              Social Sidekick
             </a>
           </BootstrapNavbar.Brand>
           <BootstrapNavbar.Toggle />
