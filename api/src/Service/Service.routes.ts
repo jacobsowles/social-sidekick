@@ -1,27 +1,27 @@
-// TODO: add return type
+const Service = require('./Service.model');
+
 export const add = () => {
   return; // TODO
 };
 
-// TODO: add return type
 export const get = (id: string) => {
   return; // TODO
 };
 
-// TODO: add return type
 export const getAll = (request: any, response: any) => {
-  response.send([
-    {
-      name: 'GitHub'
+  Service.find({}, (error: any, services: any[]) => {
+    if (error) {
+      response.send(error);
     }
-  ]);
+
+    response.send(services);
+  });
 };
 
 export const remove = (): void => {
   return; // TODO
 };
 
-// TODO: add return type
 export const update = (id: string) => {
   return; // TODO
 };

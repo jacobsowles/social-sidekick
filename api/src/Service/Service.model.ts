@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 
 const ServiceSchema = new mongoose.Schema({
-  displayName: { type: String, required: true },
-  oauthName: String
+  name: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Service', ServiceSchema);
