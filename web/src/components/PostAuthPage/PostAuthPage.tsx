@@ -3,12 +3,8 @@ import React, { PureComponent, Dispatch } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {
-  FetchUserAction,
-  fetchUserBegin,
-  fetchUserSuccess,
-  fetchUserFailure
-} from '@actions/auth.actions';
+import { setError } from '@actions/error.actions';
+import { FetchUserAction, fetchUserSuccess } from '@actions/user.actions';
 import AuthService from '@core/auth';
 
 interface PostAuthPageDispatchProps {
@@ -31,13 +27,11 @@ const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>) => {
   return {
     fetchUser: () => {
       const authService = new AuthService();
-      dispatch(fetchUserBegin());
-
       authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
           dispatch(fetchUserSuccess(user));
         } else {
-          dispatch(fetchUserFailure(error.error));
+          dispatch(setError(error.error));
         }
       });
     }

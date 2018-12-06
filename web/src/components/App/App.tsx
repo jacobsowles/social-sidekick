@@ -2,13 +2,10 @@ import { Auth0Error, Auth0UserProfile } from 'auth0-js';
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { Action } from 'redux';
 
-import {
-  FetchUserAction,
-  fetchUserBegin,
-  fetchUserSuccess,
-  fetchUserFailure
-} from '@actions/auth.actions';
+import { setError } from '@actions/error.actions';
+import { fetchUserSuccess } from '@actions/user.actions';
 import Layout from '@components/Layout';
 import AuthService from '@core/auth';
 import { init as initIcons } from '@core/icons';
@@ -39,17 +36,15 @@ class App extends Component<AppProps, AppState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>): AppDispatchProps => {
+const mapDispatchToProps = (dispatch: Dispatch<Action>): AppDispatchProps => {
   return {
     fetchUser: () => {
       const authService = new AuthService();
-      dispatch(fetchUserBegin());
-
       authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
           dispatch(fetchUserSuccess(user));
         } else {
-          dispatch(fetchUserFailure(error.error));
+          dispatch(setError(error.error));
         }
       });
     }
@@ -58,7 +53,7 @@ const mapDispatchToProps = (dispatch: Dispatch<FetchUserAction>): AppDispatchPro
 
 const mapStateToProps = (state: AppState): AppStateProps => {
   return {
-    user: state.auth.user
+    user: state.user
   };
 };
 

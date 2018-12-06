@@ -2,10 +2,10 @@ import axios, { AxiosResponse } from 'axios';
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 
+import { setError } from '@actions/error.actions';
 import {
   FetchServicesAction,
   fetchServicesBegin,
-  fetchServicesFailure,
   fetchServicesSuccess
 } from '@actions/service.actions';
 import ConnectionsPage from '@components/ConnectionsPage';
@@ -45,7 +45,7 @@ const mapDispatchToProps = (
         dispatch(fetchServicesSuccess(response.data));
         return response.data;
       } catch (error) {
-        dispatch(fetchServicesFailure(error.message));
+        dispatch(setError(error.message));
       }
     }
   };
@@ -54,7 +54,7 @@ const mapDispatchToProps = (
 const mapStateToProps = (state: AppState) => {
   return {
     allServices: state.services.data,
-    userId: state.auth.user.user_id
+    userId: state.user.user_id
   };
 };
 
