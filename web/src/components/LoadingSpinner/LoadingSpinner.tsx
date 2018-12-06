@@ -24,7 +24,15 @@ export interface LoadingSpinnerProps {
 }
 
 const LoadingSpinner: FunctionComponent<LoadingSpinnerProps> = ({ className, size, ...rest }) => {
-  return <FontAwesomeIcon icon={['fas', 'spinner']} size={size} {...rest} spin />;
+  return (
+    <FontAwesomeIcon
+      className={classNames('loading-spinner', className)}
+      icon={['fas', 'spinner']}
+      size={size}
+      {...rest}
+      spin
+    />
+  );
 };
 
 LoadingSpinner.defaultProps = {
