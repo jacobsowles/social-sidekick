@@ -3,11 +3,7 @@ import React, { Component, Dispatch } from 'react';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 
-import {
-  FetchServicesAction,
-  fetchServicesBegin,
-  fetchServicesSuccess
-} from '@actions/service.actions';
+import { FetchServicesAction, fetchServicesSuccess } from '@actions/service.actions';
 import ConnectionsPage from '@components/ConnectionsPage';
 import { AppState, Service } from '@core/types';
 
@@ -45,7 +41,6 @@ const mapDispatchToProps = (
 ): ConnectionsPageContainerDispatchProps => {
   return {
     fetchServices: async (): Promise<Service[]> => {
-      dispatch(fetchServicesBegin());
       try {
         const response: AxiosResponse = await axios.get('/api/services');
         dispatch(fetchServicesSuccess(response.data));
@@ -59,7 +54,7 @@ const mapDispatchToProps = (
 
 const mapStateToProps = (state: AppState) => {
   return {
-    allServices: state.services.data,
+    allServices: state.services,
     userId: state.user ? state.user.user_id : undefined
   };
 };

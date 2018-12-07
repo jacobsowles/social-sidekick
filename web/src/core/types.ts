@@ -6,25 +6,16 @@ export interface AppState {
     error?: string;
     isFetching: boolean;
   };
-  services: {
-    data: Service[];
-    error?: string;
-    isFetching: boolean;
-  };
+  services: Service[];
   user?: Auth0UserProfile;
 }
 
-export interface Connection extends DatabaseDocument {
+export interface Connection {
   service: string;
 }
 
 interface DatabaseDocument {
-  id: string;
-}
-
-export interface EntityState {
-  error?: string;
-  isFetching: boolean;
+  _id: string;
 }
 
 export interface Service extends DatabaseDocument {
