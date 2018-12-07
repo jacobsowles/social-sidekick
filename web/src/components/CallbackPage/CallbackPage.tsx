@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
-const CallbackPage: FunctionComponent = () => {
+const CallbackPage = () => {
   return <div className="callback-page" />;
 };
 
