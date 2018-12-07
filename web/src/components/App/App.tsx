@@ -1,10 +1,10 @@
 import { Auth0Error, Auth0UserProfile } from 'auth0-js';
 import React, { Component, Dispatch } from 'react';
+import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { Action } from 'redux';
 
-import { setError } from '@actions/error.actions';
 import { fetchUserSuccess } from '@actions/user.actions';
 import Layout from '@components/Layout';
 import AuthService from '@core/auth';
@@ -13,16 +13,19 @@ import { AppState } from '@core/types';
 
 initIcons();
 
+interface AppOwnProps {
+  alert: any;
+}
+
 interface AppDispatchProps {
   fetchUser: () => void;
 }
 
 interface AppStateProps {
-  error?: string;
   user?: Auth0UserProfile;
 }
 
-type AppProps = RouteComponentProps & AppDispatchProps & AppStateProps;
+type AppProps = RouteComponentProps & AppOwnProps & AppDispatchProps & AppStateProps;
 
 class App extends Component<AppProps, AppState> {
   public componentDidMount() {
@@ -37,7 +40,10 @@ class App extends Component<AppProps, AppState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>): AppDispatchProps => {
+const mapDispatchToProps = (
+  dispatch: Dispatch<Action>,
+  ownProps: AppOwnProps
+): AppDispatchProps => {
   return {
     fetchUser: () => {
       const authService = new AuthService();
@@ -45,7 +51,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>): AppDispatchProps => {
         if (user) {
           dispatch(fetchUserSuccess(user));
         } else {
-          dispatch(setError(error.error));
+          ownProps.alert.error(error.error);
         }
       });
     }
@@ -54,14 +60,15 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>): AppDispatchProps => {
 
 const mapStateToProps = (state: AppState): AppStateProps => {
   return {
-    error: state.error,
     user: state.user
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
+export default withAlert(
+  withRouter(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(App)
+  )
 );

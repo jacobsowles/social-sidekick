@@ -3,7 +3,6 @@ import React, { Component, Dispatch } from 'react';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 
-import { setError } from '@actions/error.actions';
 import {
   FetchServicesAction,
   fetchServicesBegin,
@@ -53,7 +52,6 @@ const mapDispatchToProps = (
         return response.data;
       } catch (error) {
         ownProps.alert.error(error.message);
-        dispatch(setError(error.message));
       }
     }
   };

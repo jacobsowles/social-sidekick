@@ -6,7 +6,6 @@ export interface AppState {
     error?: string;
     isFetching: boolean;
   };
-  error?: string;
   services: {
     data: Service[];
     error?: string;

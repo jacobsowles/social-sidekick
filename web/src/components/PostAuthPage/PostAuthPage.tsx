@@ -4,7 +4,6 @@ import { withAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setError } from '@actions/error.actions';
 import { FetchUserAction, fetchUserSuccess } from '@actions/user.actions';
 import AuthService from '@core/auth';
 
@@ -40,7 +39,6 @@ const mapDispatchToProps = (
           dispatch(fetchUserSuccess(user));
         } else {
           ownProps.alert.error(error.error);
-          dispatch(setError(error.error));
         }
       });
     }
