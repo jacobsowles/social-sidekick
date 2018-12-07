@@ -9,11 +9,11 @@ import { Service } from '@core/types';
 import './ConnectionsPage.scss';
 
 export interface ConnectionsPageProps {
-  allServices: Service[];
+  services: Service[];
   className?: string;
 }
 
-const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ allServices, className }) => {
+const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ services, className }) => {
   return (
     <main className={classNames('connections-page', className)}>
       <ContentBox>
@@ -21,9 +21,9 @@ const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ allServices,
           title="Connect Services"
           subtitle="Log into the services below to connect them to your Social Sidekick account."
         />
-        {(!allServices || allServices.length === 0) && <LoadingSpinner />}
-        {allServices &&
-          allServices.map((service: Service, key: number) => (
+        {(!services || services.length === 0) && <LoadingSpinner />}
+        {services &&
+          services.map((service: Service, key: number) => (
             <ServiceIcon iconName={service.name.toLowerCase()} key={key} label={service.name} />
           ))}
       </ContentBox>
