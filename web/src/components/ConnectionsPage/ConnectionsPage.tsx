@@ -5,11 +5,11 @@ import ContentBox from '@components/ContentBox';
 import LoadingSpinner from '@components/LoadingSpinner';
 import PageHeader from '@components/PageHeader';
 import ServiceIcon from '@components/ServiceIcon';
-import { Service } from '@core/types';
+import { UserService } from '@core/types';
 import './ConnectionsPage.scss';
 
 export interface ConnectionsPageProps {
-  services: Service[];
+  services: UserService[];
   className?: string;
 }
 
@@ -23,8 +23,13 @@ const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ services, cl
         />
         {(!services || services.length === 0) && <LoadingSpinner />}
         {services &&
-          services.map((service: Service, key: number) => (
-            <ServiceIcon iconName={service.name.toLowerCase()} key={key} label={service.name} />
+          services.map((service: UserService, key: number) => (
+            <ServiceIcon
+              iconName={service.name.toLowerCase()}
+              isConnected={service.isConnected}
+              key={key}
+              label={service.name}
+            />
           ))}
       </ContentBox>
     </main>

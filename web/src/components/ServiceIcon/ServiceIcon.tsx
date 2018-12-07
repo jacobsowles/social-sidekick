@@ -7,6 +7,7 @@ import './ServiceIcon.scss';
 export interface ServiceIconProps {
   className?: string;
   iconName: string;
+  isConnected: boolean;
   label?: string;
   size?:
     | 'xs'
@@ -29,11 +30,15 @@ const ServiceIcon: FunctionComponent<ServiceIconProps> = ({
   children,
   className,
   iconName,
+  isConnected,
   label,
   size,
   ...rest
 }) => {
-  const icons: IconProp[] = [{ iconName: 'github', prefix: 'fab' }];
+  const icons: IconProp[] = [
+    { iconName: 'github', prefix: 'fab' },
+    { iconName: 'twitter', prefix: 'fab' }
+  ];
   let selectedIcon = icons.find(i => i.iconName === iconName);
 
   if (!selectedIcon) {
@@ -43,8 +48,20 @@ const ServiceIcon: FunctionComponent<ServiceIconProps> = ({
     };
   }
 
+  const classes = classNames(
+    'service-icon',
+    { 'service-icon-connected': isConnected },
+    'service-icon-' + selectedIcon.iconName,
+    className
+  );
+
   return (
-    <div className={classNames('service-icon', className)}>
+    <div className={classes}>
+      {isConnected && (
+        <span className="badge">
+          <FontAwesomeIcon icon="check" />
+        </span>
+      )}
       <FontAwesomeIcon icon={[selectedIcon.prefix, selectedIcon.iconName]} size={size} {...rest} />
       {label && <p className="service-icon-label">{label}</p>}
     </div>
