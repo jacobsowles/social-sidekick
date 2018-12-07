@@ -1,14 +1,14 @@
 import { Action } from 'redux';
 
-import { Service } from '@core/types';
+import { UserService } from '@core/types';
 
-export interface FetchServicesAction extends Action {
-  services?: Service[];
+export interface ServicesAction extends Action {
+  services?: UserService[];
 }
 
-export const FETCH_SERVICES_SUCCESS = 'FETCH_SERVICES_SUCCESS';
+export const FETCH_SERVICES_FOR_USER_SUCCESS = 'FETCH_SERVICES_FOR_USER_SUCCESS';
 
-export const fetchServicesSuccess = (services: Service[]): FetchServicesAction => ({
+export const fetchServicesForUserSuccess = (services: UserService[]): ServicesAction => ({
   services,
-  type: FETCH_SERVICES_SUCCESS
+  type: FETCH_SERVICES_FOR_USER_SUCCESS
 });

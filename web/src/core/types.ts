@@ -2,7 +2,7 @@ import { Auth0UserProfile } from 'auth0-js';
 
 export interface AppState {
   connections: Connection[];
-  services: Service[];
+  services: UserService[];
   user?: Auth0UserProfile;
 }
 
@@ -17,4 +17,8 @@ interface DatabaseDocument {
 
 export interface Service extends DatabaseDocument {
   name: string;
+}
+
+export interface UserService extends Service {
+  isConnected: boolean;
 }

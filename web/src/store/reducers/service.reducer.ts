@@ -1,10 +1,10 @@
-import { Service } from '@core/types';
+import { UserService } from '@core/types';
 
-import { FetchServicesAction, FETCH_SERVICES_SUCCESS } from '@actions/service.actions';
+import { FETCH_SERVICES_FOR_USER_SUCCESS, ServicesAction } from '@actions/service.actions';
 
-const serviceReducer = (state: Service[] = [], action: FetchServicesAction) => {
+const serviceReducer = (state: UserService[] = [], action: ServicesAction) => {
   switch (action.type) {
-    case FETCH_SERVICES_SUCCESS:
+    case FETCH_SERVICES_FOR_USER_SUCCESS:
       return action.services;
 
     default:

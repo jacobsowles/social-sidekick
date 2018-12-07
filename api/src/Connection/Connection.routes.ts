@@ -1,15 +1,7 @@
 import { Request, Response } from 'express';
 const Connection = require('./Connection.model');
 
-export const add = () => {
-  return; // TODO
-};
-
-export const get = (id: string) => {
-  return; // TODO
-};
-
-export const getAllForUser = (request: Request, response: Response) => {
+export const getForUser = (request: Request, response: Response) => {
   Connection.find({ user: request.query.userId }, (error: any, connections: any[]) => {
     if (error) {
       response.send(error);
@@ -17,12 +9,4 @@ export const getAllForUser = (request: Request, response: Response) => {
 
     response.send(connections);
   });
-};
-
-export const remove = (): void => {
-  return; // TODO
-};
-
-export const update = (id: string) => {
-  return; // TODO
 };
