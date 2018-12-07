@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { Action } from 'redux';
 
-import { fetchUserSuccess } from '@actions/user.actions';
+import { fetchUserSuccess, logout } from '@actions/user.actions';
 import Layout from '@components/Layout';
 import AuthService from '@core/auth';
 import { init as initIcons } from '@core/icons';
@@ -19,6 +19,7 @@ interface AppOwnProps {
 
 interface AppDispatchProps {
   fetchUser: () => void;
+  logout: () => void;
 }
 
 interface AppStateProps {
@@ -36,7 +37,7 @@ class App extends Component<AppProps, AppState> {
   }
 
   public render() {
-    return <Layout user={this.props.user} />;
+    return <Layout user={this.props.user} handleLogout={this.props.logout} />;
   }
 }
 
@@ -54,6 +55,9 @@ const mapDispatchToProps = (
           ownProps.alert.error(error.error);
         }
       });
+    },
+    logout: () => {
+      dispatch(logout());
     }
   };
 };

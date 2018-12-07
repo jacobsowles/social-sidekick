@@ -9,13 +9,18 @@ import Routes from '@components/Routes';
 import './Layout.scss';
 
 export interface LayoutProps {
+  handleLogout: () => void;
   user?: Auth0UserProfile;
 }
 
-const Layout: FunctionComponent<LayoutProps> = ({ user }) => {
+const Layout: FunctionComponent<LayoutProps> = ({ handleLogout, user }) => {
   return (
     <div className="layout">
-      <Navbar username={user ? user.name : undefined} picture={user ? user.picture : undefined} />
+      <Navbar
+        handleLogout={handleLogout}
+        picture={user ? user.picture : undefined}
+        username={user ? user.name : undefined}
+      />
       <Routes />
       <Footer>
         <Footer.Content>&copy; Social Sidekick {moment().year()}</Footer.Content>

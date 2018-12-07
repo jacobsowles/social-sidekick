@@ -10,8 +10,9 @@ import './Navbar.scss';
 
 export interface NavbarProps {
   className?: string;
-  username?: string;
+  handleLogout: () => void;
   picture?: string;
+  username?: string;
 }
 
 class Navbar extends Component<NavbarProps> {
@@ -29,6 +30,7 @@ class Navbar extends Component<NavbarProps> {
 
   public logout = () => {
     this.authService.logout((location: string) => this.context.router.history.replace(location));
+    this.props.handleLogout();
   };
 
   public render() {

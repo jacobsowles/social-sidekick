@@ -3,8 +3,9 @@ import React, { PureComponent, Dispatch } from 'react';
 import { withAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Action } from 'redux';
 
-import { FetchUserAction, fetchUserSuccess } from '@actions/user.actions';
+import { fetchUserSuccess } from '@actions/user.actions';
 import AuthService from '@core/auth';
 
 interface PostAuthPageOwnProps {
@@ -27,10 +28,7 @@ class PostAuthPage extends PureComponent<PostAuthPageProps> {
   }
 }
 
-const mapDispatchToProps = (
-  dispatch: Dispatch<FetchUserAction>,
-  ownProps: PostAuthPageOwnProps
-) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: PostAuthPageOwnProps) => {
   return {
     fetchUser: () => {
       const authService = new AuthService();
