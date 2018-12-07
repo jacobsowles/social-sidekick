@@ -40,10 +40,9 @@ class Routes extends Component {
           />
           <Route
             path="/callback"
-            render={props => {
-              this.handleAuthentication(props);
-              return <CallbackPage />;
-            }}
+            render={props => (
+              <CallbackPage handleAuthentication={this.handleAuthentication} {...props} />
+            )}
           />
           <PrivateRoute path="/connections" component={ConnectionsPageContainer} />
           <Route path="/contact" component={ContactPage} />
