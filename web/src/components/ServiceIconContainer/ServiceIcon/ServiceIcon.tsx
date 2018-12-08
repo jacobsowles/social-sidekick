@@ -9,7 +9,7 @@ export interface ServiceIconProps {
   className?: string;
   icon: IconProp;
   label?: string;
-  onConnect: (event: any) => void;
+  onClick: () => void;
   onMouseOut: () => void;
   onMouseOver: () => void;
 }
@@ -19,17 +19,12 @@ const ServiceIcon: FunctionComponent<ServiceIconProps> = ({
   className,
   icon,
   label,
-  onConnect,
+  onClick,
   onMouseOut,
   onMouseOver
 }) => {
   return (
-    <div
-      className={className}
-      onClick={onConnect}
-      onMouseOut={onMouseOut}
-      onMouseOver={onMouseOver}
-    >
+    <div className={className} onClick={onClick} onMouseOut={onMouseOut} onMouseOver={onMouseOver}>
       {badgeIcon && (
         <span className="badge">
           <FontAwesomeIcon icon={badgeIcon} />

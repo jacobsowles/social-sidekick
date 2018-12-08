@@ -4,6 +4,10 @@ const alreadyExistsResponse = (response: Response, entityName: string) => {
   return errorResponse(response, 409, entityName + ' already exists');
 };
 
+const doesNotExistResponse = (response: Response, entityName: string) => {
+  return errorResponse(response, 409, entityName + ' does not exists');
+};
+
 const errorResponse = (response: Response, statusCode: number, errorMessage: string) => {
   return response.status(statusCode).json({ message: errorMessage });
 };
@@ -27,6 +31,7 @@ const unknownErrorResponse = (response: Response, errorMessage: string) => {
 export {
   alreadyExistsResponse,
   createdResponse,
+  doesNotExistResponse,
   errorResponse,
   missingParamResponse,
   okResponse,

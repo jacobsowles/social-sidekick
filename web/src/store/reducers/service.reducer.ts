@@ -1,11 +1,32 @@
 import { UserService } from '@core/types';
 
+import {
+  ADD_CONNECTION_SUCCESS,
+  ConnectionAction,
+  REMOVE_CONNECTION_SUCCESS
+} from '@actions/connection.actions';
 import { FETCH_SERVICES_FOR_USER_SUCCESS, ServicesAction } from '@actions/service.actions';
 
-const serviceReducer = (state: UserService[] = [], action: ServicesAction) => {
+const serviceReducer = (state: UserService[] = [], action: ServicesAction | ConnectionAction) => {
   switch (action.type) {
+    case ADD_CONNECTION_SUCCESS:
+      return state.map((service: UserService) => {
+        if (service._id === (action as ConnectionAction).serviceId) {
+          return { ...service, isConnected: true };
+        }
+        return service;
+      });
+
     case FETCH_SERVICES_FOR_USER_SUCCESS:
-      return action.services;
+      return (action as ServicesAction).services;
+
+    case REMOVE_CONNECTION_SUCCESS:
+      return state.map((service: UserService) => {
+        if (service._id === (action as ConnectionAction).serviceId) {
+          return { ...service, isConnected: false };
+        }
+        return service;
+      });
 
     default:
       return state;

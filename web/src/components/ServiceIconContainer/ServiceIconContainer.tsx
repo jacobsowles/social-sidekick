@@ -1,12 +1,13 @@
 import { IconLookup, IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import classNames from 'classnames';
 import React, { Component, Dispatch } from 'react';
 import { Action } from 'redux';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 
-import { AppState } from '@core/types';
+import { addConnectionSuccess, removeConnectionSuccess } from '@actions/connection.actions';
+import { AppState, Connection } from '@core/types';
 import ServiceIcon from './ServiceIcon';
 
 export interface ServiceIconContainerOwnProps {
@@ -20,6 +21,7 @@ export interface ServiceIconContainerOwnProps {
 
 export interface ServiceIconContainerDispatchProps {
   addConnection: (serviceId: string, userId: string) => void;
+  removeConnection: (serviceId: string, userId: string) => void;
 }
 
 export interface ServiceIconContainerStateProps {
@@ -68,6 +70,9 @@ class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceI
     );
 
     const badgeIcon: IconProp = isConnected ? (this.state.isHover ? 'times' : 'check') : undefined;
+    const onClick = isConnected
+      ? () => this.props.removeConnection(this.props.serviceId, this.props.userId)
+      : () => this.props.addConnection(this.props.serviceId, this.props.userId);
 
     return (
       <ServiceIcon
@@ -75,9 +80,7 @@ class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceI
         className={classes}
         icon={[selectedIcon.prefix, selectedIcon.iconName]}
         label={label}
-        onConnect={(event: any) =>
-          this.props.addConnection(this.props.serviceId, this.props.userId)
-        }
+        onClick={onClick}
         onMouseOut={() => this.setHover(false)}
         onMouseOver={() => this.setHover(true)}
         {...rest}
@@ -96,12 +99,25 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: ServiceIconCon
   return {
     addConnection: async (serviceId: string, userId: string) => {
       try {
-        await axios.post('/api/connections', {
+        const response: AxiosResponse = await axios.post('/api/connections', {
           serviceId,
           userId: 'auth0|5be62025165bea1f5ba3e665' // TODO: get userId dynamically
         });
+        const connection: Connection = response.data;
+        dispatch(addConnectionSuccess(connection.service));
       } catch (error) {
         ownProps.alert.error('Unable to add connection.');
+      }
+    },
+    removeConnection: async (serviceId: string, userId: string) => {
+      try {
+        const response: AxiosResponse = await axios.post('/api/connections/remove', {
+          serviceId,
+          userId: 'auth0|5be62025165bea1f5ba3e665' // TODO: get userId dynamically
+        });
+        dispatch(removeConnectionSuccess(serviceId));
+      } catch (error) {
+        ownProps.alert.error('Unable to remove connection.');
       }
     }
   };
