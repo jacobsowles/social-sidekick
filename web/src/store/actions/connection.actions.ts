@@ -1,14 +1,21 @@
 import { Action } from 'redux';
 
-import { Connection } from '@core/types';
-
-export interface FetchConnectionsAction extends Action {
-  connections?: Connection[];
+export interface ConnectionAction extends Action {
+  serviceId: string;
+  userId: string;
 }
 
-export const FETCH_CONNECTIONS_SUCCESS = 'FETCH_CONNECTIONS_SUCCESS';
+export const ADD_CONNECTION_SUCCESS = 'ADD_CONNECTION_SUCCESS';
+export const REMOVE_CONNECTION_SUCCESS = 'REMOVE_CONNECTION_SUCCESS';
 
-export const fetchConnectionsSuccess = (connections: Connection[]): FetchConnectionsAction => ({
-  connections,
-  type: FETCH_CONNECTIONS_SUCCESS
+export const addConnectionSuccess = (serviceId: string, userId: string): ConnectionAction => ({
+  serviceId,
+  type: ADD_CONNECTION_SUCCESS,
+  userId
+});
+
+export const removeConnectionSuccess = (serviceId: string, userId: string): ConnectionAction => ({
+  serviceId,
+  type: REMOVE_CONNECTION_SUCCESS,
+  userId
 });

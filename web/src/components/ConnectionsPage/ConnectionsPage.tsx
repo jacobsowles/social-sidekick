@@ -23,12 +23,13 @@ const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ services, cl
         />
         {(!services || services.length === 0) && <LoadingSpinner />}
         {services &&
-          services.map((service: UserService, key: number) => (
+          services.map((service: UserService) => (
             <ServiceIconContainer
               iconName={service.name.toLowerCase()}
               isConnected={service.isConnected}
-              key={key}
+              key={service._id}
               label={service.name}
+              serviceId={service._id}
             />
           ))}
       </ContentBox>

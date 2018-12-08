@@ -24,6 +24,7 @@ export async function getForUser(request: Request, response: Response) {
 
   const userServices: any[] = services.map((service: any) => {
     return {
+      _id: service._id,
       isConnected:
         connections.filter(connection => connection.service.equals(service._id)).length > 0,
       name: service.name // TODO: return the entire service object

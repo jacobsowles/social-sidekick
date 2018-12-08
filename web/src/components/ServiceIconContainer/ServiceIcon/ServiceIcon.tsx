@@ -1,4 +1,4 @@
-import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FunctionComponent } from 'react';
 
@@ -9,9 +9,9 @@ export interface ServiceIconProps {
   className?: string;
   icon: IconProp;
   label?: string;
+  onConnect: (event: any) => void;
   onMouseOut: () => void;
   onMouseOver: () => void;
-  size: SizeProp;
 }
 
 const ServiceIcon: FunctionComponent<ServiceIconProps> = ({
@@ -19,19 +19,24 @@ const ServiceIcon: FunctionComponent<ServiceIconProps> = ({
   className,
   icon,
   label,
+  onConnect,
   onMouseOut,
-  onMouseOver,
-  size
+  onMouseOver
 }) => {
   return (
-    <div className={className} onMouseOut={onMouseOut} onMouseOver={onMouseOver}>
+    <div
+      className={className}
+      onClick={onConnect}
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
+    >
       {badgeIcon && (
         <span className="badge">
           <FontAwesomeIcon icon={badgeIcon} />
         </span>
       )}
 
-      <FontAwesomeIcon icon={icon} size={size} />
+      <FontAwesomeIcon icon={icon} size="4x" />
 
       {label && <p className="service-icon-label">{label}</p>}
     </div>

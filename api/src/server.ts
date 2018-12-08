@@ -4,13 +4,16 @@ import compression from 'compression';
 import connectMongo from 'connect-mongo';
 import dotenv from 'dotenv';
 import errorHandler from 'errorhandler';
-import { Errback, Request, Response } from 'express';
+import express, { Errback, Express, Request, Response } from 'express';
 import session from 'express-session';
 import expressValidator from 'express-validator';
 import http from 'http';
 import mongoose from 'mongoose';
 import logger from 'morgan';
-import app from './app';
+
+import routes from './routes';
+
+const app: Express = express();
 
 dotenv.config();
 
@@ -42,6 +45,8 @@ app.use(
     })
   })
 );
+
+routes(app);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());
