@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import ContentBox from '@components/ContentBox';
 import LoadingSpinner from '@components/LoadingSpinner';
 import PageHeader from '@components/PageHeader';
-import ServiceIcon from '@components/ServiceIcon';
+import ServiceIconContainer from '@components/ServiceIconContainer';
 import { UserService } from '@core/types';
 import './ConnectionsPage.scss';
 
@@ -24,7 +24,7 @@ const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ services, cl
         {(!services || services.length === 0) && <LoadingSpinner />}
         {services &&
           services.map((service: UserService, key: number) => (
-            <ServiceIcon
+            <ServiceIconContainer
               iconName={service.name.toLowerCase()}
               isConnected={service.isConnected}
               key={key}
