@@ -27,6 +27,16 @@
   border: 2px solid rgba(0, 0, 0, 0.3);
   position: relative;
 
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.1);
+
+    .badge {
+      background: red;
+      padding: 5px 7px;
+    }
+  }
+
   .badge {
     background: #207232;
     border-radius: 12px;
