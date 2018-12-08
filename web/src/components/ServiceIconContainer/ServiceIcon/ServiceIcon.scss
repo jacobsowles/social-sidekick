@@ -24,13 +24,13 @@
 }
 
 .service-icon-connected {
-  border: 0;
+  border: 2px solid #ffffff;
   box-shadow: $box-shadow;
   position: relative;
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
-    border-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid #ffffff;
 
     .badge {
       background: red;
