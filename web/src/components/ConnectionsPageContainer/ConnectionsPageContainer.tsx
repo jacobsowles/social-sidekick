@@ -42,9 +42,8 @@ const mapDispatchToProps = (
   return {
     fetchServicesForUser: async (userId: string): Promise<UserService[]> => {
       try {
-        const response: AxiosResponse = await axios.get(
-          `/api/servicesForUser?userId=auth0|5be62025165bea1f5ba3e665`
-        ); // TODO: get ID dynamically
+        console.log(userId);
+        const response: AxiosResponse = await axios.get(`/api/servicesForUser?userId=${userId}`);
         dispatch(fetchServicesForUserSuccess(response.data));
         return response.data;
       } catch (error) {

@@ -46,8 +46,9 @@ class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceI
   }
 
   public render() {
-    const { className, iconName, isConnected, label, serviceId, ...rest } = this.props;
-
+    console.log('this.props: ', this.props);
+    const { className, iconName, isConnected, label, serviceId, userId, ...rest } = this.props;
+    console.log('userId: ', userId);
     const icons: IconLookup[] = [
       { iconName: 'github', prefix: 'fab' },
       { iconName: 'twitter', prefix: 'fab' }
@@ -71,8 +72,8 @@ class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceI
 
     const badgeIcon: IconProp = isConnected ? (this.state.isHover ? 'times' : 'check') : undefined;
     const onClick = isConnected
-      ? () => this.props.removeConnection(this.props.serviceId, this.props.userId)
-      : () => this.props.addConnection(this.props.serviceId, this.props.userId);
+      ? () => this.props.removeConnection(serviceId, userId)
+      : () => this.props.addConnection(serviceId, userId);
 
     return (
       <ServiceIcon
@@ -101,7 +102,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: ServiceIconCon
       try {
         const response: AxiosResponse = await axios.post('/api/connections', {
           serviceId,
-          userId: 'auth0|5be62025165bea1f5ba3e665' // TODO: get userId dynamically
+          userId
         });
         const connection: Connection = response.data;
         dispatch(addConnectionSuccess(connection.service));
@@ -111,9 +112,9 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: ServiceIconCon
     },
     removeConnection: async (serviceId: string, userId: string) => {
       try {
-        const response: AxiosResponse = await axios.post('/api/connections/remove', {
+        await axios.post('/api/connections/remove', {
           serviceId,
-          userId: 'auth0|5be62025165bea1f5ba3e665' // TODO: get userId dynamically
+          userId
         });
         dispatch(removeConnectionSuccess(serviceId));
       } catch (error) {
@@ -123,9 +124,9 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: ServiceIconCon
   };
 };
 
-const mapStateToProps = (state: AppState) => {
+const mapStateToProps = (state: AppState): ServiceIconContainerStateProps => {
   return {
-    userId: state.user.user_id
+    userId: state.user.sub
   };
 };
 

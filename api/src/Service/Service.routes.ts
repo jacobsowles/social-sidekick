@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 
+import { okResponse, unknownErrorResponse } from '../responses';
+
 const Connection = require('../Connection/Connection.model');
 const Service = require('./Service.model');
 
@@ -18,8 +20,8 @@ export async function getForUser(request: Request, response: Response) {
       .catch((error: any) => response.send(error))
   ]);
 
-  if (connections.length === 0) {
-    response.send('Unable to retrieve connections.'); // TODO: put this in a proper error object
+  if (services.length === 0) {
+    return unknownErrorResponse(response, 'Unable to retrieve services.');
   }
 
   const userServices: any[] = services.map((service: any) => {
@@ -31,5 +33,5 @@ export async function getForUser(request: Request, response: Response) {
     };
   });
 
-  response.send(userServices);
+  return okResponse(response, userServices);
 }
