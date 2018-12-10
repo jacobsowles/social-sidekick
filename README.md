@@ -1,3 +1,5 @@
+![Connected Services page screenshot](/screenshots/connected-services.png?raw=true)
+
 ## Getting Started
 
 First, install dependencies:
