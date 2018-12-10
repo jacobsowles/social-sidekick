@@ -1,4 +1,5 @@
-![Connected Services page screenshot](/screenshots/connected-services.png?raw=true)
+![Connected Services page screenshot](/screenshots/connected-services.png?raw=true "Desktop")
+![Connected Services mobile page screenshot](/screenshots/connected-services-mobile.png?raw=true "Mobile")
 
 ## Getting Started
 
