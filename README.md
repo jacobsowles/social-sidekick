@@ -1,3 +1,6 @@
+# Social Sidekick
+Manage profile information between your various social media accounts.
+
 ![Connected Services page screenshot](/screenshots/connected-services.png?raw=true "Desktop")
 ![Connected Services mobile page screenshot](/screenshots/connected-services-mobile.png?raw=true "Mobile")
 
