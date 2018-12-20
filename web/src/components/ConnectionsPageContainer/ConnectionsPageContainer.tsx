@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { Component, Dispatch } from 'react';
-import { withAlert } from 'react-alert';
+import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 
@@ -9,7 +9,7 @@ import ConnectionsPage from '@components/ConnectionsPage';
 import { AppState, UserService } from '@core/types';
 
 interface ConnectionsPageContainerOwnProps {
-  alert: any;
+  alert: InjectedAlertProp;
 }
 
 interface ConnectionsPageContainerDispatchProps {
