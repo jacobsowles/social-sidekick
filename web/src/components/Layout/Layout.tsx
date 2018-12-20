@@ -14,6 +14,7 @@ export interface LayoutProps {
 }
 
 const Layout: FunctionComponent<LayoutProps> = ({ handleLogout, user }) => {
+  console.log('rendering Layout');
   return (
     <div className="layout">
       <Navbar

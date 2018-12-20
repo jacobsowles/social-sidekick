@@ -29,14 +29,15 @@ interface AppStateProps {
 type AppProps = RouteComponentProps & AppOwnProps & AppDispatchProps & AppStateProps;
 
 class App extends Component<AppProps, AppState> {
-  public componentDidMount() {
+  public async componentDidMount() {
     const authService: AuthService = new AuthService();
     if (authService.isAuthenticated() && !this.props.user) {
-      this.props.fetchUser();
+      await this.props.fetchUser();
     }
   }
 
   public render() {
+    console.log('rendering App');
     return <Layout user={this.props.user} handleLogout={this.props.logout} />;
   }
 }
@@ -46,10 +47,12 @@ const mapDispatchToProps = (
   ownProps: AppOwnProps
 ): AppDispatchProps => {
   return {
-    fetchUser: () => {
+    fetchUser: async () => {
+      console.log('fetching user');
       const authService = new AuthService();
-      authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
+      await authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
+          console.log('user fetch complete');
           dispatch(fetchUserSuccess(user));
         } else {
           ownProps.alert.error(error.error);

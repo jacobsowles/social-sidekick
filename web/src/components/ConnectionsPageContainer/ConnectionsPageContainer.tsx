@@ -5,7 +5,7 @@ import { Action } from 'redux';
 
 import { setUserServices } from '@actions/service.actions';
 import ConnectionsPage from '@components/ConnectionsPage';
-import { getUserServices } from '@core/api';
+import ApiService from '@core/api';
 import { AppState, UserService } from '@core/types';
 
 interface ConnectionsPageContainerOwnProps {
@@ -27,10 +27,12 @@ type ConnectionsPageContainerProps = ConnectionsPageContainerOwnProps &
 
 class ConnectionsPageContainer extends Component<ConnectionsPageContainerProps> {
   public componentDidMount() {
+    console.log('ConnectionsPageContainer mounted');
     this.props.getUserServices(this.props.userId);
   }
 
   public render() {
+    console.log('rendering ConnectionsPageContainer');
     return <ConnectionsPage services={this.props.services} />;
   }
 }
@@ -42,7 +44,8 @@ const mapDispatchToProps = (
   return {
     getUserServices: async (userId: string): Promise<UserService[]> => {
       try {
-        const response = await getUserServices(userId);
+        const api = new ApiService();
+        const response = await api.getUserServices(userId);
         dispatch(setUserServices(response.data));
         return response.data;
       } catch (error) {
