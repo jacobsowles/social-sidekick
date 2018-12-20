@@ -1,5 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import './ServiceIcon.scss';
@@ -24,7 +25,12 @@ const ServiceIcon: FunctionComponent<ServiceIconProps> = ({
   onMouseOver
 }) => {
   return (
-    <div className={className} onClick={onClick} onMouseOut={onMouseOut} onMouseOver={onMouseOver}>
+    <div
+      className={classNames('service-icon', className)}
+      onClick={onClick}
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
+    >
       {badgeIcon && (
         <span className="badge">
           <FontAwesomeIcon icon={badgeIcon} />

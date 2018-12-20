@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
-import HomePage from '@components/HomePage';
+import HomePage from '@pages/HomePage';
 
 describe('HomePage', () => {
   init(() => <HomePage />, 'div');

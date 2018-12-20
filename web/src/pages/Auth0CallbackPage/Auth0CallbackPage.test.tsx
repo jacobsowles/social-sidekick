@@ -4,7 +4,7 @@ import { init, shallow, shallowTopLevelElement } from '@tests/component-test-bas
 import Auth0CallbackPage from '@pages/Auth0CallbackPage';
 
 describe('Auth0CallbackPage', () => {
-  init(() => <Auth0CallbackPage />, 'div');
+  init(() => <Auth0CallbackPage handleAuthentication={jest.fn} />, 'div');
 
   it('should always render a div element', () => {
     shallow()

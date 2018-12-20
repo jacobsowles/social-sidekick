@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
-import LandingPage from '@components/LandingPage';
+import LandingPage from '@pages/LandingPage';
 
 describe('LandingPage', () => {
   init(() => <LandingPage />, 'div');

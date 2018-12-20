@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
-import ContactPage from '@components/ContactPage';
+import ContactPage from '@pages/ContactPage';
 
 describe('ContactPage', () => {
   init(() => <ContactPage />, 'div');
