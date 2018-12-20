@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Action } from 'redux';
 
 import { setUserServicesState } from '@actions/service.actions';
-import ConnectionsPage from '@components/ConnectionsPage';
 import ApiService from '@core/api';
 import { AppState, UserService } from '@core/types';
+import ConnectionsPage from './ConnectionsPage';
 
 interface ConnectionsPageContainerOwnProps {
   alert: InjectedAlertProp;

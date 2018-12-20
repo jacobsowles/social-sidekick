@@ -222,6 +222,7 @@ module.exports = {
       '@assets': path.resolve(__dirname, '../src/assets'),
       '@components': path.resolve(__dirname, '../src/components'),
       '@core': path.resolve(__dirname, '../src/core'),
+      '@pages': path.resolve(__dirname, '../src/pages'),
       '@reducers': path.resolve(__dirname, '../src/store/reducers'),
       '@store': path.resolve(__dirname, '../src/store'),
       '@styles': path.resolve(__dirname, '../src/styles'),

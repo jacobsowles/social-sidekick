@@ -11,6 +11,7 @@
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
       "@core/*": ["core/*"],
+      "@pages/*": ["pages/*"],
       "@reducers/*": ["store/reducers/*"],
       "@store/*": ["store/*"],
       "@styles/*": ["styles/*"],
