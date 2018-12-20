@@ -6,9 +6,9 @@ export interface ServicesAction extends Action {
   services?: UserService[];
 }
 
-export const FETCH_SERVICES_FOR_USER_SUCCESS = 'FETCH_SERVICES_FOR_USER_SUCCESS';
+export const SET_USER_SERVICES = 'SET_USER_SERVICES';
 
-export const fetchServicesForUserSuccess = (services: UserService[]): ServicesAction => ({
+export const setUserServices = (services: UserService[]): ServicesAction => ({
   services,
-  type: FETCH_SERVICES_FOR_USER_SUCCESS
+  type: SET_USER_SERVICES
 });

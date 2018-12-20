@@ -11,5 +11,5 @@ export default (app: Express) => {
   app.post('/api/connections/authorize/github/auth-url', connections.getGitHubAuthUrl);
   app.post('/api/connections/remove', connections.remove);
 
-  app.get('/api/servicesForUser', services.getForUser);
+  app.get('/api/userServices', services.getForUser);
 };

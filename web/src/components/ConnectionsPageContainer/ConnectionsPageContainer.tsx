@@ -3,9 +3,9 @@ import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 
-import { fetchServicesForUserSuccess } from '@actions/service.actions';
+import { setUserServices } from '@actions/service.actions';
 import ConnectionsPage from '@components/ConnectionsPage';
-import { getServicesForUser } from '@core/api';
+import { getUserServices } from '@core/api';
 import { AppState, UserService } from '@core/types';
 
 interface ConnectionsPageContainerOwnProps {
@@ -13,7 +13,7 @@ interface ConnectionsPageContainerOwnProps {
 }
 
 interface ConnectionsPageContainerDispatchProps {
-  fetchServicesForUser: (userId: string) => Promise<UserService[]>;
+  getUserServices: (userId: string) => Promise<UserService[]>;
 }
 
 interface ConnectionsPageContainerStateProps {
@@ -27,7 +27,7 @@ type ConnectionsPageContainerProps = ConnectionsPageContainerOwnProps &
 
 class ConnectionsPageContainer extends Component<ConnectionsPageContainerProps> {
   public componentDidMount() {
-    this.props.fetchServicesForUser(this.props.userId);
+    this.props.getUserServices(this.props.userId);
   }
 
   public render() {
@@ -40,10 +40,10 @@ const mapDispatchToProps = (
   ownProps: ConnectionsPageContainerOwnProps
 ): ConnectionsPageContainerDispatchProps => {
   return {
-    fetchServicesForUser: async (userId: string): Promise<UserService[]> => {
+    getUserServices: async (userId: string): Promise<UserService[]> => {
       try {
-        const response = await getServicesForUser(userId);
-        dispatch(fetchServicesForUserSuccess(response.data));
+        const response = await getUserServices(userId);
+        dispatch(setUserServices(response.data));
         return response.data;
       } catch (error) {
         ownProps.alert.error('Unable to load list of services.');

@@ -15,6 +15,6 @@ export const getAccessToken = async (
   });
 };
 
-export const getServicesForUser = async (userId: string): Promise<AxiosResponse> => {
-  return axios.get(`/api/servicesForUser?userId=${userId}`);
+export const getUserServices = async (userId: string): Promise<AxiosResponse> => {
+  return axios.get(`/api/userServices?userId=${userId}`);
 };

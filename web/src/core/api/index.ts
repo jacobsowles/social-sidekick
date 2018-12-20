@@ -1,1 +1,1 @@
-export { getAccessToken, getServicesForUser } from './api';
+export { getAccessToken, getUserServices } from './api';

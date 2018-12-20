@@ -5,7 +5,7 @@ import {
   ConnectionAction,
   REMOVE_CONNECTION_SUCCESS
 } from '@actions/connection.actions';
-import { FETCH_SERVICES_FOR_USER_SUCCESS, ServicesAction } from '@actions/service.actions';
+import { SET_USER_SERVICES, ServicesAction } from '@actions/service.actions';
 
 const serviceReducer = (state: UserService[] = [], action: ServicesAction | ConnectionAction) => {
   switch (action.type) {
@@ -17,7 +17,7 @@ const serviceReducer = (state: UserService[] = [], action: ServicesAction | Conn
         return service;
       });
 
-    case FETCH_SERVICES_FOR_USER_SUCCESS:
+    case SET_USER_SERVICES:
       return (action as ServicesAction).services;
 
     case REMOVE_CONNECTION_SUCCESS:
