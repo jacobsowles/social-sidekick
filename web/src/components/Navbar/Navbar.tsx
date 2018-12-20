@@ -65,7 +65,10 @@ class Navbar extends Component<NavbarProps> {
                   id="user-dropdown"
                   title={
                     <span className="profile-thumbnail">
-                      <img src={this.props.picture} alt="thumbnail" />
+                      <img
+                        src={this.props.picture || 'thumbnail-placeholder.gif'}
+                        alt="thumbnail"
+                      />
                     </span>
                   }
                 >
