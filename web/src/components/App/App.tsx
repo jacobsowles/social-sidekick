@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { Action } from 'redux';
 
-import { fetchUserSuccess, logout } from '@actions/user.actions';
+import { setUserState, logout } from '@actions/user.actions';
 import Layout from '@components/Layout';
 import AuthService from '@core/auth';
 import { init as initIcons } from '@core/icons';
@@ -18,7 +18,7 @@ interface AppOwnProps {
 }
 
 interface AppDispatchProps {
-  fetchUser: () => void;
+  getUser: () => void;
   logout: () => void;
 }
 
@@ -32,7 +32,7 @@ class App extends Component<AppProps, AppState> {
   public async componentDidMount() {
     const authService: AuthService = new AuthService();
     if (authService.isAuthenticated() && !this.props.user) {
-      await this.props.fetchUser();
+      await this.props.getUser();
     }
   }
 
@@ -47,13 +47,13 @@ const mapDispatchToProps = (
   ownProps: AppOwnProps
 ): AppDispatchProps => {
   return {
-    fetchUser: async () => {
-      console.log('fetching user');
+    getUser: async () => {
+      console.log('getting user');
       const authService = new AuthService();
-      await authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
+      await authService.getUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
-          console.log('user fetch complete');
-          dispatch(fetchUserSuccess(user));
+          console.log('user get complete');
+          dispatch(setUserState(user));
         } else {
           ownProps.alert.error(error.error);
         }

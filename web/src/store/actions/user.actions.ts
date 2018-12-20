@@ -5,12 +5,9 @@ export interface UserAction extends Action {
   user?: Auth0UserProfile;
 }
 
-export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
+export const SET_USER = 'SET_USER';
 export const LOGOUT = 'LOGOUT';
 
-export const fetchUserSuccess = (user: Auth0UserProfile): UserAction => ({
-  type: FETCH_USER_SUCCESS,
-  user
-});
+export const setUserState = (user: Auth0UserProfile): UserAction => ({ type: SET_USER, user });
 
 export const logout = (): UserAction => ({ type: LOGOUT });

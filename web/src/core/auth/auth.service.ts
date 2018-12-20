@@ -2,7 +2,7 @@ import auth0, { Auth0DecodedHash, Auth0Error, Auth0UserProfile } from 'auth0-js'
 
 interface IAuthService {
   isAuthenticated: () => boolean;
-  fetchUser: (callback: ((error: Auth0Error | null, user: Auth0UserProfile) => void)) => void;
+  getUser: (callback: ((error: Auth0Error | null, user: Auth0UserProfile) => void)) => void;
   handleAuthentication: (redirect: (location: string) => void) => void;
   login: () => void;
   logout: (redirect: (location: string) => void) => void;
@@ -29,7 +29,7 @@ class AuthService implements IAuthService {
     return new Date().getTime() < expiresAt;
   }
 
-  public fetchUser(callback: ((error: Auth0Error | null, user: Auth0UserProfile) => void)): void {
+  public getUser(callback: ((error: Auth0Error | null, user: Auth0UserProfile) => void)): void {
     const accessToken = localStorage.getItem('access_token');
 
     if (!accessToken) {

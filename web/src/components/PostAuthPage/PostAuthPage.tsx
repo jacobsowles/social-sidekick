@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 
-import { fetchUserSuccess } from '@actions/user.actions';
+import { setUserState } from '@actions/user.actions';
 import AuthService from '@core/auth';
 
 interface PostAuthPageOwnProps {
@@ -13,14 +13,14 @@ interface PostAuthPageOwnProps {
 }
 
 interface PostAuthPageDispatchProps {
-  fetchUser: () => void;
+  getUser: () => void;
 }
 
 type PostAuthPageProps = PostAuthPageOwnProps & PostAuthPageDispatchProps;
 
 class PostAuthPage extends PureComponent<PostAuthPageProps> {
   public componentDidMount() {
-    this.props.fetchUser();
+    this.props.getUser();
   }
 
   public render() {
@@ -30,11 +30,11 @@ class PostAuthPage extends PureComponent<PostAuthPageProps> {
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: PostAuthPageOwnProps) => {
   return {
-    fetchUser: () => {
+    getUser: () => {
       const authService = new AuthService();
-      authService.fetchUser((error: Auth0Error, user: Auth0UserProfile) => {
+      authService.getUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
-          dispatch(fetchUserSuccess(user));
+          dispatch(setUserState(user));
         } else {
           ownProps.alert.error(error.error);
         }
