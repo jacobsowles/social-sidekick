@@ -4,15 +4,15 @@ export interface ConnectionAction extends Action {
   serviceId: string;
 }
 
-export const ADD_CONNECTION_SUCCESS = 'ADD_CONNECTION_SUCCESS';
-export const REMOVE_CONNECTION_SUCCESS = 'REMOVE_CONNECTION_SUCCESS';
+export const ADD_CONNECTION = 'ADD_CONNECTION';
+export const REMOVE_CONNECTION = 'REMOVE_CONNECTION';
 
-export const addConnectionSuccess = (serviceId: string): ConnectionAction => ({
+export const addConnection = (serviceId: string): ConnectionAction => ({
   serviceId,
-  type: ADD_CONNECTION_SUCCESS
+  type: ADD_CONNECTION
 });
 
-export const removeConnectionSuccess = (serviceId: string): ConnectionAction => ({
+export const removeConnection = (serviceId: string): ConnectionAction => ({
   serviceId,
-  type: REMOVE_CONNECTION_SUCCESS
+  type: REMOVE_CONNECTION
 });

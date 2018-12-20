@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react';
 
 import Footer from '@components/Footer';
 import Navbar from '@components/Navbar';
-import Routes from '@components/Routes';
+import RoutesContainer from '@components/RoutesContainer';
 import './Layout.scss';
 
 export interface LayoutProps {
@@ -22,7 +22,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ handleLogout, user }) => {
         picture={user ? user.picture : undefined}
         username={user ? user.name : undefined}
       />
-      <Routes />
+      <RoutesContainer />
       <Footer>
         <Footer.Content>&copy; Social Sidekick {moment().year()}</Footer.Content>
         <Footer.Content pullRight>

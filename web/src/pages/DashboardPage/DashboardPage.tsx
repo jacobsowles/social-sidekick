@@ -1,18 +1,19 @@
 import React, { FunctionComponent } from 'react';
 
 import ContentBox from '@components/ContentBox';
+import LoadingSpinner from '@components/LoadingSpinner';
 import PageHeader from '@components/PageHeader';
+import { UserService } from '@core/types';
 import './DashboardPage.scss';
 
-const DashboardPage: FunctionComponent = () => {
-  return (
-    <div className="dashboard-page">
-      <ContentBox>
-        <PageHeader title="Dashboard" />
-        <p>Page content</p>
-      </ContentBox>
-    </div>
-  );
+interface DashboardPageProps {
+  serviceModules: any[] | null;
+  services: UserService[] | null;
+  userId?: string;
+}
+
+const DashboardPage: FunctionComponent<DashboardPageProps> = ({ serviceModules }) => {
+  return <div className="dashboard-page" />;
 };
 
 export default DashboardPage;

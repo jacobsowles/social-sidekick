@@ -10,7 +10,8 @@ import './ConnectionsPage.scss';
 
 export interface ConnectionsPageProps {
   className?: string;
-  services: UserService[];
+  services: UserService[] | null;
+  userId?: string;
 }
 
 const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ className, services }) => {

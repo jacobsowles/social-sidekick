@@ -7,6 +7,7 @@ export interface AppState {
 }
 
 export interface Connection extends DatabaseDocument {
+  accessToken: string;
   service: string;
   user: string;
 }

@@ -27,6 +27,10 @@ class ApiService implements IApiService {
     });
   };
 
+  public getConnections = async (userId: string): Promise<AxiosResponse> => {
+    return axios.get(`/api/connections?userId=${userId}`);
+  };
+
   public getUserServices = async (userId: string): Promise<AxiosResponse> => {
     return axios.get(`/api/userServices?userId=${userId}`);
   };

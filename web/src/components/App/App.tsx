@@ -37,7 +37,6 @@ class App extends Component<AppProps, AppState> {
   }
 
   public render() {
-    console.log('rendering App');
     return <Layout user={this.props.user} handleLogout={this.props.logout} />;
   }
 }
@@ -48,11 +47,9 @@ const mapDispatchToProps = (
 ): AppDispatchProps => {
   return {
     getUser: async () => {
-      console.log('getting user');
       const authService = new AuthService();
       await authService.getUser((error: Auth0Error, user: Auth0UserProfile) => {
         if (user) {
-          console.log('user get complete');
           dispatch(setUserState(user));
         } else {
           ownProps.alert.error(error.error);

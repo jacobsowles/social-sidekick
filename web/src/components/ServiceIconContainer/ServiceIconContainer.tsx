@@ -6,7 +6,7 @@ import { Action } from 'redux';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 
-import { removeConnectionSuccess } from '@actions/connection.actions';
+import { removeConnection } from '@actions/connection.actions';
 import { AppState } from '@core/types';
 import ServiceIcon from './ServiceIcon';
 
@@ -113,9 +113,10 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: ServiceIconCon
     removeConnection: async (serviceId: string, userId: string) => {
       try {
         await axios.post('/api/connections/remove', { serviceId, userId });
-        dispatch(removeConnectionSuccess(serviceId));
+        await dispatch(removeConnection(serviceId));
+        ownProps.alert.info('Service disconnected.');
       } catch (error) {
-        ownProps.alert.error('Unable to remove connection.');
+        ownProps.alert.error('Unable to disconnect service.');
       }
     }
   };
