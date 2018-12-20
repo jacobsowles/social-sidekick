@@ -9,11 +9,11 @@ import { UserService } from '@core/types';
 import './ConnectionsPage.scss';
 
 export interface ConnectionsPageProps {
-  services: UserService[];
   className?: string;
+  services: UserService[];
 }
 
-const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ services, className }) => {
+const ConnectionsPage: FunctionComponent<ConnectionsPageProps> = ({ className, services }) => {
   return (
     <main className={classNames('connections-page', className)}>
       <ContentBox>

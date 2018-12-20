@@ -21,7 +21,9 @@
     "@types/mongoose": "^5.3.1",
     "@types/morgan": "^1.7.35",
     "@types/node": "^10.12.12",
+    "@types/randomstring": "^1.1.6",
     "auth0-js": "^9.8.1",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.4",
     "body-parser": "^1.18.3",
@@ -42,6 +44,7 @@
     "mongoose": "^5.3.12",
     "morgan": "^1.9.1",
     "normalize-port": "^1.0.0",
+    "randomstring": "^1.1.5",
     "request": "^2.88.0"
   },
   "devDependencies": {

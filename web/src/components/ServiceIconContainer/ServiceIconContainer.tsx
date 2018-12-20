@@ -1,4 +1,4 @@
-import { IconLookup, IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { IconLookup, IconProp } from '@fortawesome/fontawesome-svg-core';
 import axios, { AxiosResponse } from 'axios';
 import classNames from 'classnames';
 import React, { Component, Dispatch } from 'react';
@@ -6,8 +6,8 @@ import { Action } from 'redux';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 
-import { addConnectionSuccess, removeConnectionSuccess } from '@actions/connection.actions';
-import { AppState, Connection } from '@core/types';
+import { removeConnectionSuccess } from '@actions/connection.actions';
+import { AppState } from '@core/types';
 import ServiceIcon from './ServiceIcon';
 
 export interface ServiceIconContainerOwnProps {
@@ -39,16 +39,11 @@ export interface ServiceIconContainerState {
 class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceIconContainerState> {
   constructor(props: ServiceIconContainerProps) {
     super(props);
-
-    this.state = {
-      isHover: false
-    };
+    this.state = { isHover: false };
   }
 
   public render() {
-    console.log('this.props: ', this.props);
     const { className, iconName, isConnected, label, serviceId, userId, ...rest } = this.props;
-    console.log('userId: ', userId);
     const icons: IconLookup[] = [
       { iconName: 'github', prefix: 'fab' },
       { iconName: 'twitter', prefix: 'fab' }
@@ -76,23 +71,26 @@ class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceI
       : () => this.props.addConnection(serviceId, userId);
 
     return (
-      <ServiceIcon
-        badgeIcon={badgeIcon}
-        className={classes}
-        icon={[selectedIcon.prefix, selectedIcon.iconName]}
-        label={label}
-        onClick={onClick}
-        onMouseOut={() => this.setHover(false)}
-        onMouseOver={() => this.setHover(true)}
-        {...rest}
-      />
+      <>
+        <ServiceIcon
+          badgeIcon={badgeIcon}
+          className={classes}
+          icon={[selectedIcon.prefix, selectedIcon.iconName]}
+          label={label}
+          onClick={onClick}
+          onMouseOut={() => this.setHover(false)}
+          onMouseOver={() => this.setHover(true)}
+          {...rest}
+        />
+      </>
     );
   }
 
   private setHover = (isHover: boolean) => {
-    this.setState({
+    this.setState(state => ({
+      ...state,
       isHover
-    });
+    }));
   };
 }
 
@@ -100,22 +98,21 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: ServiceIconCon
   return {
     addConnection: async (serviceId: string, userId: string) => {
       try {
-        const response: AxiosResponse = await axios.post('/api/connections', {
-          serviceId,
-          userId
-        });
-        const connection: Connection = response.data;
-        dispatch(addConnectionSuccess(connection.service));
+        const authResponse: AxiosResponse = await axios.post(
+          '/api/connections/authorize/github/auth-url',
+          {
+            serviceId,
+            userId
+          }
+        );
+        window.location = authResponse.data.url;
       } catch (error) {
         ownProps.alert.error('Unable to add connection.');
       }
     },
     removeConnection: async (serviceId: string, userId: string) => {
       try {
-        await axios.post('/api/connections/remove', {
-          serviceId,
-          userId
-        });
+        await axios.post('/api/connections/remove', { serviceId, userId });
         dispatch(removeConnectionSuccess(serviceId));
       } catch (error) {
         ownProps.alert.error('Unable to remove connection.');

@@ -42,7 +42,6 @@ const mapDispatchToProps = (
   return {
     fetchServicesForUser: async (userId: string): Promise<UserService[]> => {
       try {
-        console.log(userId);
         const response: AxiosResponse = await axios.get(`/api/servicesForUser?userId=${userId}`);
         dispatch(fetchServicesForUserSuccess(response.data));
         return response.data;

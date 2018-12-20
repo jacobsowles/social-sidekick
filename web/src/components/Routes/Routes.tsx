@@ -7,6 +7,7 @@ import ConnectionsPageContainer from '@components/ConnectionsPageContainer';
 import ContactPage from '@components/ContactPage';
 import HomePage from '@components/HomePage';
 import LandingPage from '@components/LandingPage';
+import OAuthRedirectPage from '@components/OAuthRedirectPage';
 import PostAuthPage from '@components/PostAuthPage';
 import AuthService from '@core/auth';
 import PrivateRoute from './PrivateRoute';
@@ -47,6 +48,7 @@ class Routes extends Component {
           <PrivateRoute path="/connections" component={ConnectionsPageContainer} />
           <Route path="/contact" component={ContactPage} />
           <PrivateRoute path="/home" component={HomePage} />
+          <PrivateRoute path="/oauth-redirect" component={OAuthRedirectPage} />} />
           <Route path="/postauth" component={PostAuthPage} />
         </Switch>
       </div>
