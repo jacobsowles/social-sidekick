@@ -54,8 +54,8 @@ class Navbar extends Component<NavbarProps> {
           <Nav pullRight>
             {this.authService.isAuthenticated() ? (
               <>
-                <LinkContainer to="/home">
-                  <NavItem>Home</NavItem>
+                <LinkContainer to="/dashboard">
+                  <NavItem>Dashboard</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/connections">
                   <NavItem>Connections</NavItem>

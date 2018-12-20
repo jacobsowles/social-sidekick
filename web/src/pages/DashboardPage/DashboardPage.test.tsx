@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
-import HomePage from '@pages/HomePage';
+import DashboardPage from '@pages/DashboardPage';
 
-describe('HomePage', () => {
-  init(() => <HomePage />, 'div');
+describe('DashboardPage', () => {
+  init(() => <DashboardPage />, 'div');
 
   it('should always render a div element', () => {
     shallow()
@@ -15,6 +15,6 @@ describe('HomePage', () => {
   it('should only include the default class name', () => {
     shallowTopLevelElement()
       .prop('className')
-      .should.equal('home-page');
+      .should.equal('dashboard-page');
   });
 });

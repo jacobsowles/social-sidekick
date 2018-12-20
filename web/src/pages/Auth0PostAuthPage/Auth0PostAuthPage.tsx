@@ -24,7 +24,7 @@ class Auth0PostAuthPage extends PureComponent<Auth0PostAuthPageProps> {
   }
 
   public render() {
-    return <Redirect to="/home" />;
+    return <Redirect to="/dashboard" />;
   }
 }
 

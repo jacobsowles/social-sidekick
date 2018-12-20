@@ -6,7 +6,7 @@ import Auth0CallbackPage from '@pages/Auth0CallbackPage';
 import Auth0PostAuthPage from '@pages/Auth0PostAuthPage';
 import ConnectionsPageContainer from '@pages/ConnectionsPageContainer';
 import ContactPage from '@pages/ContactPage';
-import HomePage from '@pages/HomePage';
+import DashboardPage from '@pages/DashboardPage';
 import LandingPage from '@pages/LandingPage';
 import OAuthCallbackPage from '@pages/OAuthCallbackPage';
 import AuthService from '@core/auth';
@@ -36,7 +36,7 @@ class Routes extends Component {
             exact
             path="/"
             render={() =>
-              this.authService.isAuthenticated() ? <Redirect to="/home" /> : <LandingPage />
+              this.authService.isAuthenticated() ? <Redirect to="/dashboard" /> : <LandingPage />
             }
           />
           <Route
@@ -47,7 +47,7 @@ class Routes extends Component {
           />
           <PrivateRoute path="/connections" component={ConnectionsPageContainer} />
           <Route path="/contact" component={ContactPage} />
-          <PrivateRoute path="/home" component={HomePage} />
+          <PrivateRoute path="/dashboard" component={DashboardPage} />
           <PrivateRoute path="/oauth-callback" component={OAuthCallbackPage} />} />
           <Route path="/auth0-postauth" component={Auth0PostAuthPage} />
         </Switch>
