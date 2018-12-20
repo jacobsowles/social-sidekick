@@ -9,7 +9,11 @@ const ContactPage: FunctionComponent = () => {
     <div className="contact-page">
       <ContentBox>
         <PageHeader title="Contact" />
-        <p>Page content</p>
+        <p>
+          Questions? Comments? Feel free to get in touch via&nbsp;
+          <a href="mailto:jacob@jacobsowles.com">email</a> or&nbsp;
+          <a href="https://github.com/jacobsowles/social-sidekick">GitHub</a>.
+        </p>
       </ContentBox>
     </div>
   );

@@ -39,7 +39,13 @@
   .navbar-nav {
     > li {
       > a {
+        color: $gray-darker;
         padding: 20px;
+
+        &:hover {
+          color: $brand-primary;
+          text-decoration: none;
+        }
       }
 
       &.active > a {
