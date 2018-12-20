@@ -36,7 +36,7 @@ export const getGitHubAuthUrl = async (request: Request, response: Response): Pr
         client_id: process.env.GITHUB_CLIENT_ID,
         redirect_uri:
           process.env.CLIENT_BASE_URL +
-          `/oauth-redirect?serviceId=${request.body.serviceId}&userId=${request.body.userId}`,
+          `/oauth-callback?serviceId=${request.body.serviceId}&userId=${request.body.userId}`,
         scope: 'user',
         state: request.session!.state
       })
@@ -95,7 +95,7 @@ export const getGitHubAccessToken = async (
             client_id: process.env.GITHUB_CLIENT_ID,
             client_secret: process.env.GITHUB_CLIENT_SECRET,
             code,
-            redirect_uri: process.env.CLIENT_BASE_URL + '/oauth-redirect',
+            redirect_uri: process.env.CLIENT_BASE_URL + '/oauth-callback',
             state: request.session!.state
           })
       );

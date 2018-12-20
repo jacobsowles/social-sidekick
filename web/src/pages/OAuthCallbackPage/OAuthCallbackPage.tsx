@@ -7,11 +7,11 @@ import { withRouter } from 'react-router-dom';
 import LoadingSpinner from '@components/LoadingSpinner';
 import ApiService from '@core/api';
 
-interface OAuthRedirectPageOwnProps extends RouteComponentProps {
+interface OAuthCallbackPageOwnProps extends RouteComponentProps {
   alert: InjectedAlertProp;
 }
 
-class OAuthRedirectPage extends Component<OAuthRedirectPageOwnProps> {
+class OAuthCallbackPage extends Component<OAuthCallbackPageOwnProps> {
   public async componentDidMount() {
     try {
       const api = new ApiService();
@@ -38,4 +38,4 @@ class OAuthRedirectPage extends Component<OAuthRedirectPageOwnProps> {
   }
 }
 
-export default withAlert(withRouter(OAuthRedirectPage));
+export default withAlert(withRouter(OAuthCallbackPage));

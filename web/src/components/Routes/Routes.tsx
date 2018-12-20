@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React, { Component, ComponentState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import CallbackPage from '@pages/CallbackPage';
+import Auth0CallbackPage from '@pages/Auth0CallbackPage';
+import Auth0PostAuthPage from '@pages/Auth0PostAuthPage';
 import ConnectionsPageContainer from '@pages/ConnectionsPageContainer';
 import ContactPage from '@pages/ContactPage';
 import HomePage from '@pages/HomePage';
 import LandingPage from '@pages/LandingPage';
-import OAuthRedirectPage from '@pages/OAuthRedirectPage';
-import PostAuthPage from '@pages/PostAuthPage';
+import OAuthCallbackPage from '@pages/OAuthCallbackPage';
 import AuthService from '@core/auth';
 import PrivateRoute from './PrivateRoute';
 import './Routes.scss';
@@ -40,16 +40,16 @@ class Routes extends Component {
             }
           />
           <Route
-            path="/callback"
+            path="/auth0-callback"
             render={props => (
-              <CallbackPage handleAuthentication={this.handleAuthentication} {...props} />
+              <Auth0CallbackPage handleAuthentication={this.handleAuthentication} {...props} />
             )}
           />
           <PrivateRoute path="/connections" component={ConnectionsPageContainer} />
           <Route path="/contact" component={ContactPage} />
           <PrivateRoute path="/home" component={HomePage} />
-          <PrivateRoute path="/oauth-redirect" component={OAuthRedirectPage} />} />
-          <Route path="/postauth" component={PostAuthPage} />
+          <PrivateRoute path="/oauth-callback" component={OAuthCallbackPage} />} />
+          <Route path="/auth0-postauth" component={Auth0PostAuthPage} />
         </Switch>
       </div>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
-import CallbackPage from '@components/CallbackPage';
+import Auth0CallbackPage from '@pages/Auth0CallbackPage';
 
-describe('CallbackPage', () => {
-  init(() => <CallbackPage />, 'div');
+describe('Auth0CallbackPage', () => {
+  init(() => <Auth0CallbackPage />, 'div');
 
   it('should always render a div element', () => {
     shallow()
@@ -15,6 +15,6 @@ describe('CallbackPage', () => {
   it('should only include the default class names', () => {
     shallowTopLevelElement()
       .prop('className')
-      .should.equal('callback-page');
+      .should.equal('auth0-callback-page');
   });
 });

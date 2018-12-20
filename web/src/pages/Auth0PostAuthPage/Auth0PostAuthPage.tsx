@@ -8,17 +8,17 @@ import { Action } from 'redux';
 import { setUserState } from '@actions/user.actions';
 import AuthService from '@core/auth';
 
-interface PostAuthPageOwnProps {
+interface Auth0PostAuthPageOwnProps {
   alert: InjectedAlertProp;
 }
 
-interface PostAuthPageDispatchProps {
+interface Auth0PostAuthPageDispatchProps {
   getUser: () => void;
 }
 
-type PostAuthPageProps = PostAuthPageOwnProps & PostAuthPageDispatchProps;
+type Auth0PostAuthPageProps = Auth0PostAuthPageOwnProps & Auth0PostAuthPageDispatchProps;
 
-class PostAuthPage extends PureComponent<PostAuthPageProps> {
+class Auth0PostAuthPage extends PureComponent<Auth0PostAuthPageProps> {
   public componentDidMount() {
     this.props.getUser();
   }
@@ -28,7 +28,7 @@ class PostAuthPage extends PureComponent<PostAuthPageProps> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: PostAuthPageOwnProps) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action>, ownProps: Auth0PostAuthPageOwnProps) => {
   return {
     getUser: () => {
       const authService = new AuthService();
@@ -47,5 +47,5 @@ export default withAlert(
   connect(
     null,
     mapDispatchToProps
-  )(PostAuthPage)
+  )(Auth0PostAuthPage)
 );

@@ -12,7 +12,7 @@ class AuthService implements IAuthService {
   private auth0 = new auth0.WebAuth({
     clientID: '0LtBj1dwfWa6rULZVRTeJsBoWzifuwAR',
     domain: 'social-sync.auth0.com',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'http://localhost:3000/auth0-callback',
     responseType: 'token id_token',
     scope: 'openid profile'
   });
@@ -33,7 +33,7 @@ class AuthService implements IAuthService {
     const accessToken = localStorage.getItem('access_token');
 
     if (!accessToken) {
-      console.log('Access Token must exist to fetch user');
+      console.log('Access Token must exist to get user');
     }
 
     this.auth0.client.userInfo(accessToken as string, callback);
@@ -43,7 +43,7 @@ class AuthService implements IAuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        redirect('/postauth');
+        redirect('/auth0-postauth');
       } else if (err) {
         redirect('/home');
         console.log(err);

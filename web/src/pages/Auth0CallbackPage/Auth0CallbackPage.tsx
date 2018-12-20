@@ -1,17 +1,17 @@
 import React, { Component, ComponentState } from 'react';
 
-interface CallbackPageProps {
+interface Auth0CallbackPageProps {
   handleAuthentication: (nextState: ComponentState) => void;
 }
 
-class CallbackPage extends Component<CallbackPageProps> {
+class Auth0CallbackPage extends Component<Auth0CallbackPageProps> {
   public componentDidMount() {
     this.props.handleAuthentication(this.props);
   }
 
   public render() {
-    return <div className="callback-page" />;
+    return <div className="auth0-callback-page" />;
   }
 }
 
-export default CallbackPage;
+export default Auth0CallbackPage;
