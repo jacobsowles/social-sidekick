@@ -1,6 +1,6 @@
 import { Auth0Error, Auth0UserProfile } from 'auth0-js';
 import React, { PureComponent, Dispatch } from 'react';
-import { withAlert } from 'react-alert';
+import { InjectedAlertProp, withAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
@@ -9,7 +9,7 @@ import { fetchUserSuccess } from '@actions/user.actions';
 import AuthService from '@core/auth';
 
 interface PostAuthPageOwnProps {
-  alert: any;
+  alert: InjectedAlertProp;
 }
 
 interface PostAuthPageDispatchProps {

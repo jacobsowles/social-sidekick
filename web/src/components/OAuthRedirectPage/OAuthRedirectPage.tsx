@@ -1,16 +1,14 @@
 import queryString, { OutputParams } from 'query-string';
 import React, { Component } from 'react';
-import { withAlert } from 'react-alert';
+import { InjectedAlertProp, withAlert } from 'react-alert';
+import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
 
 import LoadingSpinner from '@components/LoadingSpinner';
 import { getAccessToken } from '@core/api';
 
-interface OAuthRedirectPageOwnProps {
-  alert: any;
-  history: any;
-  location: any;
-  match: any;
+interface OAuthRedirectPageOwnProps extends RouteComponentProps {
+  alert: InjectedAlertProp;
 }
 
 class OAuthRedirectPage extends Component<OAuthRedirectPageOwnProps> {

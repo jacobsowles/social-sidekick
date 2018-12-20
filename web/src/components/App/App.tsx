@@ -1,6 +1,6 @@
 import { Auth0Error, Auth0UserProfile } from 'auth0-js';
 import React, { Component, Dispatch } from 'react';
-import { withAlert } from 'react-alert';
+import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { Action } from 'redux';
@@ -14,7 +14,7 @@ import { AppState } from '@core/types';
 initIcons();
 
 interface AppOwnProps {
-  alert: any;
+  alert: InjectedAlertProp;
 }
 
 interface AppDispatchProps {
