@@ -1,4 +1,3 @@
-import axios, { AxiosResponse } from 'axios';
 import React, { Component, Dispatch } from 'react';
 import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
@@ -6,6 +5,7 @@ import { Action } from 'redux';
 
 import { fetchServicesForUserSuccess } from '@actions/service.actions';
 import ConnectionsPage from '@components/ConnectionsPage';
+import { getServicesForUser } from '@core/api';
 import { AppState, UserService } from '@core/types';
 
 interface ConnectionsPageContainerOwnProps {
@@ -42,7 +42,7 @@ const mapDispatchToProps = (
   return {
     fetchServicesForUser: async (userId: string): Promise<UserService[]> => {
       try {
-        const response: AxiosResponse = await axios.get(`/api/servicesForUser?userId=${userId}`);
+        const response = await getServicesForUser(userId);
         dispatch(fetchServicesForUserSuccess(response.data));
         return response.data;
       } catch (error) {

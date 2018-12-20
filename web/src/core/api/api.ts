@@ -14,3 +14,7 @@ export const getAccessToken = async (
     userId
   });
 };
+
+export const getServicesForUser = async (userId: string): Promise<AxiosResponse> => {
+  return axios.get(`/api/servicesForUser?userId=${userId}`);
+};
