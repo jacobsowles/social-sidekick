@@ -1,6 +1,4 @@
-import axios from 'axios';
 import { Express } from 'express';
-import qs from 'querystring';
 
 import * as connections from './Connection/Connection.routes';
 import * as services from './Service/Service.routes';
