@@ -1,10 +1,10 @@
-import axios from 'axios';
 import queryString, { OutputParams } from 'query-string';
 import React, { Component } from 'react';
 import { withAlert } from 'react-alert';
 import { withRouter } from 'react-router-dom';
 
 import LoadingSpinner from '@components/LoadingSpinner';
+import { getAccessToken } from '@core/api';
 
 interface OAuthRedirectPageOwnProps {
   alert: any;
@@ -17,14 +17,7 @@ class OAuthRedirectPage extends Component<OAuthRedirectPageOwnProps> {
   public async componentDidMount() {
     try {
       const params: OutputParams = queryString.parse(this.props.location.search);
-
-      await axios.post('/api/connections/authorize/github/access-token', {
-        code: params.code,
-        serviceId: params.serviceId,
-        state: params.state,
-        userId: params.userId
-      });
-
+      await getAccessToken(params.code, params.serviceId, 'github', params.state, params.userId);
       this.props.alert.success('Connection successful!');
       this.props.history.push('/connections');
     } catch (error) {
