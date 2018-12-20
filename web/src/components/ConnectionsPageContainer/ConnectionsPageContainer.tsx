@@ -3,7 +3,7 @@ import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 
-import { setUserServices } from '@actions/service.actions';
+import { setUserServicesState } from '@actions/service.actions';
 import ConnectionsPage from '@components/ConnectionsPage';
 import ApiService from '@core/api';
 import { AppState, UserService } from '@core/types';
@@ -46,7 +46,7 @@ const mapDispatchToProps = (
       try {
         const api = new ApiService();
         const response = await api.getUserServices(userId);
-        dispatch(setUserServices(response.data));
+        dispatch(setUserServicesState(response.data));
         return response.data;
       } catch (error) {
         ownProps.alert.error('Unable to load list of services.');

@@ -8,7 +8,7 @@ export interface ServicesAction extends Action {
 
 export const SET_USER_SERVICES = 'SET_USER_SERVICES';
 
-export const setUserServices = (services: UserService[]): ServicesAction => ({
+export const setUserServicesState = (services: UserService[]): ServicesAction => ({
   services,
   type: SET_USER_SERVICES
 });
