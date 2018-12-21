@@ -3,7 +3,7 @@ import { UserService } from '@core/types';
 import { ADD_CONNECTION, ConnectionAction, REMOVE_CONNECTION } from '@actions/connection.actions';
 import { SET_USER_SERVICES, ServicesAction } from '@actions/service.actions';
 
-const serviceReducer = (state: UserService[] = [], action: ServicesAction | ConnectionAction) => {
+const serviceReducer = (state: UserService[] = null, action: ServicesAction | ConnectionAction) => {
   switch (action.type) {
     case ADD_CONNECTION:
       return state.map((service: UserService) => {
