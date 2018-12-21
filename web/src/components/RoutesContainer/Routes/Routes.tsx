@@ -15,11 +15,17 @@ import './Routes.scss';
 
 interface RoutesProps {
   handleAuthentication: (nextState: ComponentState) => void;
+  serviceModules: any[] | null;
   services: UserService[] | null;
   userId?: string;
 }
 
-const Routes: FunctionComponent<RoutesProps> = ({ handleAuthentication, services, userId }) => {
+const Routes: FunctionComponent<RoutesProps> = ({
+  handleAuthentication,
+  serviceModules,
+  services,
+  userId
+}) => {
   const authService = new AuthService();
 
   return (
@@ -63,7 +69,7 @@ const Routes: FunctionComponent<RoutesProps> = ({ handleAuthentication, services
           <Route
             path="/dashboard"
             render={() => (
-              <DashboardPage serviceModules={null} services={services} userId={userId} />
+              <DashboardPage serviceModules={serviceModules} services={services} userId={userId} />
             )}
           />
         )}

@@ -1,2 +1,2 @@
-import ServiceFactory from './service-factory';
-export default ServiceFactory;
+import ServiceModuleFactory from './service-module-factory';
+export default ServiceModuleFactory;

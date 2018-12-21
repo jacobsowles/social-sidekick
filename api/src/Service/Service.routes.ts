@@ -29,7 +29,7 @@ export async function getForUser(request: Request, response: Response) {
       _id: service._id,
       isConnected:
         connections.filter(connection => connection.service.equals(service._id)).length > 0,
-      name: service.name // TODO: return the entire service object
+      name: service.name
     };
   });
 

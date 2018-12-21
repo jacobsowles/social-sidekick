@@ -68,6 +68,7 @@
     "prop-types": "^15.6.2",
     "query-string": "^6.2.0",
     "react": "^16.6.3",
+    "react-accessible-accordion": "^2.4.5",
     "react-alert": "^4.0.4",
     "react-alert-template-basic": "^1.0.0",
     "react-app-polyfill": "^0.1.3",

@@ -7,6 +7,7 @@ import { Action, Dispatch } from 'redux';
 import { setUserServicesState } from '@actions/service.actions';
 import ApiService from '@core/api';
 import AuthService from '@core/auth';
+import ServiceModuleFactory from '@core/services';
 import { AppState, UserService } from '@core/types';
 import Routes from './Routes';
 
@@ -49,9 +50,18 @@ class RoutesContainer extends Component<RoutesContainerProps> {
   };
 
   public render() {
+    const serviceModules = this.props.services
+      ? this.props.services.map(service => {
+          if (service.isConnected) {
+            return ServiceModuleFactory.getServiceModule(service.name);
+          }
+        })
+      : null;
+
     return (
       <Routes
         handleAuthentication={this.handleAuthentication}
+        serviceModules={serviceModules}
         services={this.props.services}
         userId={this.props.userId}
       />
