@@ -1,0 +1,66 @@
+.github-module {
+  width: 100%;
+
+  .button {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    padding: 6px 12px;
+  }
+
+  .button-default {
+    background-color: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+
+    &:hover {
+      background-color: #e6e6e6;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .button-primary {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+
+    &:hover {
+      background-color: #449d44;
+      border-color: #398439;
+    }
+  }
+
+  input {
+    width: calc(100% - 40px);
+  }
+
+  input,
+  textarea {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  svg {
+    opacity: 0.8;
+    width: 40px !important;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  .form-field {
+    display: block;
+  }
+
+  .form-buttons {
+    margin-top: 10px;
+
+    button {
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

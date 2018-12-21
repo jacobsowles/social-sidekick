@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GitHubModule from '@components/GitHubModule';
+import GitHubModule from '@components/ServiceModules/GitHubModule';
 
 class ServiceModuleFactory {
   public static getServiceModule = (serviceName: string): any => {

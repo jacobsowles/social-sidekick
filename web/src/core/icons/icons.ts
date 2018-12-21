@@ -4,9 +4,12 @@ import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import {
   faCheck,
   faCube,
+  faLink,
+  faMapMarkerAlt,
   faSignOutAlt,
   faSpinner,
-  faTimes
+  faTimes,
+  faUsers
 } from '@fortawesome/free-solid-svg-icons';
 
 export const init = (): void => {
@@ -14,10 +17,13 @@ export const init = (): void => {
     faCheck,
     faCube,
     faGithub,
+    faLink,
+    faMapMarkerAlt,
     faQuestionCircle,
     faSignOutAlt,
     faSpinner,
     faTimes,
-    faTwitter
+    faTwitter,
+    faUsers
   );
 };
