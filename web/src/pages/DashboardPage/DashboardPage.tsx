@@ -1,12 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FunctionComponent } from 'react';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemTitle,
-  AccordionItemBody
-} from 'react-accessible-accordion';
 import { Link } from 'react-router-dom';
 
+import Collapsible from '@components/Collapsible';
 import ContentBox from '@components/ContentBox';
 import LoadingSpinner from '@components/LoadingSpinner';
 import PageHeader from '@components/PageHeader';
@@ -20,35 +16,35 @@ interface DashboardPageProps {
 }
 
 const DashboardPage: FunctionComponent<DashboardPageProps> = ({ serviceModules }) => {
-  return (
-    <div className="dashboard-page">
-      {!serviceModules && <LoadingSpinner />}
+  return <div className="dashboard-page">{getDashboardContent(serviceModules)}</div>;
+};
 
-      {serviceModules && serviceModules.length === 0 && (
-        <ContentBox>
-          <PageHeader title="Getting Started" />
-          <p>
-            Once you <Link to="/connections">connect your social media accounts</Link>, you'll be
-            able to manage your profile data on this page.
-          </p>
-        </ContentBox>
-      )}
+const getDashboardContent = (serviceModules: any[]) => {
+  if (!serviceModules) {
+    return <LoadingSpinner />;
+  }
 
-      {serviceModules &&
-        serviceModules.map((serviceModule: any, key: any) => (
-          <Accordion key={key}>
-            <AccordionItem>
-              <AccordionItemTitle>
-                <h2>{serviceModule.name}</h2>
-              </AccordionItemTitle>
-              <AccordionItemBody>
-                <ContentBox>{serviceModule.component}</ContentBox>
-              </AccordionItemBody>
-            </AccordionItem>
-          </Accordion>
-        ))}
-    </div>
-  );
+  if (serviceModules.length === 0) {
+    return (
+      <ContentBox>
+        <PageHeader title="Getting Started" />
+        <p>
+          Once you <Link to="/connections">connect your social media accounts</Link>, you'll be able
+          to manage your profile data on this page.
+        </p>
+      </ContentBox>
+    );
+  }
+
+  return serviceModules.map((serviceModule: any, key: any) => (
+    <Collapsible.Box key={key}>
+      <Collapsible.Trigger>
+        <FontAwesomeIcon icon={['fab', serviceModule.name.toLowerCase()]} size="3x" />
+        <h1>{serviceModule.name}</h1>
+      </Collapsible.Trigger>
+      <Collapsible.Body>{serviceModule.component}</Collapsible.Body>
+    </Collapsible.Box>
+  ));
 };
 
 export default DashboardPage;

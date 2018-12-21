@@ -1,0 +1,50 @@
+.Collapsible {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  h1 {
+    font-size: 2em;
+    line-height: unset;
+  }
+
+  .Collapsible__contentInner {
+    margin: 20px;
+  }
+
+  .Collapsible__trigger {
+    align-content: center;
+    display: flex;
+    padding: 20px;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:after {
+      content: '\f107';
+      display: block;
+      font-family: 'FontAwesome';
+      font-size: 1.5em;
+      position: absolute;
+      right: 20px;
+      top: 25px;
+      transition: transform 300ms;
+    }
+
+    &.is-open {
+      &:after {
+        transform: rotateZ(180deg);
+      }
+    }
+
+    &.is-disabled {
+      opacity: 0.5;
+      background-color: grey;
+    }
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+}
