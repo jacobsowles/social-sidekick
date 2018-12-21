@@ -1,29 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FunctionComponent } from 'react';
 
+import Form from '@components/Form';
+import TextArea from '@components/TextArea';
+import TextInput from '@components/TextInput';
 import './GitHubModule.scss';
 
 const GitHubModule: FunctionComponent = () => {
   return (
-    <form onSubmit={onSubmit} className="github-module">
-      <div className="form-item">
-        <textarea aria-label="Bio" maxLength={160} placeholder="Bio" />
-      </div>
+    <Form.Wrapper className="github-module">
+      <Form.Field>
+        <TextArea maxLength={160} placeholder={'Bio'} />
+      </Form.Field>
 
-      <div className="form-item">
+      <Form.Field>
         <FontAwesomeIcon icon={['fas', 'users']} />
-        <input type="text" aria-label="Company" placeholder="Company" />
-      </div>
+        <TextInput placeholder={'Company'} />
+      </Form.Field>
 
-      <div className="form-item">
+      <Form.Field>
         <FontAwesomeIcon icon={['fas', 'map-marker-alt']} />
-        <input type="text" aria-label="Location" placeholder="Location" />
-      </div>
+        <TextInput placeholder={'Location'} />
+      </Form.Field>
 
-      <div className="form-item">
+      <Form.Field>
         <FontAwesomeIcon icon={['fas', 'link']} />
-        <input type="text" aria-label="Website" placeholder="Website" />
-      </div>
+        <TextInput placeholder={'Website'} />
+      </Form.Field>
 
       <div className="form-buttons">
         <button className="button button-primary" type="submit">
@@ -33,16 +36,8 @@ const GitHubModule: FunctionComponent = () => {
           Cancel
         </button>
       </div>
-    </form>
+    </Form.Wrapper>
   );
-};
-
-const onSubmit = async (values: any) => {
-  // TODO
-};
-
-const validate = (values: any) => {
-  // TODO
 };
 
 export default GitHubModule;

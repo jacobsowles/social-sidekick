@@ -1,0 +1,32 @@
+.form {
+  width: 100%;
+
+  .form-buttons {
+    margin-top: 10px;
+
+    button {
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .form-field {
+    display: block;
+
+    input {
+      width: calc(100% - 40px);
+    }
+
+    svg {
+      opacity: 0.8;
+      width: 40px !important;
+    }
+
+    textarea {
+      width: 100%;
+    }
+  }
+}
