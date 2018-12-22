@@ -10,4 +10,6 @@ export default (app: Express) => {
   app.post('/api/connections/remove', connections.remove);
 
   app.get('/api/userServices', services.getForUser);
+
+  app.get('/api/services/github', services.getGitHubProfileDetails);
 };

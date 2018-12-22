@@ -6,14 +6,16 @@ import './TextInput.scss';
 export interface TextInputProps {
   className?: string;
   placeholder: string;
+  value: string;
 }
 
-const TextInput: FunctionComponent<TextInputProps> = ({ className, placeholder }) => {
+const TextInput: FunctionComponent<TextInputProps> = ({ className, placeholder, value }) => {
   return (
     <input
       aria-label={placeholder}
       className={classNames('text-input', className)}
       placeholder={placeholder}
+      value={value}
     />
   );
 };

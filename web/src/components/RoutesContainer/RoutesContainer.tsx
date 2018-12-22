@@ -53,7 +53,7 @@ class RoutesContainer extends Component<RoutesContainerProps> {
     const serviceModules = this.props.services
       ? this.props.services
           .filter(service => service.isConnected)
-          .map(service => ServiceModuleFactory.getServiceModule(service.name))
+          .map(service => ServiceModuleFactory.getServiceModule(service.name, this.props.userId))
       : null;
 
     return (

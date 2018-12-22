@@ -1,9 +1,9 @@
 import React from 'react';
 
-import GitHubModule from '@components/ServiceModules/GitHubModule';
+import GitHubModuleContainer from '@components/ServiceModules/GitHubModuleContainer';
 
 class ServiceModuleFactory {
-  public static getServiceModule = (serviceName: string): any => {
+  public static getServiceModule = (serviceName: string, userId: string): any => {
     const serviceModule = {
       component: undefined as any,
       name: serviceName
@@ -11,7 +11,7 @@ class ServiceModuleFactory {
 
     switch (serviceName.toLowerCase()) {
       case 'github':
-        serviceModule.component = <GitHubModule />;
+        serviceModule.component = <GitHubModuleContainer userId={userId} />;
     }
 
     return serviceModule;

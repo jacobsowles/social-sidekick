@@ -8,6 +8,8 @@ interface IApiService {
     state: string | string[],
     userId: string | string[]
   ) => Promise<AxiosResponse>;
+  getConnections: (userId: string) => Promise<AxiosResponse>;
+  getGitHubProfileDetails: (userId: string) => Promise<AxiosResponse>;
   getUserServices: (userId: string) => Promise<AxiosResponse>;
 }
 
@@ -29,6 +31,10 @@ class ApiService implements IApiService {
 
   public getConnections = async (userId: string): Promise<AxiosResponse> => {
     return axios.get(`/api/connections?userId=${userId}`);
+  };
+
+  public getGitHubProfileDetails = async (userId: string): Promise<AxiosResponse> => {
+    return axios.get(`/api/services/github?userId=${userId}`);
   };
 
   public getUserServices = async (userId: string): Promise<AxiosResponse> => {

@@ -5,27 +5,32 @@ import Form from '@components/Form';
 import TextArea from '@components/TextArea';
 import TextInput from '@components/TextInput';
 import './GitHubModule.scss';
+import LoadingSpinner from '@components/LoadingSpinner';
 
-const GitHubModule: FunctionComponent = () => {
-  return (
+interface GitHubModuleProps {
+  profileDetails: any;
+}
+
+const GitHubModule: FunctionComponent<GitHubModuleProps> = ({ profileDetails }) => {
+  return profileDetails ? (
     <Form.Wrapper className="github-module">
       <Form.Field>
-        <TextArea maxLength={160} placeholder={'Bio'} />
+        <TextArea maxLength={160} placeholder={'Bio'} value={profileDetails.bio} />
       </Form.Field>
 
       <Form.Field>
         <FontAwesomeIcon icon={['fas', 'users']} />
-        <TextInput placeholder={'Company'} />
+        <TextInput placeholder={'Company'} value={profileDetails.company} />
       </Form.Field>
 
       <Form.Field>
         <FontAwesomeIcon icon={['fas', 'map-marker-alt']} />
-        <TextInput placeholder={'Location'} />
+        <TextInput placeholder={'Location'} value={profileDetails.location} />
       </Form.Field>
 
       <Form.Field>
         <FontAwesomeIcon icon={['fas', 'link']} />
-        <TextInput placeholder={'Website'} />
+        <TextInput placeholder={'Website'} value={profileDetails.blog} />
       </Form.Field>
 
       <div className="form-buttons">
@@ -37,6 +42,8 @@ const GitHubModule: FunctionComponent = () => {
         </button>
       </div>
     </Form.Wrapper>
+  ) : (
+    <LoadingSpinner />
   );
 };
 

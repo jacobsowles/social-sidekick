@@ -100,7 +100,8 @@ export const getGitHubAccessToken = async (
           })
       );
 
-      accessToken = queryString.parse(githubResponse.data).access_token as string;
+      const data = queryString.parse(githubResponse.data);
+      accessToken = data.access_token as string;
     } else {
       return stateMismatchErrorResponse(response, 'Returned state does not match request state.');
     }

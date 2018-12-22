@@ -7,15 +7,22 @@ export interface TextAreaProps {
   className?: string;
   maxLength?: number;
   placeholder: string;
+  value: string;
 }
 
-const TextArea: FunctionComponent<TextAreaProps> = ({ className, maxLength, placeholder }) => {
+const TextArea: FunctionComponent<TextAreaProps> = ({
+  className,
+  maxLength,
+  placeholder,
+  value
+}) => {
   return (
     <textarea
       aria-label={placeholder}
       className={classNames('text-area', className)}
       maxLength={maxLength}
       placeholder={placeholder}
+      value={value}
     />
   );
 };
