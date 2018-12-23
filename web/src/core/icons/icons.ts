@@ -1,6 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import {
   faCheck,
   faCube,
@@ -17,6 +17,7 @@ export const init = (): void => {
     faCheck,
     faCube,
     faGithub,
+    faFacebook,
     faLink,
     faMapMarkerAlt,
     faQuestionCircle,

@@ -45,6 +45,7 @@ class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceI
   public render() {
     const { className, iconName, isConnected, label, serviceId, userId, ...rest } = this.props;
     const icons: IconLookup[] = [
+      { iconName: 'facebook', prefix: 'fab' },
       { iconName: 'github', prefix: 'fab' },
       { iconName: 'twitter', prefix: 'fab' }
     ];

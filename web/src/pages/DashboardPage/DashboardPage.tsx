@@ -16,7 +16,7 @@ interface DashboardPageProps {
 }
 
 const DashboardPage: FunctionComponent<DashboardPageProps> = ({ serviceModules }) => {
-  return <div className="dashboard-page">{getDashboardContent(serviceModules)}</div>;
+  return <div className="dashboard">{getDashboardContent(serviceModules)}</div>;
 };
 
 const getDashboardContent = (serviceModules: any[]) => {
