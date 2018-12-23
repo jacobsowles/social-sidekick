@@ -1,5 +1,22 @@
 .dashboard {
   .Collapsible {
     margin-bottom: 10px;
+
+    // TODO: these styles should be tied to the icon, not the collapsible.
+    &.facebook-collapsible svg {
+      color: #3b5998;
+    }
+
+    &.github-collapsible svg {
+      color: #333333;
+    }
+
+    &.twitter-collapsible svg {
+      color: #55acee;
+    }
+
+    .Collapsible__trigger svg {
+      width: 42px;
+    }
   }
 }

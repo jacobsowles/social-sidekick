@@ -9,13 +9,13 @@ interface BoxProps {
   className?: string;
 }
 
-const Box: FunctionComponent<BoxProps> = ({ children, ...rest }) => {
+const Box: FunctionComponent<BoxProps> = ({ children, className, ...rest }) => {
   // TODO: Do some validation on this. Require the first child to be a trigger, etc.
   const trigger = (children as any[])[0];
   const body = (children as any[])[1];
 
   return (
-    <Collapsible transitionTime={200} trigger={trigger} {...rest}>
+    <Collapsible className={className} transitionTime={200} trigger={trigger} {...rest}>
       {body}
     </Collapsible>
   );

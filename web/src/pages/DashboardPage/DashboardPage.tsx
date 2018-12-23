@@ -37,7 +37,7 @@ const getDashboardContent = (serviceModules: any[]) => {
   }
 
   return serviceModules.map((serviceModule: any, key: any) => (
-    <Collapsible.Box key={key}>
+    <Collapsible.Box className={`${serviceModule.name.toLowerCase()}-collapsible`} key={key}>
       <Collapsible.Trigger>
         <FontAwesomeIcon icon={['fab', serviceModule.name.toLowerCase()]} size="3x" />
         <h1>{serviceModule.name}</h1>

@@ -76,7 +76,19 @@ const mapDispatchToProps = (
       try {
         const api = new ApiService();
         const response = await api.getUserServices(userId);
+
+        response.data = response.data.sort((a: UserService, b: UserService) => {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+
         dispatch(setUserServicesState(response.data));
+
         return response.data;
       } catch (error) {
         ownProps.alert.error('Unable to load list of services.');
