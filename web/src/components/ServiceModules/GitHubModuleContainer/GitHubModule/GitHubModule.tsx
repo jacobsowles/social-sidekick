@@ -35,7 +35,7 @@ const GitHubModule: FunctionComponent<GitHubModuleProps> = ({ profileDetails }) 
 
       <div className="form-buttons">
         <button className="button button-primary" type="submit">
-          Submit
+          Save
         </button>
         <button className="button button-default" type="reset">
           Cancel
