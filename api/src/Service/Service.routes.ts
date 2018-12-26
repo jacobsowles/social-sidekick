@@ -70,9 +70,9 @@ export async function updateGitHubProfileDetails(request: Request, response: Res
       `https://api.github.com/user?access_token=${accessToken}`,
       {
         bio: request.body.bio,
+        blog: request.body.blog,
         company: request.body.company,
-        location: request.body.location,
-        website: request.body.website
+        location: request.body.location
       }
     );
 
