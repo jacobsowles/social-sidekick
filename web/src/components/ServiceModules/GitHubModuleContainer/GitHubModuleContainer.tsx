@@ -37,6 +37,8 @@ class GitHubModuleContainer extends Component<
   GitHubModuleContainerProps,
   GitHubModuleContainerState
 > {
+  private initialState: GitHubModuleContainerState;
+
   constructor(props: GitHubModuleContainerProps) {
     super(props);
 
@@ -47,13 +49,16 @@ class GitHubModuleContainer extends Component<
     const detailsResponse = await this.props.getProfileDetails(this.props.userId);
     const data = detailsResponse.data;
 
-    this.setState({
+    const state = {
       bio: data.bio,
       blog: data.blog,
       company: data.company,
       isLoaded: true,
       location: data.location
-    });
+    };
+
+    this.initialState = state;
+    this.setState(state);
   }
 
   public render() {
@@ -64,11 +69,20 @@ class GitHubModuleContainer extends Component<
         company={this.state.company}
         isLoaded={this.state.isLoaded}
         location={this.state.location}
+        onCancel={this.onCancel}
         onChange={this.onChange}
         onSubmit={this.onSubmit}
       />
     );
   }
+
+  private onCancel = (event: any) => {
+    event.preventDefault();
+    this.setState({
+      ...this.initialState,
+      isLoaded: true
+    });
+  };
 
   private onChange = (event: any, fieldName: string) => {
     event.preventDefault();

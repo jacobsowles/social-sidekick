@@ -13,6 +13,7 @@ interface GitHubModuleProps {
   company: string;
   isLoaded: boolean;
   location: string;
+  onCancel: (event: any) => void;
   onChange: (event: any, fieldName: string) => void;
   onSubmit: (event: any) => void;
 }
@@ -23,6 +24,7 @@ const GitHubModule: FunctionComponent<GitHubModuleProps> = ({
   company,
   isLoaded,
   location,
+  onCancel,
   onChange,
   onSubmit
 }) => {
@@ -64,7 +66,7 @@ const GitHubModule: FunctionComponent<GitHubModuleProps> = ({
         <button className="button button-primary" type="submit">
           Save
         </button>
-        <button className="button button-default" type="reset">
+        <button className="button button-default" onClick={onCancel} type="reset">
           Cancel
         </button>
       </div>
