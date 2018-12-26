@@ -40,6 +40,21 @@ class ApiService implements IApiService {
   public getUserServices = async (userId: string): Promise<AxiosResponse> => {
     return axios.get(`/api/userServices?userId=${userId}`);
   };
+
+  public updateGitHubProfileDetails = async (
+    bio: string,
+    blog: string,
+    company: string,
+    location: string,
+    userId: string
+  ): Promise<AxiosResponse> => {
+    return axios.patch(`/api/services/github?userId=${userId}`, {
+      bio,
+      blog,
+      company,
+      location
+    });
+  };
 }
 
 export default ApiService;

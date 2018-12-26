@@ -12,4 +12,5 @@ export default (app: Express) => {
   app.get('/api/userServices', services.getForUser);
 
   app.get('/api/services/github', services.getGitHubProfileDetails);
+  app.patch('/api/services/github', services.updateGitHubProfileDetails);
 };

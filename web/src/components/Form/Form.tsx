@@ -19,7 +19,7 @@ Field.displayName = 'Form.Field';
 
 interface WrapperProps {
   className?: string;
-  onSubmit?: () => any;
+  onSubmit?: (event: any) => void;
 }
 
 const Wrapper: FunctionComponent<WrapperProps> = ({ children, className, onSubmit }) => {
