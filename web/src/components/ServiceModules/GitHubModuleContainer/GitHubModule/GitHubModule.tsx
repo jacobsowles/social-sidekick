@@ -59,7 +59,11 @@ const GitHubModule: FunctionComponent<GitHubModuleProps> = ({
 
       <Form.Field>
         <FontAwesomeIcon icon={['fas', 'link']} />
-        <TextInput onChange={event => onChange(event, 'blog')} placeholder={'Blog'} value={blog} />
+        <TextInput
+          onChange={event => onChange(event, 'blog')}
+          placeholder={'Website'}
+          value={blog}
+        />
       </Form.Field>
 
       <div className="form-buttons">
