@@ -1,5 +1,5 @@
 import queryString, { OutputParams } from 'query-string';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { InjectedAlertProp, withAlert } from 'react-alert';
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
@@ -11,7 +11,7 @@ interface OAuthCallbackPageOwnProps extends RouteComponentProps {
   alert: InjectedAlertProp;
 }
 
-class OAuthCallbackPage extends Component<OAuthCallbackPageOwnProps> {
+class OAuthCallbackPage extends PureComponent<OAuthCallbackPageOwnProps> {
   public async componentDidMount() {
     try {
       const api = new ApiService();

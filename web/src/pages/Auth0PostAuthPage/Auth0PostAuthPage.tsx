@@ -1,5 +1,5 @@
 import { Auth0Error, Auth0UserProfile } from 'auth0-js';
-import React, { PureComponent, Dispatch } from 'react';
+import React, { Dispatch, PureComponent } from 'react';
 import { InjectedAlertProp, withAlert } from 'react-alert';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';

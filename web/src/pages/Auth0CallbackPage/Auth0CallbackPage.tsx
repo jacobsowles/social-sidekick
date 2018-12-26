@@ -1,10 +1,10 @@
-import React, { Component, ComponentState } from 'react';
+import React, { ComponentState, PureComponent } from 'react';
 
 interface Auth0CallbackPageProps {
   handleAuthentication: (nextState: ComponentState) => void;
 }
 
-class Auth0CallbackPage extends Component<Auth0CallbackPageProps> {
+class Auth0CallbackPage extends PureComponent<Auth0CallbackPageProps> {
   public componentDidMount() {
     this.props.handleAuthentication(this.props);
   }
