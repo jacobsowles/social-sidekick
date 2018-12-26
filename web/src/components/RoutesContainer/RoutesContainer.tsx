@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component, ComponentState } from 'react';
+import React, { ComponentState, PureComponent } from 'react';
 import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
@@ -28,7 +28,7 @@ type RoutesContainerProps = RoutesContainerOwnProps &
   RoutesContainerDispatchProps &
   RoutesContainerStateProps;
 
-class RoutesContainer extends Component<RoutesContainerProps> {
+class RoutesContainer extends PureComponent<RoutesContainerProps> {
   public static contextTypes = {
     router: PropTypes.object
   };

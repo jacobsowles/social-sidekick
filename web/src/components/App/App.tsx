@@ -1,5 +1,5 @@
 import { Auth0Error, Auth0UserProfile } from 'auth0-js';
-import React, { Component, Dispatch } from 'react';
+import React, { PureComponent, Dispatch } from 'react';
 import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
@@ -28,7 +28,7 @@ interface AppStateProps {
 
 type AppProps = RouteComponentProps & AppOwnProps & AppDispatchProps & AppStateProps;
 
-class App extends Component<AppProps, AppState> {
+class App extends PureComponent<AppProps, AppState> {
   public async componentDidMount() {
     const authService: AuthService = new AuthService();
     if (authService.isAuthenticated() && !this.props.user) {

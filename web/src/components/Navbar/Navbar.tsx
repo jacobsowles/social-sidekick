@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { MenuItem, Nav, Navbar as BootstrapNavbar, NavDropdown, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -15,7 +15,7 @@ export interface NavbarProps {
   username?: string;
 }
 
-class Navbar extends Component<NavbarProps> {
+class Navbar extends PureComponent<NavbarProps> {
   public static contextTypes = {
     router: PropTypes.object
   };

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { InjectedAlertProp, withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
@@ -33,7 +33,7 @@ interface GitHubModuleContainerDispatchProps {
 type GitHubModuleContainerProps = GitHubModuleContainerOwnProps &
   GitHubModuleContainerDispatchProps;
 
-class GitHubModuleContainer extends Component<
+class GitHubModuleContainer extends PureComponent<
   GitHubModuleContainerProps,
   GitHubModuleContainerState
 > {

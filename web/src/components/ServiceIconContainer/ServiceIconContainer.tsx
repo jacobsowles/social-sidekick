@@ -1,7 +1,7 @@
 import { IconLookup, IconProp } from '@fortawesome/fontawesome-svg-core';
 import axios, { AxiosResponse } from 'axios';
 import classNames from 'classnames';
-import React, { Component, Dispatch } from 'react';
+import React, { Dispatch, PureComponent } from 'react';
 import { Action } from 'redux';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
@@ -36,7 +36,10 @@ export interface ServiceIconContainerState {
   isHover: boolean;
 }
 
-class ServiceIconContainer extends Component<ServiceIconContainerProps, ServiceIconContainerState> {
+class ServiceIconContainer extends PureComponent<
+  ServiceIconContainerProps,
+  ServiceIconContainerState
+> {
   constructor(props: ServiceIconContainerProps) {
     super(props);
     this.state = { isHover: false };
