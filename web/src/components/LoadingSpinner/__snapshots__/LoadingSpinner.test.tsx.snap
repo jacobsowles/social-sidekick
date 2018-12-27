@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingSpinner should render the component without crashing 1`] = `
+<FontAwesomeIcon
+  border={false}
+  className="loading-spinner"
+  fixedWidth={false}
+  flip={null}
+  icon={
+    Array [
+      "fas",
+      "spinner",
+    ]
+  }
+  inverse={false}
+  listItem={false}
+  mask={null}
+  pull={null}
+  pulse={false}
+  rotation={null}
+  size="4x"
+  spin={true}
+  symbol={false}
+  title=""
+  transform={null}
+/>
+`;

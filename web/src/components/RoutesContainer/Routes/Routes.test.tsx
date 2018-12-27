@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Routes from '@components/Routes';
-import { init, shallow } from '@tests/component-test-base';
+import { init, shallow, toJson } from '@tests/component-test-base';
+import Routes, { RoutesProps } from './Routes';
 
 jest.mock(
   '@core/auth/auth.service',
@@ -14,7 +14,21 @@ jest.mock(
 );
 
 describe('Routes', () => {
-  init(() => <Routes />);
+  let props: RoutesProps;
+
+  init(() => <Routes {...props} />);
+
+  beforeEach(() => {
+    props = {
+      handleAuthentication: jest.fn(),
+      serviceModules: null,
+      services: null
+    };
+  });
+
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
+  });
 
   it('should always render a container', () => {
     shallow()

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should render the component without crashing 1`] = `
+<Uncontrolled(Navbar)
+  bsStyle="default"
+  className="navbar"
+>
+  <NavbarHeader>
+    <NavbarBrand>
+      <a
+        href="/"
+      >
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon="cube"
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          title=""
+          transform={null}
+        />
+        Social Sidekick
+      </a>
+    </NavbarBrand>
+    <NavbarToggle />
+  </NavbarHeader>
+  <NavbarCollapse>
+    <Nav
+      bsClass="nav"
+      className="nav-left"
+      justified={false}
+      pullLeft={false}
+      pullRight={false}
+      stacked={false}
+    >
+      <LinkContainer
+        activeClassName="active"
+        exact={false}
+        replace={false}
+        strict={false}
+        to="/contact"
+      >
+        <NavItem
+          active={false}
+          disabled={false}
+        >
+          Contact
+        </NavItem>
+      </LinkContainer>
+    </Nav>
+    <Nav
+      bsClass="nav"
+      justified={false}
+      pullLeft={false}
+      pullRight={true}
+      stacked={false}
+    >
+      <NavItem
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+      >
+        Log In
+      </NavItem>
+    </Nav>
+  </NavbarCollapse>
+</Uncontrolled(Navbar)>
+`;

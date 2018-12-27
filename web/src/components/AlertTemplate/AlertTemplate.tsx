@@ -7,7 +7,7 @@ import InfoIcon from './InfoIcon';
 import SuccessIcon from './SuccessIcon';
 import './AlertTemplate.scss';
 
-interface AlertTemplateProps {
+export interface AlertTemplateProps {
   close?: () => any;
   message?: string;
   options?: any;

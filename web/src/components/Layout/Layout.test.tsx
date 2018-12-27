@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Footer from '@components/Footer';
-import Routes from '@components/Routes';
-import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import RoutesContainer from '@components/RoutesContainer';
+import { init, shallow, shallowTopLevelElement, toJson } from '@tests/component-test-base';
 import Layout, { LayoutProps } from './Layout';
 
 describe('Layout', () => {
@@ -11,19 +11,18 @@ describe('Layout', () => {
 
   beforeEach(() => {
     props = {
+      handleLogout: jest.fn(),
       user: undefined
     };
   });
 
-  it('should always render a div element', () => {
-    shallow()
-      .find('div')
-      .should.have.lengthOf(1);
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   it('should always render a Router component', () => {
     shallow()
-      .find(Routes)
+      .find(RoutesContainer)
       .should.have.lengthOf(1);
   });
 

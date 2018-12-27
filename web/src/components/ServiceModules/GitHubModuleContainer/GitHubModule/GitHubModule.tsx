@@ -7,7 +7,7 @@ import TextArea from '@components/TextArea';
 import TextInput from '@components/TextInput';
 import './GitHubModule.scss';
 
-interface GitHubModuleProps {
+export interface GitHubModuleProps {
   bio: string;
   blog: string;
   company: string;

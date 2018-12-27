@@ -1,7 +1,8 @@
-import React from 'react';
-import { init, shallow } from '@tests/component-test-base';
-import { Nav as BootstrapNav, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Nav as BootstrapNav, Navbar as BootstrapNavbar } from 'react-bootstrap';
+
+import { init, shallow, toJson } from '@tests/component-test-base';
 import Navbar, { NavbarProps } from './Navbar';
 
 describe('Navbar', () => {
@@ -10,8 +11,13 @@ describe('Navbar', () => {
 
   beforeEach(() => {
     props = {
-      className: undefined
+      className: undefined,
+      handleLogout: jest.fn()
     };
+  });
+
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   it('should always render a BootstrapNavbar component', () => {

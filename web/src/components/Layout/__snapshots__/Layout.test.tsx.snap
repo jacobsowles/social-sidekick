@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should render the component without crashing 1`] = `
+<div
+  className="layout"
+>
+  <Navbar
+    handleLogout={[MockFunction]}
+  />
+  <WithAlert(Connect(RoutesContainer)) />
+  <Footer
+    className=""
+  >
+    <FooterContent
+      pullRight={false}
+    >
+      © Social Sidekick 
+      2018
+    </FooterContent>
+    <FooterContent
+      pullRight={true}
+    >
+      <a
+        href="https://github.com/jacobsowles/social-sidekick"
+      >
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Array [
+              "fab",
+              "github",
+            ]
+          }
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          title="This project on GitHub"
+          transform={null}
+        />
+        This project on GitHub
+      </a>
+    </FooterContent>
+  </Footer>
+</div>
+`;

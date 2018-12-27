@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBox should render the component without crashing 1`] = `
+<div
+  className="content-box"
+>
+  <p>
+    Test
+  </p>
+</div>
+`;

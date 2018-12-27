@@ -1,22 +1,24 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+
+import { init, shallow, shallowTopLevelElement, toJson } from '@tests/component-test-base';
 import ServiceIcon, { ServiceIconProps } from './ServiceIcon';
 
-describe('Icon', () => {
+describe('ServiceIcon', () => {
   let props: ServiceIconProps;
   init(() => <ServiceIcon {...props} />, 'div');
 
   beforeEach(() => {
     props = {
       className: undefined,
-      iconName: 'github'
+      icon: 'github',
+      onClick: jest.fn(),
+      onMouseOut: jest.fn(),
+      onMouseOver: jest.fn()
     };
   });
 
-  it('should render a div element', () => {
-    shallow()
-      .find('div')
-      .should.have.lengthOf(1);
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   describe('when `className` is defined', () => {

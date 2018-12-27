@@ -13,7 +13,7 @@ import { UserService } from '@core/types';
 import PrivateRoute from './PrivateRoute';
 import './Routes.scss';
 
-interface RoutesProps {
+export interface RoutesProps {
   handleAuthentication: (nextState: ComponentState) => void;
   serviceModules: any[] | null;
   services: UserService[] | null;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GitHubModule should render the component without crashing 1`] = `
+<LoadingSpinner
+  size="4x"
+/>
+`;

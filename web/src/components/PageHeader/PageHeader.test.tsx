@@ -1,5 +1,5 @@
 import React from 'react';
-import { init, mount, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import { init, mount, shallow, shallowTopLevelElement, toJson } from '@tests/component-test-base';
 import PageHeader, { PageHeaderProps } from './PageHeader';
 
 describe('PageHeader', () => {
@@ -14,10 +14,8 @@ describe('PageHeader', () => {
     };
   });
 
-  it('should render a div element', () => {
-    shallow()
-      .find('div')
-      .should.have.lengthOf(1);
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   describe('the rendered div element', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import { init, shallow, shallowTopLevelElement, toJson } from '@tests/component-test-base';
 import FooterContent, { FooterContentProps } from './FooterContent';
 
 describe('FooterContent', () => {
@@ -13,10 +13,8 @@ describe('FooterContent', () => {
     };
   });
 
-  it('should render a paragraph element', () => {
-    shallow()
-      .find('p')
-      .should.have.lengthOf(1);
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   describe('when `pullRight` is defined', () => {

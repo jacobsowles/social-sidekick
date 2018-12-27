@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageHeader should render the component without crashing 1`] = `
+<div
+  className="page-header"
+>
+  <h1>
+    title
+  </h1>
+  <hr />
+</div>
+`;

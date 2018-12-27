@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render the component without crashing 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="container"
+  >
+    <p>
+      Test
+    </p>
+  </div>
+</footer>
+`;

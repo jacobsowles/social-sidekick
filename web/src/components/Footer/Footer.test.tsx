@@ -3,7 +3,8 @@ import {
   init,
   mountTopLevelElement,
   shallow,
-  shallowTopLevelElement
+  shallowTopLevelElement,
+  toJson
 } from '@tests/component-test-base';
 import Footer, { FooterProps } from './Footer';
 
@@ -29,10 +30,8 @@ describe('Footer', () => {
     };
   });
 
-  it('should render a footer element', () => {
-    shallow()
-      .find('footer')
-      .should.have.lengthOf(1);
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   describe('the rendered footer element', () => {

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes should render the component without crashing 1`] = `
+<div
+  className="container"
+>
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      path="/auth0-callback"
+      render={[Function]}
+    />
+    <Route
+      component={[Function]}
+      path="/auth0-postauth"
+    />
+    <Route
+      path="/connections"
+      render={[Function]}
+    />
+    <Route
+      component={[Function]}
+      path="/contact"
+    />
+    <Route
+      path="/dashboard"
+      render={[Function]}
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/oauth-callback"
+    />
+  </Switch>
+</div>
+`;

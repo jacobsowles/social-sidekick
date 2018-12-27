@@ -1,5 +1,5 @@
 import React from 'react';
-import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import { init, shallow, shallowTopLevelElement, toJson } from '@tests/component-test-base';
 import ContentBox, { ContentBoxProps } from './ContentBox';
 
 describe('ContentBox', () => {
@@ -20,10 +20,8 @@ describe('ContentBox', () => {
     };
   });
 
-  it('should render a div element', () => {
-    shallow()
-      .find('div')
-      .should.have.lengthOf(1);
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   describe('the rendered div element', () => {

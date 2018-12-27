@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterContent should render the component without crashing 1`] = `
+<p
+  className="footer-content float-left"
+>
+  Test
+</p>
+`;

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertTemplate should render the component with error icon without crashing 1`] = `
+<div
+  className="alert alert-error"
+>
+  <ErrorIcon />
+  <span />
+  <button>
+    <CloseIcon />
+  </button>
+</div>
+`;
+
+exports[`AlertTemplate should render the component with info icon without crashing 1`] = `
+<div
+  className="alert alert-info"
+>
+  <InfoIcon />
+  <span />
+  <button>
+    <CloseIcon />
+  </button>
+</div>
+`;
+
+exports[`AlertTemplate should render the component with success icon without crashing 1`] = `
+<div
+  className="alert alert-success"
+>
+  <SuccessIcon />
+  <span />
+  <button>
+    <CloseIcon />
+  </button>
+</div>
+`;

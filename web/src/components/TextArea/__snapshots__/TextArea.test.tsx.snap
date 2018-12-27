@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea should render the component without crashing 1`] = `
+<textarea
+  className="text-area"
+  onChange={[MockFunction]}
+/>
+`;

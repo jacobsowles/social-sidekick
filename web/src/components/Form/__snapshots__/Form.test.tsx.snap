@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form should render the component without crashing 1`] = `
+<form
+  className="form"
+>
+  <Form.Field>
+    Test
+  </Form.Field>
+</form>
+`;
