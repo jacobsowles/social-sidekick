@@ -1,8 +1,9 @@
 # Social Sidekick
 Manage profile information between your various social media accounts.
 
-![Connected Services page screenshot](/screenshots/connected-services.png?raw=true "Desktop")
-![Connected Services mobile page screenshot](/screenshots/connected-services-mobile.png?raw=true "Mobile")
+![Connecting to GitHub demo](/screenshots/demo.gif "Connecting to GitHub")
+
+Note: Facebook and Twitter connections are mocked up for demo purposes but are not yet available.
 
 ## Getting Started
 
