@@ -18,6 +18,7 @@
       "@tests/*": ["tests/*"],
       "@utils/*": ["utils/*"]
     },
+    "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": false,
     "target": "esnext"
