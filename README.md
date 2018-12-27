@@ -52,6 +52,9 @@ After that it opens a browser on "http://localhost:8000/".
 
 You can stop the containers with `npm run stop:docker`.
 
+### npm run test
+Change to either the `web` or `api` directories, then run `npm run test` to run all available tests within that directory.
+
 ## License
 
 MIT
