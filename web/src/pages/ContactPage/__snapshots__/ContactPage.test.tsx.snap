@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactPage should render the component without crashing 1`] = `
+<div
+  className="contact-page"
+>
+  <ContentBox>
+    <PageHeader
+      title="Contact"
+    />
+    <p>
+      Questions? Comments? Feel free to get in touch via 
+      <a
+        href="mailto:jacob@jacobsowles.com"
+      >
+        email
+      </a>
+       or 
+      <a
+        href="https://github.com/jacobsowles/social-sidekick"
+      >
+        GitHub
+      </a>
+      .
+    </p>
+  </ContentBox>
+</div>
+`;

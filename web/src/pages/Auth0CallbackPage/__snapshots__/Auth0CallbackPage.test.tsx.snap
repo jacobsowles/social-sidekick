@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth0CallbackPage should render the component without crashing 1`] = `
+<div
+  className="auth0-callback-page"
+/>
+`;

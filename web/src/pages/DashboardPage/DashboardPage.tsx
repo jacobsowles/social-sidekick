@@ -9,7 +9,7 @@ import PageHeader from '@components/PageHeader';
 import { UserService } from '@core/types';
 import './DashboardPage.scss';
 
-interface DashboardPageProps {
+export interface DashboardPageProps {
   serviceModules: any[] | null;
   services: UserService[] | null;
   userId?: string;

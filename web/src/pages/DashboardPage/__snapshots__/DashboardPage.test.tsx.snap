@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardPage should render the component without crashing 1`] = `
+<div
+  className="dashboard"
+>
+  <LoadingSpinner
+    size="4x"
+  />
+</div>
+`;

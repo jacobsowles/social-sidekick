@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
+import { init, shallow, shallowTopLevelElement, toJson } from '@tests/component-test-base';
 import ConnectionsPage, { ConnectionsPageProps } from './ConnectionsPage';
 
 describe('ConnectionsPage', () => {
@@ -9,14 +9,13 @@ describe('ConnectionsPage', () => {
 
   beforeEach(() => {
     props = {
-      className: undefined
+      className: '',
+      services: null
     };
   });
 
-  it('should render a main element', () => {
-    shallow()
-      .find('main')
-      .should.have.lengthOf(1);
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   describe('when `className` is defined', () => {

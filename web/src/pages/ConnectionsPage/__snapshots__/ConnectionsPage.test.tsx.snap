@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectionsPage should render the component without crashing 1`] = `
+<main
+  className="connections-page"
+>
+  <ContentBox>
+    <PageHeader
+      subtitle="Log into the services below to connect them to your Social Sidekick account."
+      title="Connect Services"
+    />
+    <LoadingSpinner
+      size="4x"
+    />
+  </ContentBox>
+</main>
+`;

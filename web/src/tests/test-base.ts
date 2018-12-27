@@ -1,4 +1,4 @@
-import { should } from 'chai';
+import chai, { should } from 'chai';
 import { Global, ILocalStorageMock } from './types';
 
 let objectUnderTest: any;
@@ -36,4 +36,4 @@ declare var global: Global;
 
 global.localStorage = new LocalStorageMock();
 
-export { init, LocalStorageMock, objectUnderTest, should };
+export { chai, init, LocalStorageMock, objectUnderTest, should };

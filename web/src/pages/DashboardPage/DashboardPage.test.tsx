@@ -1,20 +1,23 @@
 import React from 'react';
 
-import { init, shallow, shallowTopLevelElement } from '@tests/component-test-base';
-import DashboardPage from '@pages/DashboardPage';
+import { init, shallow, shallowTopLevelElement, toJson } from '@tests/component-test-base';
+import DashboardPage, { DashboardPageProps } from '@pages/DashboardPage';
 
 describe('DashboardPage', () => {
-  init(() => <DashboardPage />, 'div');
+  let props: DashboardPageProps;
+  init(() => <DashboardPage {...props} />, 'div');
 
-  it('should always render a div element', () => {
-    shallow()
-      .find('div')
-      .should.have.lengthOf(1);
+  beforeEach(() => {
+    props = { serviceModules: null, services: null, userId: undefined };
+  });
+
+  it('should render the component without crashing', () => {
+    toJson(shallow()).should.matchSnapshot();
   });
 
   it('should only include the default class name', () => {
     shallowTopLevelElement()
       .prop('className')
-      .should.equal('dashboard-page');
+      .should.equal('dashboard');
   });
 });

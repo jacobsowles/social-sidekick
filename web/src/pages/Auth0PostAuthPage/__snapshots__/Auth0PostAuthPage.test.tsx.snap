@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth0PostAuthPage should render the component without crashing 1`] = `
+<BrowserRouter>
+  <WithAlert(Connect(Auth0PostAuthPage)) />
+</BrowserRouter>
+`;
